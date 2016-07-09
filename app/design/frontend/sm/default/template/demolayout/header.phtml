@@ -1,0 +1,18 @@
+<fieldset>
+	<legend><?php echo $this->getLayout()->getBlock('header')->getType(); ?></legend>
+	<div id="demoheader">
+		<div id="demologo">
+			
+				<a href="demolayout">
+					<?php 
+						$mediaUrl = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA);
+						echo "<img src='$mediaUrl/demolayout/logo.gif'>";
+					?>
+				</a>
+		</div>
+
+		<div id="demoheader_text">
+			<h1>Demo Header</h1>
+		</div>
+	</div>
+</fieldset>	
