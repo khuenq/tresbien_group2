@@ -47,9 +47,6 @@ Default layout, loads most of the pages
                 <action method="setBlockId"><block_id>footer_links_sm</block_id></action>
             </block>
         </reference>
-        <reference name="header">
-             <block type="core/template" name="catalog.megamenu" template="page/html/megamenu.phtml" after="topMenu" before="topContainer"/>
-        </reference>
     </default>
 
     <cms_menu>

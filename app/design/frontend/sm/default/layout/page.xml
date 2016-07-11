@@ -154,6 +154,7 @@
                 <block type="page/html_cookieNotice" name="global_cookie_notice" as ="global_cookie_notice" template="page/html/cookienotice.phtml" before="-" />
             </block>
         </block>
+
         <block type="core/profiler" output="toHtml" name="core_profiler"/>
     </default>
 

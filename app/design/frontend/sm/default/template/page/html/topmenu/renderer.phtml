@@ -44,11 +44,12 @@ foreach ($children as $child) {
     $child->setLevel($childLevel);
     $child->setIsFirst($counter == 1);
     $child->setIsLast($counter == $childrenCount);
-    $child->setPositionClass($itemPositionClassPrefix . $counter);
+    $child->setPositionClass($itemPositionClassPrefix . $counter );
 
     $outermostClassCode = 'level'. $childLevel;
     $_hasChildren = ($child->hasChildren()) ? 'has-children' : '';
 
+    //$megaClass = 0 == $childLevel?substr($this->_getRenderedMenuItemAttributes($child),0,-1).' megamenu"':$this->_getRenderedMenuItemAttributes($child);
     $html .= '<li '. $this->_getRenderedMenuItemAttributes($child) .'>';
 
     $html .= '<a href="'. $child->getUrl() .'" class="'. $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
