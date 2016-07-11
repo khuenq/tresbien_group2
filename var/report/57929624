@@ -1,0 +1,8 @@
+a:5:{i:0;s:173:"Error in file: "C:\xampp\htdocs\tresbien_group2\app\code\local\SmartLab\Createsite\data\createsite_setup\data-install-0.1.0.php" - Website with the same code already exists.";i:1;s:896:"#0 C:\xampp\htdocs\tresbien_group2\app\code\core\Mage\Core\Model\Resource\Setup.php(644): Mage::exception('Mage_Core', 'Error in file: ...')
+#1 C:\xampp\htdocs\tresbien_group2\app\code\core\Mage\Core\Model\Resource\Setup.php(391): Mage_Core_Model_Resource_Setup->_modifyResourceDb('data-install', '', '0.1.0')
+#2 C:\xampp\htdocs\tresbien_group2\app\code\core\Mage\Core\Model\Resource\Setup.php(289): Mage_Core_Model_Resource_Setup->_installData('0.1.0')
+#3 C:\xampp\htdocs\tresbien_group2\app\code\core\Mage\Core\Model\Resource\Setup.php(269): Mage_Core_Model_Resource_Setup->applyDataUpdates()
+#4 C:\xampp\htdocs\tresbien_group2\app\code\core\Mage\Core\Model\App.php(362): Mage_Core_Model_Resource_Setup::applyAllDataUpdates()
+#5 C:\xampp\htdocs\tresbien_group2\app\Mage.php(684): Mage_Core_Model_App->run(Array)
+#6 C:\xampp\htdocs\tresbien_group2\index.php(83): Mage::run('', 'store')
+#7 {main}";s:3:"url";s:1:"/";s:11:"script_name";s:10:"/index.php";s:4:"skin";s:7:"default";}

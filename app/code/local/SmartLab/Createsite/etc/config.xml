@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+ <modules>
+ <SmartLab_Createsite>
+ <version>0.1.0</version>
+ </SmartLab_Createsite>
+ </modules>
+ <global>
+ <models>
+ 	<createsite>
+ 		<class>SmartLab_Createsite_Model</class>
+ 		<resourceModel>	createsite_resource</resourceModel>
+ 	</createsite>
+    <createsite_resource>
+        <entities>
+        	<!-- <model>createsite/website</model> -->
+            <website>
+                <table>createsite_website</table>
+            </website>
+            <store_group>
+                <table>createsite_store_group</table>
+            </store_group>
+            <store>
+                <table>createsite_store</table>
+            </store>
+        </entities>
+    </createsite_resource>
+   
+ </models>
+            <resources>
+            <createsite_setup>
+                <setup>
+                    <module>SmartLab_Createsite</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </createsite_setup>
+            <createsite_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </createsite_write>
+            <createsite_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </createsite_read>
+        </resources>
+ 
+ <helpers>
+	 <createsite>
+	 <class>SmartLab_Createsite_Helper</class>
+	 </createsite>
+ </helpers>
+
+ </global>
+</config>
