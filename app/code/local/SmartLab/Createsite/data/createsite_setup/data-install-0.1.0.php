@@ -56,7 +56,7 @@ Mage::registry('isSecureArea');
         ->setRootCategoryId($chinaId)
         ->save();
 
-      /** @var $storeGroup kr Mage_Core_Model_Store_Group */
+      * @var $storeGroup kr Mage_Core_Model_Store_Group 
     $krstoreGroup = Mage::getModel('core/store_group');
     $krstoreGroup->setWebsiteId($krwebsite->getId())
         ->setName('kr_tres_bien')
