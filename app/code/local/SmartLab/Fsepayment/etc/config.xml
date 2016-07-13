@@ -57,11 +57,24 @@
 				<active>1</active>
 				<model>fsepayment/paymentmethod</model>
 				<order_status>pending</order_status>
-				<title>FSE Payment amateur</title>
+				<title>FSE Payment Standard</title>
 				<allowspecific>0</allowspecific>
-				<!-- <payment_aciton>sales</payment_aciton> -->
-				<payment_aciton>authorize</payment_aciton>
+				<payment_aciton>sales</payment_aciton>
+				<submit_url>http://local.tres-bien.com/fsepaygate</submit_url>
+				<merchant_account>test@fsepayment.com</merchant_account>
+				<security_private_key>0295b36b7ba3364397c0086db08e25b5</security_private_key>
 			</fsepayment>
 		</payment>
 	</default>
+	<frontend>
+		<routers>
+			<fsepayment>
+				<use>standard</use>
+				<args>
+					<module>SmartLab_Fsepayment</module>
+					<frontname>fsepaygate</frontname>
+				</args>
+			</fsepayment>
+		</routers>
+	</frontend>
 </config>

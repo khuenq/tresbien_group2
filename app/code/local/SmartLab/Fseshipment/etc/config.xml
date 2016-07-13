@@ -6,6 +6,27 @@
 		</SmartLab_Fseshipment>
 	</modules>
 	<global>
-		
+		<models>
+			<fseshipment>
+				<class>SmartLab_Fseshipment_Model</class>
+			</fseshipment>
+		</models>
+		<helpers>
+			<fseshipment>
+				<class>SmartLab_Fseshipment_Helper</class>
+			</fseshipment>
+		</helpers>
 	</global>
+	<default>
+		<carriers>
+			<fseshipment>
+				<active>1</active>
+				<sallowspecific>1</sallowspecific>
+				<model>SmartLab_Fseshipment/Baybanbua</model>
+				<name>BayBanBua Shipping</name>
+				<price>5.0</price>
+				<title>BayBanBua Shipping</title>
+			</fseshipment>
+		</carriers>
+	</default>
 </config>
