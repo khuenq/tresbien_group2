@@ -2,7 +2,7 @@
 <config>
     <modules>
         <SmartLab_Datacategory>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </SmartLab_Datacategory>
     </modules>
     <global>
@@ -22,6 +22,7 @@
             <datacategory_setup>
                 <setup>
                     <module>SmartLab_Datacategory</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
                 </setup>
                 <connection>
                     <use>core_setup</use>
