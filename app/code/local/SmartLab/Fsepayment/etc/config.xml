@@ -1,0 +1,67 @@
+<?xml version="1.0" ?>
+<config>
+	<modules>
+		<SmartLab_Fsepayment>
+			<version>0.1.0</version>
+		</SmartLab_Fsepayment>
+	</modules>
+	<global>
+		<blocks>
+			<fsepayment>
+				<class>SmartLab_Fsepayment_Block</class>
+			</fsepayment>
+		</blocks>
+		<helpers>
+			<fsepayment>
+				<class>SmartLab_Fsepayment_Helper</class>
+			</fsepayment>
+		</helpers>
+		<models>
+			<fsepayment>
+				<class>SmartLab_Fsepayment_Model</class>
+				<!-- <resourceModel>fsepayment_resource</resourceModel> -->
+			</fsepayment>
+			<!-- <fsepayment_resource>
+				<class>SmartLab_Fsepayment_Model_Resource</class>
+				<entities>
+					<fsepayment>
+
+					</fsepayment>
+				</entities>
+			</fsepayment_resource> -->
+		</models>
+		<resources>
+			<fsepayment_setup>
+				<setup>
+					<module>SmartLab_Fsepayment</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</fsepayment_setup>
+			<fsepayment_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</fsepayment_write>
+			<fsepayment_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</fsepayment_read>
+		</resources>
+	</global>
+	<default>
+		<payment>
+			<fsepayment>
+				<active>1</active>
+				<model>fsepayment/paymentmethod</model>
+				<order_status>pending</order_status>
+				<title>FSE Payment amateur</title>
+				<allowspecific>0</allowspecific>
+				<!-- <payment_aciton>sales</payment_aciton> -->
+				<payment_aciton>authorize</payment_aciton>
+			</fsepayment>
+		</payment>
+	</default>
+</config>

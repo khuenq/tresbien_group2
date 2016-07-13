@@ -1,0 +1,16 @@
+2016-07-12T04:22:01+00:00 DEBUG (7): Baokim payment pro : Invalid parameters: checksum is missing
+2016-07-12T04:31:47+00:00 DEBUG (7): Baokim payment pro : Invalid parameters: checksum is missing
+2016-07-12T04:41:40+00:00 DEBUG (7): Baokim payment pro : Invalid parameters: checksum is missing
+2016-07-12T04:48:38+00:00 DEBUG (7): Baokim payment pro : Invalid data: Validate checksum from Baokim return fail - paymentpro/index/success : Array
+(
+)
+
+2016-07-12T07:32:27+00:00 DEBUG (7): Baokim payment pro : Invalid parameters: checksum is missing
+2016-07-12T07:49:51+00:00 DEBUG (7): Baokim payment pro : Invalid data: Validate checksum from Baokim return fail - paymentpro/index/success : Array
+(
+)
+
+2016-07-12T07:54:25+00:00 DEBUG (7): Baokim payment pro : Invalid data: Validate checksum from Baokim return fail - paymentpro/index/success : Array
+(
+)
+

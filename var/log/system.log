@@ -265,3 +265,225 @@
 2016-07-11T04:01:37+00:00 ERR (3): Notice: Undefined variable: children  in D:\www\tresbien_group2\lib\megamenu\mega.class.php on line 110
 2016-07-11T04:26:03+00:00 ERR (3): Notice: Undefined property: stdClass::$colw1  in D:\www\tresbien_group2\lib\megamenu\mega.class.php on line 344
 2016-07-11T04:26:13+00:00 ERR (3): Notice: Undefined variable: children  in D:\www\tresbien_group2\lib\megamenu\mega.class.php on line 110
+2016-07-12T02:41:14+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T02:42:22+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T02:44:09+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T02:45:23+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T02:45:53+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T02:52:02+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T02:53:55+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T02:59:31+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T03:03:19+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T03:04:48+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T03:06:50+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T03:18:43+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T03:57:55+00:00 ERR (3): Notice: Undefined variable: customer_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\Model\Baokim.php on line 272
+2016-07-12T04:06:56+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T04:20:37+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T04:24:55+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T04:40:17+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T04:47:31+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T04:48:38+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 54
+2016-07-12T04:48:38+00:00 ERR (3): Notice: Undefined index: checksum  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 55
+2016-07-12T04:51:25+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T04:52:33+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 54
+2016-07-12T04:52:33+00:00 ERR (3): Notice: Undefined index: checksum  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 55
+2016-07-12T05:29:29+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 54
+2016-07-12T05:29:29+00:00 ERR (3): Notice: Undefined index: checksum  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 55
+2016-07-12T05:29:55+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 54
+2016-07-12T05:29:55+00:00 ERR (3): Notice: Undefined index: checksum  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 55
+2016-07-12T07:06:20+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:07:05+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:08:58+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:09:29+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:09:46+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:10:03+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:10:18+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:10:39+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:10:57+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:11:31+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:11:40+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:32:15+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 58
+2016-07-12T07:33:34+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T07:41:32+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 57
+2016-07-12T07:51:37+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
+2016-07-12T07:56:00+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 58
+2016-07-12T07:56:10+00:00 ERR (3): Notice: Undefined index: order_id  in D:\www\tresbien_group2\app\code\local\Baokim\PaymentPro\controllers\IndexController.php on line 58
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 17: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;resourceModel&gt;fsepayment_resource&lt;/resourceModel&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 17: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;resourceModel&gt;fsepayment_resource&lt;/resourceModel&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 				                                                        ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 19: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 			&lt;!-- &lt;fsepayment_resource&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 			  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : Comment must not contain '--' (double-hyphen)  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 			&lt;/fsepayment_resource&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 			                         ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 58: parser error : Comment must not contain '--' (double-hyphen)  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 				    ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 59: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt;   in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): 				                                                ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:37+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Start tag expected, '&lt;' not found  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:38+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 45: parser error : Start tag expected, '&lt;' not found  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 17: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;resourceModel&gt;fsepayment_resource&lt;/resourceModel&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 17: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;resourceModel&gt;fsepayment_resource&lt;/resourceModel&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 				                                                        ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 19: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 			&lt;!-- &lt;fsepayment_resource&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 			  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : Comment must not contain '--' (double-hyphen)  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 			&lt;/fsepayment_resource&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 			                         ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 58: parser error : Comment must not contain '--' (double-hyphen)  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 				    ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 59: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt;   in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): 				                                                ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:44+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Start tag expected, '&lt;' not found  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 17: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;resourceModel&gt;fsepayment_resource&lt;/resourceModel&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 17: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;resourceModel&gt;fsepayment_resource&lt;/resourceModel&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 				                                                        ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 19: parser error : Double hyphen within comment: &lt;!-- &lt;?xml version=&quot;1.0&quot; ?&gt;
+&lt;config&gt;
+	&lt;modules&gt;
+		&lt;Sma  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 			&lt;!-- &lt;fsepayment_resource&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 			  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 27: parser error : Comment must not contain '--' (double-hyphen)  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 			&lt;/fsepayment_resource&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 			                         ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 58: parser error : Comment must not contain '--' (double-hyphen)  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 				    ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 59: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt;   in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): 				                                                ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Start tag expected, '&lt;' not found  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:33:57+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 45: parser error : Start tag expected, '&lt;' not found  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:37:04+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 59: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:37:04+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:37:04+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:37:05+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 45: parser error : Start tag expected, '&lt;' not found  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:37:14+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 59: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:37:14+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:37:14+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:37:19+00:00 ERR (3): Warning: include(Mage\Fsepayment\Helper\Data.php): failed to open stream: No such file or directory  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T10:37:19+00:00 ERR (3): Warning: include(): Failed opening 'Mage\Fsepayment\Helper\Data.php' for inclusion (include_path='D:\www\tresbien_group2\app\code\local;D:\www\tresbien_group2\app\code\community;D:\www\tresbien_group2\app\code\core;D:\www\tresbien_group2\lib;C:\xampp\php\PEAR')  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T10:43:24+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 59: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:43:24+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:43:24+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:43:28+00:00 ERR (3): Warning: include(Mage\Fsepayment\Helper\Data.php): failed to open stream: No such file or directory  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T10:43:28+00:00 ERR (3): Warning: include(): Failed opening 'Mage\Fsepayment\Helper\Data.php' for inclusion (include_path='D:\www\tresbien_group2\app\code\local;D:\www\tresbien_group2\app\code\community;D:\www\tresbien_group2\app\code\core;D:\www\tresbien_group2\lib;C:\xampp\php\PEAR')  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T10:44:59+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:44:59+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:44:59+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T10:45:04+00:00 ERR (3): Warning: include(Mage\Fsepayment\Helper\Data.php): failed to open stream: No such file or directory  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T10:45:04+00:00 ERR (3): Warning: include(): Failed opening 'Mage\Fsepayment\Helper\Data.php' for inclusion (include_path='D:\www\tresbien_group2\app\code\local;D:\www\tresbien_group2\app\code\community;D:\www\tresbien_group2\app\code\core;D:\www\tresbien_group2\lib;C:\xampp\php\PEAR')  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:15:08+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:08+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:08+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:12+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:12+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:12+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:14+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:14+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:14+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:17+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:17+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:17+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:23+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:23+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:23+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:23+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:23+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:23+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:27+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:27+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:27+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:35+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:35+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:35+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:46+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:46+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:46+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:55+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:55+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:55+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:56+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:56+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:56+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:58+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:58+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:15:58+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:06+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:06+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:06+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:10+00:00 ERR (3): Warning: include(Mage\Fsepayment\Helper\Data.php): failed to open stream: No such file or directory  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:16:10+00:00 ERR (3): Warning: include(): Failed opening 'Mage\Fsepayment\Helper\Data.php' for inclusion (include_path='D:\www\tresbien_group2\app\code\local;D:\www\tresbien_group2\app\code\community;D:\www\tresbien_group2\app\code\core;D:\www\tresbien_group2\lib;C:\xampp\php\PEAR')  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:16:24+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:24+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:24+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:54+00:00 ERR (3): Warning: simplexml_load_string(): Entity: line 64: parser error : Double hyphen within comment: &lt;!-- &lt;payment_aciton&gt;sales&lt;/payment_aciton&gt;
+				&lt;!  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:54+00:00 ERR (3): Warning: simplexml_load_string(): 				&lt;!-- &lt;payment_aciton&gt;authorize&lt;/payment_aciton&gt; --&gt;  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:16:54+00:00 ERR (3): Warning: simplexml_load_string(): 				  ^  in D:\www\tresbien_group2\lib\Varien\Simplexml\Config.php on line 510
+2016-07-12T16:17:00+00:00 ERR (3): Warning: include(Mage\Fsepayment\Helper\Data.php): failed to open stream: No such file or directory  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:17:00+00:00 ERR (3): Warning: include(): Failed opening 'Mage\Fsepayment\Helper\Data.php' for inclusion (include_path='D:\www\tresbien_group2\app\code\local;D:\www\tresbien_group2\app\code\community;D:\www\tresbien_group2\app\code\core;D:\www\tresbien_group2\lib;C:\xampp\php\PEAR')  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:21:29+00:00 ERR (3): Warning: include(SmartLab\Fsepayment\Model\Paymentmethod.php): failed to open stream: No such file or directory  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:21:29+00:00 ERR (3): Warning: include(): Failed opening 'SmartLab\Fsepayment\Model\Paymentmethod.php' for inclusion (include_path='D:\www\tresbien_group2\app\code\local;D:\www\tresbien_group2\app\code\community;D:\www\tresbien_group2\app\code\core;D:\www\tresbien_group2\lib;C:\xampp\php\PEAR')  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:22:07+00:00 ERR (3): Warning: include(SmartLab\Fsepayment\Model\Paymentmethod.php): failed to open stream: No such file or directory  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:22:07+00:00 ERR (3): Warning: include(): Failed opening 'SmartLab\Fsepayment\Model\Paymentmethod.php' for inclusion (include_path='D:\www\tresbien_group2\app\code\local;D:\www\tresbien_group2\app\code\community;D:\www\tresbien_group2\app\code\core;D:\www\tresbien_group2\lib;C:\xampp\php\PEAR')  in D:\www\tresbien_group2\lib\Varien\Autoload.php on line 94
+2016-07-12T16:22:07+00:00 CRIT (2): Not valid template file:frontend\base\default\template\payment/form/checkmo.phtml
