@@ -2,14 +2,14 @@
 <config>
 	<modules>
 		<SmartLab_Fseinstaller>
-			<version>0.1.0</version>
+			<version>0.2.0</version>
 		</SmartLab_Fseinstaller>
 	</modules>
 	<global>
 		<resources>
 			<fseinstaller_setup>
 				<setup>
-					<module>SmartLab_Installer</module>
+					<module>SmartLab_Fseinstaller</module>
 				</setup>
 			</fseinstaller_setup>
 		</resources>
