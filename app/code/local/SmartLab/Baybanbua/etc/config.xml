@@ -5,12 +5,31 @@
 			<version>0.1.0</version>
 		</SmartLab_Baybanbua>
 	</modules>
+	<frontend>
+		<layout>
+			<updates>
+				<baybanbua>
+					<file>baybanbua.xml</file>
+				</baybanbua>
+			</updates>
+		</layout>
+	</frontend>
 	<global>
 		<models>
 			<baybanbua>
 				<class>SmartLab_Baybanbua_Model</class>
 			</baybanbua>
 		</models>
+		<resources>
+			<baybanbua_setup>
+				<setup>
+					<module>SmartLab_Baybanbua</module>
+				</setup>
+				<conneciton>
+					<use>core_setup</use>
+				</conneciton>
+			</baybanbua_setup>
+		</resources>
 		<helpers>
 			<baybanbua>
 				<class>SmartLab_Baybanbua_Helper</class>
@@ -22,8 +41,8 @@
 			<baybanbua>
 				<active>1</active>
 				<sallowspecific>1</sallowspecific>
-				<model>SmartLab_Baybanbua/Baybanbua</model>
-				<name>BayBanBua Shipping</name>
+				<model>baybanbua/carrier_baybanbua</model>
+				<name>Shipping by Lamborghini Veneno</name>
 				<price>5.0</price>
 				<title>BayBanBua Shipping</title>
 			</baybanbua>

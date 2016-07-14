@@ -65,11 +65,9 @@ $vietCategory= Mage::getModel('catalog/category')
 
 //#addStore
     //* @var vn $store Mage_Core_Model_Store 
-   
-  
 
-    $vnstore = Mage::getModel('core/store');
-    $vnstore->setCode('en_vn_tres_bien')
+    $enVnStore = Mage::getModel('core/store');
+    $enVnStore->setCode('en_vn_tres_bien')
         ->setWebsiteId($vnstoreGroup->getWebsiteId())
         ->setGroupId($vnstoreGroup->getId())
         ->setName('English')
@@ -77,8 +75,8 @@ $vietCategory= Mage::getModel('catalog/category')
         ->save();
   
             
-    $vnstore2 = Mage::getModel('core/store');
-    $vnstore2->setCode('vi_vn_tres_bien')
+    $viVnStore = Mage::getModel('core/store');
+    $viVnStore->setCode('vi_vn_tres_bien')
         ->setWebsiteId($vnstoreGroup->getWebsiteId())
         ->setGroupId($vnstoreGroup->getId())
         ->setName('Tiếng Việt')
@@ -87,8 +85,8 @@ $vietCategory= Mage::getModel('catalog/category')
    
 
      //* @var cn $store Mage_Core_Model_Store 
-    $cnstore = Mage::getModel('core/store');
-    $cnstore->setCode('en_cn_tres_bien')
+    $enCnStore = Mage::getModel('core/store');
+    $enCnStore->setCode('en_cn_tres_bien')
         ->setWebsiteId($cnstoreGroup->getWebsiteId())
         ->setGroupId($cnstoreGroup->getId())
         ->setName('English')
@@ -96,8 +94,8 @@ $vietCategory= Mage::getModel('catalog/category')
         ->save();
   
             
-    $cnstore2 = Mage::getModel('core/store');
-    $cnstore2->setCode('cn_cn_tres_bien')
+    $zhCnStore = Mage::getModel('core/store');
+    $zhCnStore->setCode('zh_cn_tres_bien')
         ->setWebsiteId($cnstoreGroup->getWebsiteId())
         ->setGroupId($cnstoreGroup->getId())
         ->setName('China')
@@ -106,8 +104,8 @@ $vietCategory= Mage::getModel('catalog/category')
     
 
      //* @var kr $store Mage_Core_Model_Store 
-    $krstore = Mage::getModel('core/store');
-    $krstore->setCode('en_kr_tres_bien')
+    $enKrStore = Mage::getModel('core/store');
+    $enKrStore->setCode('en_kr_tres_bien')
         ->setWebsiteId($krstoreGroup->getWebsiteId())
         ->setGroupId($krstoreGroup->getId())
         ->setName('English')
@@ -115,13 +113,14 @@ $vietCategory= Mage::getModel('catalog/category')
         ->save();
     
             
-    $krstore2 = Mage::getModel('core/store');
-    $krstore2->setCode('kr_kr_tres_bien')
+    $koKrStore = Mage::getModel('core/store');
+    $koKrStore->setCode('ko_kr_tres_bien')
         ->setWebsiteId($krstoreGroup->getWebsiteId())
         ->setGroupId($krstoreGroup->getId())
         ->setName('Korea')
         ->setIsActive(1)
         ->save();
+
 
     $installer=$this;
     $installer->startSetup();
@@ -139,30 +138,34 @@ $vietCategory= Mage::getModel('catalog/category')
     $installer->setConfigData('web/unsecure/base_url',$cnvalue,'websites',$cnWebsiteId);
     $installer->setConfigData('web/secure/base_url',$cnvalue,'websites',$cnWebsiteId);
     $installer->setConfigData('design/package/name/','sm','websites',$cnWebsiteId);
-    $installer->setConfigData('currency/options/allow','CNY,KRW,USD,VND','default',0);
 
     // KR store group url
     $krWebsiteId = Mage::getModel('core/website')->load('kr_tres_bien','code')->getId();
     $installer->setConfigData('web/unsecure/base_url',$krvalue,'websites',$krWebsiteId);
     $installer->setConfigData('web/secure/base_url',$krvalue,'websites',$krWebsiteId);
     $installer->setConfigData('design/package/name/','sm','websites',$krWebsiteId);
-    $installer->setConfigData('currency/options/allow','CNY,KRW,USD,VND','default',0);
 
     // Config by thanhnd
+    // Set default currency
+    $installer->setConfigData('currency/options/allow','CNY,KRW,USD,VND','default',0);
+
     // VN theme package, locale
     $installer->setConfigData('design/package/name','sm','websites',$vnWebsiteId);
     $installer->setConfigData('general/country/default','VN','websites',$vnWebsiteId);
-    $installer->setConfigData('general/locale/code','vi_VN','websites',$vnWebsiteId);
+    $installer->setConfigData('general/locale/code','en_US','stores',$enVnStore->getStoreId());
+    $installer->setConfigData('general/locale/code','vi_VN','stores',$viVnStore->getStoreId());
 
      // CN theme package, locale
     $installer->setConfigData('design/package/name','sm','websites',$cnWebsiteId);
     $installer->setConfigData('general/country/default','CN','websites',$cnWebsiteId);
-    $installer->setConfigData('general/locale/code','zh_CN','websites',$cnWebsiteId);
+    $installer->setConfigData('general/locale/code','en_US','stores',$enCnStore->getStoreId());
+    $installer->setConfigData('general/locale/code','zh_CN','stores',$zhCnStore->getStoreId());
 
      // KR theme package, locale
     $installer->setConfigData('design/package/name','sm','websites',$krWebsiteId);
     $installer->setConfigData('general/country/default','KR','websites',$krWebsiteId);
-    $installer->setConfigData('general/locale/code','ko_KR','websites',$krWebsiteId);
+    $installer->setConfigData('general/locale/code','en_US','stores',$enKrStore->getStoreId());
+    $installer->setConfigData('general/locale/code','ko_KR','stores',$koKrStore->getStoreId());
 
     $installer->endSetup();
 
