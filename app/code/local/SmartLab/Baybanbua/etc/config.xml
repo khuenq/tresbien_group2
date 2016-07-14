@@ -1,32 +1,32 @@
 <?xml version="1.0" ?>
 <config>
 	<modules>
-		<SmartLab_Fseshipment>
+		<SmartLab_Baybanbua>
 			<version>0.1.0</version>
-		</SmartLab_Fseshipment>
+		</SmartLab_Baybanbua>
 	</modules>
 	<global>
 		<models>
-			<fseshipment>
-				<class>SmartLab_Fseshipment_Model</class>
-			</fseshipment>
+			<baybanbua>
+				<class>SmartLab_Baybanbua_Model</class>
+			</baybanbua>
 		</models>
 		<helpers>
-			<fseshipment>
-				<class>SmartLab_Fseshipment_Helper</class>
-			</fseshipment>
+			<baybanbua>
+				<class>SmartLab_Baybanbua_Helper</class>
+			</baybanbua>
 		</helpers>
 	</global>
 	<default>
 		<carriers>
-			<fseshipment>
+			<baybanbua>
 				<active>1</active>
 				<sallowspecific>1</sallowspecific>
-				<model>SmartLab_Fseshipment/Baybanbua</model>
+				<model>SmartLab_Baybanbua/Baybanbua</model>
 				<name>BayBanBua Shipping</name>
 				<price>5.0</price>
 				<title>BayBanBua Shipping</title>
-			</fseshipment>
+			</baybanbua>
 		</carriers>
 	</default>
 </config>

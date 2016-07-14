@@ -2,9 +2,9 @@
 /**
 * 
 */
-class SmartLab_Fsepayment_Model_Standard extends Mage_Payment_Model_Method_Abstract
+class SmartLab_Godzai_Model_Standard extends Mage_Payment_Model_Method_Abstract
 {
-	protected $_code = 'fsepayment';
+	protected $_code = 'godzai';
 
 	protected $_isInitializeNeeded      = true;
 	protected $_canUseInternal          = false;

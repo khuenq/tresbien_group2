@@ -3,8 +3,8 @@
 	<sections>
 		<carriers>
 			<groups>
-				<fseshipment translate="label">
-					<label>BayBanBua Shipping</label>
+				<baybanbua translate="label">
+					<label>BayBanBua</label>
 					<sort_order>12</sort_order>
 					<show_in_default>1</show_in_default>
 					<show_in_website>1</show_in_website>
@@ -45,7 +45,7 @@
 							<show_in_default>1</show_in_default>
 							<show_in_website>1</show_in_website>
 							<show_in_store>0</show_in_store>
-							<depends><sallowspecific>1</sallowspecific></depends>
+							 <!-- <depends><sallowspecific>1</sallowspecific></depends> -->
 						</specificcountry>
 						<sort_order translate="label">
 							<label>Sort Order</label>
@@ -56,7 +56,7 @@
 							<show_in_store>0</show_in_store>
 						</sort_order>
 					</fields>
-				</fseshipment>
+				</baybanbua>
 			</groups>
 		</carriers>
 	</sections>

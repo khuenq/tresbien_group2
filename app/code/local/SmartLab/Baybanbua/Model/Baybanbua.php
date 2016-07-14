@@ -2,7 +2,7 @@
 /**
 * 
 */
-class Smart_Fseshipment_Model_Baybanbua 
+class SmartLab_Baybanbua_Model_Baybanbua 
 extends Mage_Shipping_Model_Carrier_Abstract
 implements Mage_Shipping_Model_Carrier_Interface
 {
@@ -20,9 +20,7 @@ implements Mage_Shipping_Model_Carrier_Interface
 	public function getAllowedMethods()
 	{
 		return array(
-		  	'fseshipment' => $this->getConfigData('name'),
-			'standard'    =>  'Standard delivery',
-        	'express'     =>  'Express delivery'
+		  	'babanbua' => $this->getConfigData('name'),
 		);
 	}
 

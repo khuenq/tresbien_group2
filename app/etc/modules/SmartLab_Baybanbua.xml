@@ -1,9 +1,12 @@
 <?xml version="1.0" ?>
 <config>
 	<modules>
-		<SmartLab_Fsepayment>
+		<SmartLab_Baybanbua>
 			<active>true</active>
 			<codePool>local</codePool>
-		</SmartLab_Fsepayment>
+			<depends>
+				<Mage_Shipping />
+			</depends>
+		</SmartLab_Baybanbua>
 	</modules>
 </config>

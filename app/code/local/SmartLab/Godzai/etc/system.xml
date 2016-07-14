@@ -3,8 +3,8 @@
 	<sections>
         <payment>
           <groups>
-            <fsepayment translate="label" module="fsepayment">
-              <label>FSE Payment Standard</label>
+            <godzai translate="label" module="godzai">
+              <label>GoDZai Payment</label>
               <sort_order>670</sort_order>
               <show_in_default>1</show_in_default>
               <show_in_website>1</show_in_website>
@@ -89,7 +89,7 @@
                   <show_in_store>0</show_in_store>
                 </sort_order>
               </fields>
-            </fsepayment>
+            </godzai>
           </groups>
         </payment>
       </sections>

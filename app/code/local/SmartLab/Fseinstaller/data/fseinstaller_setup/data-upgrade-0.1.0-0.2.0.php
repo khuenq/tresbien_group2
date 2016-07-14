@@ -125,9 +125,9 @@ $vietCategory= Mage::getModel('catalog/category')
 
     $installer=$this;
     $installer->startSetup();
-    $vnvalue='http://vn.local.tres-bien.com:4040/';
-    $cnvalue='http://cn.local.tres-bien.com:4040/';
-    $krvalue='http://kr.local.tres-bien.com:4040/';
+    $vnvalue='http://vn.local.tres-bien.com/';
+    $cnvalue='http://cn.local.tres-bien.com/';
+    $krvalue='http://kr.local.tres-bien.com/';
 
     // VN store group url
     $vnWebsiteId = Mage::getModel('core/website')->load('vn_tres_bien','code')->getId();

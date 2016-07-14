@@ -1,12 +1,9 @@
 <?xml version="1.0" ?>
 <config>
 	<modules>
-		<SmartLab_Fseshipment>
+		<SmartLab_Godzai>
 			<active>true</active>
 			<codePool>local</codePool>
-			<depends>
-				<Mage_Shipping />
-			</depends>
-		</SmartLab_Fseshipment>
+		</SmartLab_Godzai>
 	</modules>
 </config>
