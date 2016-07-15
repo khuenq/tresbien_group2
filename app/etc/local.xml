@@ -28,10 +28,10 @@
 <config>
     <global>
         <install>
-            <date><![CDATA[Fri, 08 Jul 2016 06:17:18 +0000]]></date>
+            <date><![CDATA[Fri, 15 Jul 2016 02:45:44 +0000]]></date>
         </install>
         <crypt>
-            <key><![CDATA[9142ee03c3d3f0a8fdb26e756f0b1a1a]]></key>
+            <key><![CDATA[c342c4b72c39a7d4db1deaf755e7224a]]></key>
         </crypt>
         <disable_local_modules>false</disable_local_modules>
         <resources>
@@ -43,7 +43,7 @@
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
                     <password><![CDATA[]]></password>
-                    <dbname><![CDATA[tresbien]]></dbname>
+                    <dbname><![CDATA[developer]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
