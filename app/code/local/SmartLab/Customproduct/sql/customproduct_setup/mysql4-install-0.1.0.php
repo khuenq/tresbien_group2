@@ -22,7 +22,7 @@ $fieldList = array(
     'tax_class_id'
 );
 
-// make these attributes applicable to downloadable products
+
 foreach ($fieldList as $field) {
     $applyTo = explode(',', $installer->getAttribute('catalog_product', $field, 'apply_to'));
     if (!in_array('customproduct', $applyTo)) {
