@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<SmartLab_Fseinstaller>
-			<version>0.2.0</version>
+			<version>0.3.0</version>
 		</SmartLab_Fseinstaller>
 	</modules>
 	<global>
@@ -10,6 +10,7 @@
 			<fseinstaller_setup>
 				<setup>
 					<module>SmartLab_Fseinstaller</module>
+					       <class>Mage_Eav_Model_Entity_Setup</class>
 				</setup>
 			</fseinstaller_setup>
 		</resources>
