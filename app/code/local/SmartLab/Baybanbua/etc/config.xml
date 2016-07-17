@@ -14,6 +14,25 @@
 			</updates>
 		</layout>
 	</frontend>
+	<adminhtml>
+		<layout>
+			<updates>
+				<baybanbua>
+					<file>baybanbua.xml</file>
+				</baybanbua>
+			</updates>
+		</layout>
+		<events>
+			<sales_order_grid_collection_load_before>
+	            <observers>
+	                <baybanbua>
+	                    <model>baybanbua/observer</model>
+	                    <method>addBaybanbuaCodeToOrderGrid</method>
+	                </baybanbua>
+	            </observers>
+	        </sales_order_grid_collection_load_before>
+		</events>
+	</adminhtml>
 	<global>
 		<models>
 			<baybanbua>
@@ -35,6 +54,16 @@
 				<class>SmartLab_Baybanbua_Helper</class>
 			</baybanbua>
 		</helpers>
+		<events>
+			<sales_order_place_after>
+	            <observers>
+	                <baybanbua>
+	                    <model>baybanbua/observer</model>
+	                    <method>setBaybanbuaCode</method>
+	                </baybanbua>
+	            </observers>
+	        </sales_order_place_after>
+		</events>
 	</global>
 	<default>
 		<carriers>

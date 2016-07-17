@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<SmartLab_Megaorder>
+			<version>0.1.0</version>
+		</SmartLab_Megaorder>
+	</modules>
+	<global>
+		<models>
+			<megaorder>
+				<class>SmartLab_Megaorder_Model</class>
+			</megaorder>
+		</models>
+		<events>
+			<controller_action_postdispatch_adminhtml_sales_order_shipment_save>
+				<observers>
+					<smartlab_megaorder_observer>
+						<class>megaorder/observer</class>
+						<method>changeShipmentStatus</method>
+					</smartlab_megaorder_observer>
+				</observers>
+			</controller_action_postdispatch_adminhtml_sales_order_shipment_save>
+		</events>
+		<resources>
+	        <megaorder_setup>
+	          <setup>
+	            <module>SmartLab_Megaorder</module>
+	          </setup>
+	          <connection>
+	            <use>core_setup</use>
+	          </connection>
+	        </megaorder_setup>
+	        <megaorder_write>
+	          <connection>
+	            <use>core_write</use>
+	          </connection>
+	        </megaorder_write>
+	        <megaorder_read>
+	          <connection>
+	            <use>core_read</use>
+	          </connection>
+	        </megaorder_read>
+      	</resources>
+	    <sales>
+	      <order>
+	        <statuses>
+	          <shipped translate="label">
+	            <label>Shipped</label>
+	          </shipped>
+	        </statuses>
+	        <states>
+	          <shipment translate="label">
+	            <label>Shipment</label>
+	            <statuses>
+	              <shipped default="1"/>
+	            </statuses>
+	          </shipment>
+	        </states>
+	      </order>
+	    </sales>
+	</global>
+</config>
