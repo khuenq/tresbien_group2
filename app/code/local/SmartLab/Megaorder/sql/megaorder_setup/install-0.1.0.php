@@ -7,7 +7,7 @@ $installer->getConnection()->insertArray(
 	$statusOrderTable,
 	array('status','label'),
 	array(
-		array('status'=>'shipped','label'=>'Shipped')
+		array('status'=>'customshipped','label'=>'Shipped')
 	)
 );
 
@@ -15,7 +15,7 @@ $installer->getConnection()->insertArray(
 	$stateOrderStatus,
 	array('status','state','is_default'),
 	array(
-		array('status'=>'shipped', 'state'=>'processing', 'is_default'=>0)
+		array('status'=>'customshipped', 'state'=>'processing', 'is_default'=>0)
 	)
 );
 

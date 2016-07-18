@@ -20,7 +20,7 @@ class SmartLab_Megaorder_Model_Observer
 
         // Change order status
         $order = Mage::getModel('sales/order')->load($orderId);
-        $order->setStatus('shipped');
+        $order->setStatus('customshipped');
         $order->save();
 	}
 }
