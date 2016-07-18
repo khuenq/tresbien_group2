@@ -81,8 +81,11 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
     {
         // ThanhNT1 sẽ hướng dẫn cách lấy mã DC
         //$customerDC = Mage::getSingleton('customer/session')->getCustomer()->getDC();
+
+        // chỗ này để test sau khi thanhnt1 tạo mã thành công thì xoá đi
         //$customerDC = '78lajyjdslnmds';
         $customerDC = '';
+
         if(!$customerDC || empty($customerDC))
         {
             return false;
