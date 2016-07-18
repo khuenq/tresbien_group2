@@ -15,16 +15,26 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
 
     public function addAction()
     {
-        $this->loadLayout();
-        echo $this->getLayout()->createBlock('core/text_list')
-            ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
-        $this->renderLayout();
+        if($this->__vipAuthentication())
+        {
+            $this->loadLayout();
+            echo $this->getLayout()->createBlock('core/text_list')
+                ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
+            $this->renderLayout();
+        }
+        else
+        {
+            // Do some thing
+            $this->_redirect('blog');
+        }
+        
     }
 
     public function createBlogAction()
     {
         $data = $this->getRequest()->getPost();
         $blog = Mage::getModel('neotheme_blog/post');
+        $data['post_date']=strtotime($data['created_at']); // Modify by thanhnd1. blog sort theo post_date
         $blog->setData($data);
         try {
             $blog->save();
@@ -64,5 +74,19 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
     {
         $this->loadLayout();
         $this->renderLayout();
+    }
+
+    // Create by thanhnd1
+    private function __vipAuthentication()
+    {
+        // ThanhNT1 sẽ hướng dẫn cách lấy mã DC
+        //$customerDC = Mage::getSingleton('customer/session')->getCustomer()->getDC();
+        //$customerDC = '78lajyjdslnmds';
+        $customerDC = '';
+        if(!$customerDC || empty($customerDC))
+        {
+            return false;
+        }
+        return true;
     }
 }
