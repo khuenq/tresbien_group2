@@ -3184,7 +3184,7 @@ body {
 .header-language-background {
   padding: 10px;
   background-color: #3399cc;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .header-language-background .header-language-container {
   max-width: 1200px;
@@ -3203,6 +3203,7 @@ body {
 }
 .header-language-background .welcome-msg {
   float: right;
+  /*display:none;*/
 }
 
 .page-header-container .store-language-container {
@@ -3263,8 +3264,8 @@ body {
 
 @media only screen and (min-width: 771px) {
   .logo {
-    max-width: 300px;
-    min-height: 90px;
+    max-width: 250px;
+    min-height: 70px;
   }
   .logo .small {
     display: none;
@@ -3736,7 +3737,7 @@ a.skip-link {
     vertical-align: top;
     display: inline-block;
     padding: 0 10px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
   }
 
   #header-account.skip-active {
@@ -3849,8 +3850,8 @@ a.skip-link {
 }
 @media only screen and (min-width: 771px) {
   .skip-cart {
-    color: #3399cc;
-    text-transform: uppercase;
+    /*color: #3399cc;*/
+    /*text-transform: uppercase;*/
   }
   .skip-cart:hover {
     text-decoration: none;
