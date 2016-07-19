@@ -32,11 +32,6 @@
             <smartlab_blogs_resource>
                 <class>SmartLab_Blogs_Model_Resource</class>
             </smartlab_blogs_resource>
-           <!--  <neotheme_blog_resource>
-                <rewrite>
-                    <post_collection>SmartLab_Blogs_Model_Resource_Post_Collection</post_collection>
-                </rewrite>
-            </neotheme_blog_resource> -->
         </models>
         <blocks>
             <!--<neotheme_blog>-->
@@ -52,6 +47,11 @@
             <smartlab_blogs>
                 <class>SmartLab_Blogs_Block</class>
             </smartlab_blogs>
+            <neotheme_blog>
+                <rewrite>
+                    <post_list>SmartLab_Blogs_Block_Post_List</post_list>
+                </rewrite>
+            </neotheme_blog>
         </blocks>
         <helpers>
             <blogs>
@@ -64,17 +64,6 @@
                     <module>SmartLab_Blogs</module>
                 </setup>
             </smartlab_blogs_setup>
-            <blogs_write>
-                <connection>
-                    <use>core_write</use>
-                </connection>
-            </blogs_write>
-            <blogs_read>
-                <connection>
-                    <use>core_read</use>
-                </connection>
-            </blogs_read>
-
         </resources>
     </global>
 </config>

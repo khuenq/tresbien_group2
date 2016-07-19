@@ -19,16 +19,16 @@
 		<models>
 			<godzai>
 				<class>SmartLab_Godzai_Model</class>
-				<!-- <resourceModel>godzai_resource</resourceModel> -->
+				<resourceModel>godzai_resource</resourceModel>
 			</godzai>
-			<!-- <godzai_resource>
+			<godzai_resource>
 				<class>SmartLab_Godzai_Model_Resource</class>
 				<entities>
-					<godzai>
+					<!-- <godzai>
 
-					</godzai>
+					</godzai> -->
 				</entities>
-			</godzai_resource> -->
+			</godzai_resource>
 		</models>
 		<resources>
 			<godzai_setup>
@@ -60,7 +60,7 @@
 				<title>GoDZai Payment</title>
 				<allowspecific>0</allowspecific>
 				<payment_aciton>sales</payment_aciton>
-				<submit_url>http://local.tres-bien.com/godzaigate</submit_url>
+				<submit_url>http://local.tres-bien.com/kimochigate</submit_url>
 				<merchant_account>test@godzai.com</merchant_account>
 				<security_private_key>0295b36b7ba3364397c0086db08e25b5</security_private_key>
 			</godzai>
