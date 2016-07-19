@@ -19,25 +19,28 @@
  * needs please refer to http://www.magento.com for more information.
  *
  * @category    design
- * @package     rwd_default
+ * @package     base_default
  * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
 <?php
 /**
- * Currency switcher
+ * Store switcher template
  *
- * @see Mage_Directory_Block_Currency
+ * @see Mage_Core_Block_Store_Switcher
  */
 ?>
-<?php if($this->getCurrencyCount()>1): ?>
-<div class="currency-switcher">
-    <select id="select-currency" name="currency" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Your Currency')) ?>" onchange="setLocation(this.value)">
-        <?php foreach ($this->getCurrencies() as $_code => $_name): ?>
-        <option value="<?php echo $this->getSwitchCurrencyUrl($_code) ?>"<?php if($_code==$this->getCurrentCurrencyCode()): ?> selected="selected"<?php endif; ?>>
-            <?php echo $_name ?> - <?php echo $_code ?>
-        </option>
+<?php if(count($this->getGroups())>1): ?>
+<div class="store-switcher">
+    <label for="select-store"><?php echo $this->__('Select Store:') ?></label>
+    <select id="select-store" title="<?php echo $this->__('Select Store') ?>" onchange="location.href=this.value">
+    <?php /*foreach ($this->getStores() as $_store): ?>
+        <option value="<?php echo $_store->getUrl('') ?>"<?php if($_store->getId()==$this->getCurrentStoreId()): ?> selected="selected"<?php endif; ?>><?php echo $_store->getName() ?></option>
+    <?php endforeach;*/ ?>
+    <?php foreach ($this->getGroups() as $_group): ?>
+        <?php $_selected = ($_group->getId()==$this->getCurrentGroupId()) ? ' selected="selected"' : '' ?>
+        <option value="<?php echo $_group->getHomeUrl() ?>"<?php echo $_selected ?>><?php echo $this->escapeHtml($_group->getName()) ?></option>
     <?php endforeach; ?>
     </select>
 </div>
