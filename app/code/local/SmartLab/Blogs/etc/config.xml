@@ -25,14 +25,42 @@
     </frontend>
     <global>
         <models>
-            <smartlab_blogs>
+            <blogs>
                 <class>SmartLab_Blogs_Model</class>
-                <resourceModel>smartlab_blogs_resource</resourceModel>
-            </smartlab_blogs>
-            <smartlab_blogs_resource>
+                <resourceModel>blogs_resource</resourceModel>
+            </blogs>
+            <blogs_resource>
                 <class>SmartLab_Blogs_Model_Resource</class>
-            </smartlab_blogs_resource>
+                <entities>
+                    <customerpost>
+                        <table>neotheme_customer_post</table>
+                    </customerpost>
+                    <tagpost>
+                        <table>neotheme_tag_post</table>
+                    </tagpost>
+                </entities>
+            </blogs_resource>
         </models>
+        <resources>
+            <blogs_setup>
+                <setup>
+                    <module>SmartLab_Blogs</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </blogs_setup>
+            <blogs_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </blogs_write>
+            <blogs_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </blogs_read>
+        </resources>
         <blocks>
             <!--<neotheme_blog>-->
                 <!--<rewrite>-->
@@ -53,12 +81,12 @@
                 <class>SmartLab_Blogs_Helper</class>
             </blogs>
         </helpers>
-        <resources>
-            <smartlab_blogs_setup>
-                <setup>
-                    <module>SmartLab_Blogs</module>
-                </setup>
-            </smartlab_blogs_setup>
-        </resources>
+        <!--<resources>-->
+            <!--<smartlab_blogs_setup>-->
+                <!--<setup>-->
+                    <!--<module>SmartLab_Blogs</module>-->
+                <!--</setup>-->
+            <!--</smartlab_blogs_setup>-->
+        <!--</resources>-->
     </global>
 </config>

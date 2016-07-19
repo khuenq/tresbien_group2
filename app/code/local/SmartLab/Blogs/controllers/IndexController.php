@@ -23,15 +23,25 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
 
     public function createBlogAction()
     {
-        $data = $this->getRequest()->getPost();
-        $blog = Mage::getModel('neotheme_blog/post');
-        $blog->setData($data);
-        try {
-            $blog->save();
-        }catch (Exception $e){
-            print_r($e);
+        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $customer_id = Mage::getSingleton('customer/session')->getCustomerId();
+            $data = $this->getRequest()->getPost();
+            $blog = Mage::getModel('neotheme_blog/post');
+            $blog->setData($data);
+            try {
+                $blog->save();
+            } catch (Exception $e) {
+                print_r($e);
+            }
+            $item = Mage::getModel('neotheme_blog/post')->load($blog->getId());
+            $post_id = $item->getId();
+
+            $model = Mage::getModel('blogs/customerpost');
+            $model->setData('customer_id',$customer_id);
+            $model->setData('post_id',$post_id);
+            $model->save();
+            $this->_redirect('blogs/index/list');
         }
-        $this->_redirect('blogs/index/list');
     }
 
     public function deleteAction()
