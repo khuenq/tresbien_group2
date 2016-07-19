@@ -25,7 +25,6 @@
     </frontend>
     <global>
         <models>
-<<<<<<< HEAD
             <blogs>
                 <class>SmartLab_Blogs_Model</class>
                 <resourceModel>blogs_resource</resourceModel>
@@ -62,22 +61,12 @@
                 </connection>
             </blogs_read>
         </resources>
-=======
-            <smartlab_blogs>
-                <class>SmartLab_Blogs_Model</class>
-                <resourceModel>smartlab_blogs_resource</resourceModel>
-            </smartlab_blogs>
-            <smartlab_blogs_resource>
-                <class>SmartLab_Blogs_Model_Resource</class>
-            </smartlab_blogs_resource>
-        </models>
->>>>>>> thanhnd
         <blocks>
-            <!--<neotheme_blog>-->
-                <!--<rewrite>-->
-                    <!--<post_list>SmartLab_Blogs_Block_Account_MyBlock_List</post_list>-->
-                <!--</rewrite>-->
-            <!--</neotheme_blog>-->
+            <neotheme_blog>
+                <rewrite>
+                    <post_list>SmartLab_Blogs_Block_Account_MyBlock_List</post_list>
+                </rewrite>
+            </neotheme_blog>
             <!--<customer>-->
             <!--<rewrite>-->
             <!--<account_navigation>SmartLab_Blogs_IndexController</account_navigation>-->
@@ -86,29 +75,18 @@
             <smartlab_blogs>
                 <class>SmartLab_Blogs_Block</class>
             </smartlab_blogs>
-<<<<<<< HEAD
-=======
             <neotheme_blog>
                 <rewrite>
                     <post_list>SmartLab_Blogs_Block_Post_List</post_list>
                 </rewrite>
             </neotheme_blog>
->>>>>>> thanhnd
         </blocks>
         <helpers>
             <blogs>
                 <class>SmartLab_Blogs_Helper</class>
             </blogs>
         </helpers>
-<<<<<<< HEAD
-        <!--<resources>-->
-            <!--<smartlab_blogs_setup>-->
-                <!--<setup>-->
-                    <!--<module>SmartLab_Blogs</module>-->
-                <!--</setup>-->
-            <!--</smartlab_blogs_setup>-->
-        <!--</resources>-->
-=======
+
         <resources>
             <smartlab_blogs_setup>
                 <setup>
@@ -116,6 +94,13 @@
                 </setup>
             </smartlab_blogs_setup>
         </resources>
->>>>>>> thanhnd
+
+        <resources>
+            <smartlab_blogs_setup>
+                <setup>
+                    <module>SmartLab_Blogs</module>
+                </setup>
+            </smartlab_blogs_setup>
+        </resources>
     </global>
 </config>
