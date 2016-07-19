@@ -27,7 +27,6 @@ extends Mage_Core_Block_Template
         return $this;
     }
 
-
     public function getPostCollection() {
         //Hien thi blog theo id
         //Lay id cua customer
@@ -45,6 +44,7 @@ extends Mage_Core_Block_Template
 //        echo '<pre>';
 //        var_dump($collection->getData('title'));
 //        die;
+        $collection = Mage::getModel('neotheme_blog/post')->getCollection();
         return $collection;
     }
 
