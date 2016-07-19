@@ -62,11 +62,11 @@
             </blogs_read>
         </resources>
         <blocks>
-            <neotheme_blog>
+            <!-- <neotheme_blog>
                 <rewrite>
                     <post_list>SmartLab_Blogs_Block_Account_MyBlock_List</post_list>
                 </rewrite>
-            </neotheme_blog>
+            </neotheme_blog> -->
             <!--<customer>-->
             <!--<rewrite>-->
             <!--<account_navigation>SmartLab_Blogs_IndexController</account_navigation>-->
