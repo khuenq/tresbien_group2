@@ -35,7 +35,6 @@
 	<?php foreach($this->getCollection() as $post):?>
     <div class="blog blog-summary">
         <?php //maybe a better way of doing this maybe a getChildHtml('summary_');
-    
         echo $this->getSummaryBlock($post)->toHtml(); 
         ?>
     </div>

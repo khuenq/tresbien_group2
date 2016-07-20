@@ -103,6 +103,7 @@ class SmartLab_Customproduct_Model_Observer
     }
 
 
+
 //      dispatch event add_to_cart_before
     public function hookToControllerActionPreDispatch($observer)
     {
@@ -112,6 +113,7 @@ class SmartLab_Customproduct_Model_Observer
             Mage::dispatchEvent("add_to_cart_before", array('request' => $observer->getControllerAction()->getRequest()));
         }
     }
+
 
 //      active referer page trong magento
 //      "System" > "Configuration" > "Customer Configuration" section "Login Options" -> "Redirect Customer to Account Dashboard after Logging" is set to No.
@@ -136,9 +138,11 @@ class SmartLab_Customproduct_Model_Observer
     }
 
 
+
 //---------------------OBSERVER CHO CUSTOMER MUA PRODUCT CO TYPE DC
     public function sendCodeAfterBuy($observer)
     {
+
         $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
         $order = Mage::getSingleton('sales/order');
         $order->load($lastOrderId);
@@ -187,5 +191,4 @@ class SmartLab_Customproduct_Model_Observer
             }
         }
     }
-
 }
