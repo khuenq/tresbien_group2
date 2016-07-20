@@ -27,8 +27,23 @@ extends Mage_Core_Block_Template
         return $this;
     }
 
-
     public function getPostCollection() {
+        //Hien thi blog theo id
+        //Lay id cua customer
+        $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+        //Lay cac id cua blog theo id customer
+        $post = Mage::getModel('blogs/customerpost')->getCollection()->addFieldToFilter('customer_id', $customerId);
+        $blog_id = array();
+        foreach ($post as $item){
+            array_push($blog_id,$item->getPostId());
+        }
+//        echo '<pre>';
+//        var_dump($blog_id);
+//        die;
+        $collection = Mage::getModel('neotheme_blog/post')->getCollection()->addFieldToFilter('entity_id', $blog_id);
+//        echo '<pre>';
+//        var_dump($collection->getData('title'));
+//        die;
         $collection = Mage::getModel('neotheme_blog/post')->getCollection();
         return $collection;
     }
