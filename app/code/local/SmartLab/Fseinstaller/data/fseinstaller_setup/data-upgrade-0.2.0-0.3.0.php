@@ -11,7 +11,6 @@ $installer->startSetup();
 $iddefault = $installer->getAttributeSetId('catalog_product', 'Default');   //lay atribute set id cua thang default <mac dinh la 4>
 $entityTypeId = $installer->getEntityTypeId('catalog_product');   // lay ra entity type cua attribute (4)
 
-
 function addAttributeSet($name, $id) //lam viec voi table eav_attribute_set
 {
     $entityTypeId = Mage::getModel('catalog/product')
@@ -149,10 +148,8 @@ function addAttributetypeSelectCountry($name, $entityid, $note, $attributeset, $
         ->setNote($note)
         ->setAttributeSetId($attributeset)
         ->setAttributeGroupId($attributegroup);
+//    $attribute->setData('source', 'catalog/product_attribute_source_countryofmanufacture');
     $attribute->save();
-    $demo = Mage::getModel('eav/entity_attribute')->load($attribute->getId());
-    $demo->setSourceModel('catalog/product_attribute_source_countryofmanufacture');
-    $demo->save();
 }
 
 function addAttributetypeYesno($name, $entityid, $note, $attributeset, $attributegroup)       //lam viec voi table eav_attribute va eav_entity_attribute : yeu cau ten entity , id entity (4)

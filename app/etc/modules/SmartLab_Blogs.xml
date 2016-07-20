@@ -4,12 +4,9 @@
         <SmartLab_Blogs>
             <active>true</active>
             <codePool>local</codePool>
-<<<<<<< HEAD
-=======
             <depends>
     			<NeoTheme_Blog />
 			</depends>
->>>>>>> thanhnd
         </SmartLab_Blogs>
     </modules>
 </config>

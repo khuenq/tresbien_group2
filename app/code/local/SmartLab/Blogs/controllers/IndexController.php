@@ -15,10 +15,6 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
 
     public function addAction()
     {
-        $this->loadLayout();
-        echo $this->getLayout()->createBlock('core/text_list')
-            ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
-        $this->renderLayout();
         if($this->__vipAuthentication())
         {
             $this->loadLayout();
@@ -31,29 +27,11 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
             // Do some thing
             $this->_redirect('blog');
         }
+        
     }
 
     public function createBlogAction()
     {
-        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
-            $customer_id = Mage::getSingleton('customer/session')->getCustomerId();
-            $data = $this->getRequest()->getPost();
-            $blog = Mage::getModel('neotheme_blog/post');
-            $blog->setData($data);
-            try {
-                $blog->save();
-            } catch (Exception $e) {
-                print_r($e);
-            }
-            $item = Mage::getModel('neotheme_blog/post')->load($blog->getId());
-            $post_id = $item->getId();
-
-            $model = Mage::getModel('blogs/customerpost');
-            $model->setData('customer_id',$customer_id);
-            $model->setData('post_id',$post_id);
-            $model->save();
-            $this->_redirect('blogs/index/list');
-        }
         $data = $this->getRequest()->getPost();
         $blog = Mage::getModel('neotheme_blog/post');
         $data['post_date']=strtotime($data['created_at']); // Modify by thanhnd1. blog sort theo post_date

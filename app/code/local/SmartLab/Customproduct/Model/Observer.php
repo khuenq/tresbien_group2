@@ -2,6 +2,18 @@
 
 class SmartLab_Customproduct_Model_Observer
 {
+    public function getproducttype($observer)
+    {
+        $event = $observer->getCollection();
+        foreach ($event as $demo) {
+            if ("customproduct" == $demo->getTypeId()) {
+                $demo->setFinalPrice(200);
+            }
+        }
+        return $this;
+    }
+
+
     public function setquantity($observer)
     {
         $event = $observer->getCollection();
@@ -15,9 +27,21 @@ class SmartLab_Customproduct_Model_Observer
                     Mage::app()->getResponse()->sendResponse();
                     exit;
                 }
+
             }
         }
         return $this;
+    }
+
+    public function catalogProductCollectionLoadBefore($observer)
+    {
+        $event = $observer->getEvent();
+        $product = $event->getProduct();
+        if ($product->getTypeId() == "simple") {
+            $product->setFinalPrice(100);
+        }
+        return $this;
+
     }
 
     public function hookIntoCatalogProductNewAction($observer)
@@ -34,20 +58,22 @@ class SmartLab_Customproduct_Model_Observer
 
     }
 
+
 //    action add product custom
     public function catalogProductSaveAfter($observer)
     {
         if ($actionInstance = Mage::app()->getFrontController()->getAction()) {
             $action = $actionInstance->getFullActionName();
             if ($action == 'adminhtml_catalog_product_save') { //if on admin save action
+
                 $product = $observer->getEvent()->getProduct();
                 $productid = $product->getId();
                 if ("customproduct" == $product->getTypeId()) { // if customproduct
-                    $demo = Mage::getModel('catalog/product')->load($productid);
-                    $option = $demo->getHasOptions();
-                    if ($option != 1) {                // if customproduct ay chua ton tai option nao
+                    $option = $product->getProductOptions();
+                    if (!$option) {                             // if customproduct ay chua ton tai option nao
                         $price = $product->getPrice();
                         $sku = $product->getSku();
+
 
                         $optionData = array(
                             array(
@@ -95,32 +121,6 @@ class SmartLab_Customproduct_Model_Observer
                         $product->setHasOptions(true);
                     }
                 }
-            }
-        }
-    }
-
-    public function hookToControllerActionPreDispatch($observer)
-    {
-        //we compare action name to see if that's action for which we want to add our own event
-        if ($observer->getEvent()->getControllerAction()->getFullActionName() == 'checkout_cart_add') {
-            //We are dispatching our own event before action ADD is run and sending parameters we need
-            Mage::dispatchEvent("add_to_cart_before", array('request' => $observer->getControllerAction()->getRequest()));
-        }
-    }
-
-    public function hookToAddToCartBefore($observer)
-    {
-        //Hooking to our own event
-        $request = $observer->getEvent()->getRequest()->getParams();
-        // do something with product
-        $productid = $request['product'];
-        $product = Mage::getModel('catalog/product')->load($productid);
-        if ("customproduct" == $product->getTypeId()) {
-            if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
-                Mage::getSingleton('core/session')->addError("Product " . $product->getName() . " must login to buy.");
-                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account/login'));
-                Mage::app()->getResponse()->sendResponse();
-                exit;
             }
         }
     }

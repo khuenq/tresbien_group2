@@ -71,27 +71,15 @@
                     </save_after>
                 </observers>
             </catalog_product_save_before>
-
-
-            <!--event dispatch event add to cart before-->
-            <controller_action_predispatch>
-                <observers>
-                    <controller_action_before>
-                        <class>smartlab_customproduct_model_observer</class>
-                        <method>hookToControllerActionPreDispatch</method>
-                    </controller_action_before>
-                </observers>
-            </controller_action_predispatch>
-            <!--event kiem tra login khi mua custom product-->
-            <add_to_cart_before>
-                <observers>
-                    <check_login>
-                        <type>singleton</type>
-                        <class>smartlab_customproduct_model_observer</class>
-                        <method>hookToAddToCartBefore</method>
-                    </check_login>
-                </observers>
-            </add_to_cart_before>
+            <!--<catalog_product_collection_load_before>-->
+            <!--<observers>-->
+            <!--<customproduct_observer_catalog_product_collection_load_before>-->
+            <!--<type>singleton</type>-->
+            <!--<class>smartlab_customproduct_model_observer</class>-->
+            <!--<method>catalogProductCollectionLoadBefore</method>-->
+            <!--</customproduct_observer_catalog_product_collection_load_before>-->
+            <!--</observers>-->
+            <!--</catalog_product_collection_load_before>-->
         </events>
     </global>
 
