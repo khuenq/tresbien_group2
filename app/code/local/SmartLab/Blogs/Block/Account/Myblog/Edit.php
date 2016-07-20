@@ -25,6 +25,20 @@ class SmartLab_Blogs_Block_Account_Myblog_Edit extends Mage_Core_Block_Template
         return $collection;
     }
 
+    public function getListTag()
+    {
+//        echo '<pre>';
+        $modelTag = Mage::getModel('blogs/tag');
+        $listTagName = array();
+        $id = Mage::app()->getRequest()->getParam('id');
+        $listTagById = Mage::getModel('neotheme_blog/post')->load($id)->getTagIds();
+        foreach ($listTagById as $tagId){
+            $tagName = $modelTag->load($tagId)->getName();
+            array_push($listTagName,$tagName);
+        }
+        $listTag =implode(',', $listTagName);
+        return $listTag;
+    }
     public function getActionOfForm()
     {
         return $this->getUrl('blogs/index/edit');
