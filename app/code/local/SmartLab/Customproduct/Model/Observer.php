@@ -103,7 +103,6 @@ class SmartLab_Customproduct_Model_Observer
     }
 
 
-
 //      dispatch event add_to_cart_before
     public function hookToControllerActionPreDispatch($observer)
     {
@@ -136,7 +135,6 @@ class SmartLab_Customproduct_Model_Observer
             }
         }
     }
-
 
 
 //---------------------OBSERVER CHO CUSTOMER MUA PRODUCT CO TYPE DC
