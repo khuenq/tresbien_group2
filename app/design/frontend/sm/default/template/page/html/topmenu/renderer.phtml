@@ -49,7 +49,7 @@ foreach ($children as $child) {
     $outermostClassCode = 'level'. $childLevel;
     $_hasChildren = ($child->hasChildren()) ? 'has-children' : '';
 
-    //$megaClass = 0 == $childLevel?substr($this->_getRenderedMenuItemAttributes($child),0,-1).' megamenu"':$this->_getRenderedMenuItemAttributes($child);
+    $megaClass = 0 == $childLevel?substr($this->_getRenderedMenuItemAttributes($child),0,-1).' megamenu"':$this->_getRenderedMenuItemAttributes($child);
     $html .= '<li '. $this->_getRenderedMenuItemAttributes($child) .'>';
 
     $html .= '<a href="'. $child->getUrl() .'" class="'. $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
@@ -69,11 +69,9 @@ foreach ($children as $child) {
     if (!empty($childrenWrapClass)) {
         $html .= '</div>';
     }
-
+    
     $html .= '</li>';
 
     $counter++;
 }
-
-    $html .= '<li class="level0"><a href="http://vn.local.tres-bien.com/blog/">Kitchen Stories</a></li>';
 return $html;

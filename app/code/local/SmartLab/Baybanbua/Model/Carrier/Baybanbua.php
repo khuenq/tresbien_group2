@@ -2,16 +2,15 @@
 /**
 * 
 */
-class SmartLab_Baybanbua_Model_Carrier_Baybanbua 
+class SmartLab_Baybanbua_Model_Carrier_Baybanbua
 extends Mage_Shipping_Model_Carrier_Abstract
 implements Mage_Shipping_Model_Carrier_Interface
 {
-
-	protected $_code = "baybanbua";
-
+	protected $_code = 'baybanbua';
+	
 	public function collectRates(Mage_Shipping_Model_Rate_Request $request)
-	{
-		// Skip if not enabled
+    {
+       	// Skip if not enabled
 		if (!Mage::getStoreConfig('carriers/'.$this->_code.'/active')) {
             return false;
         }
@@ -20,9 +19,9 @@ implements Mage_Shipping_Model_Carrier_Interface
 		$result->append($this->_getDefaultRate());
 
 		return $result;
-	}
+    }
 
-	public function getAllowedMethods()
+    public function getAllowedMethods()
 	{
 		return array('babanbua' => $this->getConfigData('name'));
 	}

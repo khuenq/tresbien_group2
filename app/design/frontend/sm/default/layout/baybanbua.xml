@@ -5,7 +5,7 @@
 			<action method="addJs"><name>baybanbua/baybanbua.js</name></action>
 		</reference>
 		<reference name="checkout.onepage.shipping_method.available.extra">
-			<block type="core/text_list" name="baybanbua" as="additional" template="baybanbua/baybanbua.phtml"/>
+			<!-- <block type="core/text_list" name="baybanbua" as="additional" template="baybanbua/baybanbua.phtml"/> -->
 		</reference>
 	</checkout_onepage_index>
 </layout>
