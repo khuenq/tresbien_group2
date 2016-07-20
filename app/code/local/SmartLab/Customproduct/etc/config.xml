@@ -8,6 +8,13 @@
     </modules>
 
     <global>
+        <!--<blocks>-->
+        <!--<adminhtml>-->
+        <!--<catalog_product_edit_tab_option>-->
+        <!--SmartLab_Customproduct_Block_Catalog_Product_Edit_Tab_Options-->
+        <!--</catalog_product_edit_tab_option>-->
+        <!--</adminhtml>-->
+        <!--</blocks>-->
         <helpers>
             <customproduct>
                 <class>SmartLab_Customproduct_Helper</class>
@@ -29,6 +36,15 @@
                     <use>core_setup</use>
                 </connection>
             </customproduct_setup>
+            <customerattribute_setup>
+                <setup>
+                    <module>SmartLab_Customproduct</module>
+                    <class>Mage_Customer_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customerattribute_setup>
         </resources>
 
         <catalog>
@@ -92,6 +108,30 @@
                     </check_login>
                 </observers>
             </add_to_cart_before>
+
+            <!--event add -->
+            <!--<controller_action_predispatch_adminhtml_catalog_product_new>-->
+                <!--<observers>-->
+                    <!--<test>-->
+                        <!--<type>singleton</type>-->
+                        <!--<class>smartlab_customproduct_model_observer</class>-->
+                        <!--<method>disableCustomOption</method>-->
+                    <!--</test>-->
+                <!--</observers>-->
+            <!--</controller_action_predispatch_adminhtml_catalog_product_new>-->
+
+
+            <!--event create order success-->
+            <checkout_onepage_controller_success_action> <!-- identifier of the event we want to catch -->
+                <observers>
+                    <checkout_onepage_controller_success_action_handler> <!-- identifier of the event handler -->
+                        <type>model</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>sendCodeAfterBuy</method>
+                    </checkout_onepage_controller_success_action_handler>
+                </observers>
+            </checkout_onepage_controller_success_action>
+
         </events>
     </global>
 
