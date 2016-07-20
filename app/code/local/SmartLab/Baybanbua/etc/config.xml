@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0"?>
 <config>
 	<modules>
 		<SmartLab_Baybanbua>
@@ -43,11 +43,22 @@
 			<baybanbua_setup>
 				<setup>
 					<module>SmartLab_Baybanbua</module>
+					<class>Mage_Sales_Model_Resource_Setup</class>
 				</setup>
 				<conneciton>
 					<use>core_setup</use>
 				</conneciton>
 			</baybanbua_setup>
+			<baybanbua_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </baybanbua_write>
+            <baybanbua_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </baybanbua_read>
 		</resources>
 		<helpers>
 			<baybanbua>

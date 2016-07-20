@@ -3557,7 +3557,7 @@ a.skip-link {
  * Large Viewports - Dropdown Menu
  * ============================================ */
 @media only screen and (min-width: 771px) {
-  .nav-primary {
+    .nav-primary {
     /* Default styles for 1+ drop-down menus */
     /* Level 2+ */
     /* Class for js to add briefly to evaluate element positioning. */
@@ -3628,7 +3628,10 @@ a.skip-link {
     top: 50%;
     margin-top: -3px;
   }
-}
+
+ 
+/* Navigation Bar */
+
 .nav-primary li.menu-active > ul {
   display: block;
 }

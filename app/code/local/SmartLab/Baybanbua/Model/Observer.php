@@ -7,7 +7,6 @@ class SmartLab_Baybanbua_Model_Observer
 	function setBaybanbuaCode($observer)
 	{
 		$order = $observer->getEvent()->getOrder();
-
 		// Set baybanbua code for new order
 		if ($order->getState() == Mage_Sales_Model_Order::STATE_NEW) {
 			if('baybanbua_baybanbua' == $order->getShippingMethod())
@@ -15,7 +14,6 @@ class SmartLab_Baybanbua_Model_Observer
 				// Create random code
 				$alphanumberic = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 				$baybanbua_code = substr(str_shuffle($alphanumberic),0,19);
-
 				// Add code to order
 				$order->setBaybanbuaCode($baybanbua_code);
 				try
@@ -29,10 +27,8 @@ class SmartLab_Baybanbua_Model_Observer
 				}
 			}
 		}
-
 		return $this;
 	}
-
 	function addBaybanbuaCodeToOrderGrid($observer)
 	{
 		$collection = $observer->getOrderGridCollection();
