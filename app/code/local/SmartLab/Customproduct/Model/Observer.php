@@ -28,10 +28,13 @@ class SmartLab_Customproduct_Model_Observer
         return $this;
     }
 
-    public function checkCustomerlogin($observer)
+    public function disableCustomOption($observer)
     {
-        echo "asdsadasd";
-
+        if ($actionInstance = Mage::app()->getFrontController()->getAction()) {
+            $action = $actionInstance->getFullActionName();
+            if ($action == 'adminhtml_catalog_product_new') { //if on admin save action
+            }
+        }
     }
 
 //    action add product custom
@@ -42,7 +45,7 @@ class SmartLab_Customproduct_Model_Observer
             if ($action == 'adminhtml_catalog_product_save') { //if on admin save action
                 $product = $observer->getEvent()->getProduct();
                 $productid = $product->getId();
-                if ("customproduct" == $product->getTypeId()) { // if customproduct
+                if ("customproduct" == $product->getTypeId()) { // if customproduct ton tai
                     $demo = Mage::getModel('catalog/product')->load($productid);
                     $option = $demo->getHasOptions();
                     if ($option != 1) {                // if customproduct ay chua ton tai option nao
@@ -99,6 +102,8 @@ class SmartLab_Customproduct_Model_Observer
         }
     }
 
+
+//      dispatch event add_to_cart_before
     public function hookToControllerActionPreDispatch($observer)
     {
         //we compare action name to see if that's action for which we want to add our own event
@@ -108,6 +113,8 @@ class SmartLab_Customproduct_Model_Observer
         }
     }
 
+//      active referer page trong magento
+//      "System" > "Configuration" > "Customer Configuration" section "Login Options" -> "Redirect Customer to Account Dashboard after Logging" is set to No.
     public function hookToAddToCartBefore($observer)
     {
         //Hooking to our own event
@@ -115,13 +122,29 @@ class SmartLab_Customproduct_Model_Observer
         // do something with product
         $productid = $request['product'];
         $product = Mage::getModel('catalog/product')->load($productid);
+        $categories = $product->getCategoryIds();
         if ("customproduct" == $product->getTypeId()) {
             if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
-                Mage::getSingleton('core/session')->addError("Product " . $product->getName() . " must login to buy.");
-                Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account/login'));
+                $currentUrl = Mage::helper('catalog/product')->getProductUrl($productid);
+                $urllogin = Mage::getUrl('customer/account/login', array('referer' => Mage::helper('core')->urlEncode($currentUrl)));
+                Mage::getSingleton('core/session')->addError("Sorry the product : " . $product->getName() . " must <a href='$urllogin'>login</a> to buy.");
+                Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
                 Mage::app()->getResponse()->sendResponse();
                 exit;
             }
         }
     }
+
+    public function sendCodeAfterBuy($observer)
+    {
+        $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+        $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
+        $order = Mage::getSingleton('sales/order');
+        $order->load($lastOrderId);
+        $allitems = $order->getAllItems();
+        echo "<pre>";
+        var_dump($allitems);
+        die;
+    }
+
 }
