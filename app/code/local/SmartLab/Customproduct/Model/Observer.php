@@ -45,7 +45,7 @@ class SmartLab_Customproduct_Model_Observer
             if ($action == 'adminhtml_catalog_product_save') { //if on admin save action
                 $product = $observer->getEvent()->getProduct();
                 $productid = $product->getId();
-                if ("customproduct" == $product->getTypeId()) { // if customproduct ton tai
+                if ("customproduct" == $product->getTypeId()) { // if customproduct
                     $demo = Mage::getModel('catalog/product')->load($productid);
                     $option = $demo->getHasOptions();
                     if ($option != 1) {                // if customproduct ay chua ton tai option nao
@@ -56,7 +56,7 @@ class SmartLab_Customproduct_Model_Observer
                             array(
                                 'title' => 'Bronze',
                                 'price' => 0,
-                                'sku' => $sku . '-001',
+                                'sku' => '1',
                                 'sort_order' => '1',
                                 'price_type' => 'fixed',
                             ),
@@ -64,7 +64,7 @@ class SmartLab_Customproduct_Model_Observer
                             array(
                                 'title' => 'Silver',
                                 'price' => $price * 0.5,
-                                'sku' => $sku . '-002',
+                                'sku' => '2',
                                 'sort_order' => '2',
                                 'price_type' => 'fixed',
                             ),
@@ -72,14 +72,14 @@ class SmartLab_Customproduct_Model_Observer
                             array(
                                 'title' => 'Gold',
                                 'price' => $price * 0.9,
-                                'sku' => $sku . '-003',
+                                'sku' => '3',
                                 'sort_order' => '3',
                                 'price_type' => 'fixed'
                             ),
                             array(
                                 'title' => 'Platinum',
                                 'price' => $price * 1.2,
-                                'sku' => $sku . '-003',
+                                'sku' => '4',
                                 'sort_order' => '3',
                                 'price_type' => 'fixed'
                             )
@@ -135,16 +135,57 @@ class SmartLab_Customproduct_Model_Observer
         }
     }
 
+
+//---------------------OBSERVER CHO CUSTOMER MUA PRODUCT CO TYPE DC
     public function sendCodeAfterBuy($observer)
     {
-        $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
         $order = Mage::getSingleton('sales/order');
         $order->load($lastOrderId);
         $allitems = $order->getAllItems();
-        echo "<pre>";
-        var_dump($allitems);
-        die;
+        foreach ($allitems as $item) {
+            $product = Mage::getModel('catalog/product')->load($item->getProductId());
+            if ("customproduct" == $product->getTypeId()) {
+                $productsku = $item->getSku();
+
+                $customer_detail = Mage::getSingleton('customer/session')->getCustomer();
+                $customerEmail = $customer_detail->getEmail();
+                $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+
+                //tao custom code cho khach hang
+                $code = $productsku;
+                if (strlen($code) < 14) {
+                    $rdcode = $code . Mage:: helper('core')->getRandomString(14 - strlen($code));
+                }
+
+                //luu code ay vao customer attribute la product code
+                $customer = Mage::getModel('customer/customer')->load($customerId);
+                $customer->getProductcode();
+                $customer->setProductcode($rdcode);
+                $customer->getResource()->saveAttribute($customer, 'productcode');
+
+
+//                $body = "Hi there, here is some plaintext body content";
+//                $mail = Mage::getModel('core/email');
+//                $mail->setToName('customer');
+//                $mail->setToEmail('thanhntgc00493@fpt.edu.vn');
+//                $mail->setBody($body);
+//                $mail->setSubject('The Subject');
+//                $mail->setFromEmail('thanhntgg@gmail.com');
+//                $mail->setFromName("thanh");
+//                $mail->setType('text');// You can use 'html' or 'text'
+//
+//                try {
+//                    $mail->send();
+//                    Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
+//                    echo 'duoc ngon';
+//                } catch (Exception $e) {
+//                    Mage::getSingleton('core/session')->addError('Unable to send.');
+//                    echo "loi roi";
+//
+//                }
+            }
+        }
     }
 
 }

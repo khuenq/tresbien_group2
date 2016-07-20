@@ -36,6 +36,15 @@
                     <use>core_setup</use>
                 </connection>
             </customproduct_setup>
+            <customerattribute_setup>
+                <setup>
+                    <module>SmartLab_Customproduct</module>
+                    <class>Mage_Customer_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customerattribute_setup>
         </resources>
 
         <catalog>
@@ -101,15 +110,15 @@
             </add_to_cart_before>
 
             <!--event add -->
-            <controller_action_predispatch_adminhtml_catalog_product_new>
-                <observers>
-                    <test>
-                        <type>singleton</type>
-                        <class>smartlab_customproduct_model_observer</class>
-                        <method>disableCustomOption</method>
-                    </test>
-                </observers>
-            </controller_action_predispatch_adminhtml_catalog_product_new>
+            <!--<controller_action_predispatch_adminhtml_catalog_product_new>-->
+                <!--<observers>-->
+                    <!--<test>-->
+                        <!--<type>singleton</type>-->
+                        <!--<class>smartlab_customproduct_model_observer</class>-->
+                        <!--<method>disableCustomOption</method>-->
+                    <!--</test>-->
+                <!--</observers>-->
+            <!--</controller_action_predispatch_adminhtml_catalog_product_new>-->
 
 
             <!--event create order success-->
