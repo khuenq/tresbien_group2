@@ -46,9 +46,8 @@ class SmartLab_Customproduct_Model_Observer
                 $product = $observer->getEvent()->getProduct();
                 $productid = $product->getId();
                 if ("customproduct" == $product->getTypeId()) { // if customproduct
-                    $product->setStockData(array('max_sale_qty'=>1));
-					$demo = Mage::getModel('catalog/product')->load($productid);
-					$demo->setMaxSaleQty(1);
+                    $product->setStockData(array('max_sale_qty' => 1));
+                    $demo = Mage::getModel('catalog/product')->load($productid);
                     $option = $demo->getHasOptions();
                     if ($option != 1) {                // if customproduct ay chua ton tai option nao
                         $price = $product->getPrice();
@@ -105,7 +104,6 @@ class SmartLab_Customproduct_Model_Observer
     }
 
 
-
 //      dispatch event add_to_cart_before
     public function hookToControllerActionPreDispatch($observer)
     {
@@ -128,23 +126,41 @@ class SmartLab_Customproduct_Model_Observer
         $product = Mage::getModel('catalog/product')->load($productid);
         $categories = $product->getCategoryIds();
         if ("customproduct" == $product->getTypeId()) {
-            if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+
+            //11h 20/7/16 : them truong hop add product khi da ton tai product type DC
+            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+                $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+                foreach ($items as $item) {
+                    $idInCart = $item->getProductId();
+                    $productInCart = Mage::getModel('catalog/product')->load($idInCart);
+                    $typecart = $productInCart->getTypeId();
+                    $cartName = $productInCart->getName();
+                    if ($typecart == "customproduct") {
+                        $currentUrl = Mage::helper('catalog/product')->getProductUrl($productid);
+                        Mage::getSingleton('core/session')->addError("Trong gio hang da ton tai san pham : $cartName la  loai DC! Vui long xoa no de mua tiep");
+                        Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
+                        Mage::app()->getResponse()->sendResponse();
+                        exit;
+                    }
+                }
+            } else {
                 $currentUrl = Mage::helper('catalog/product')->getProductUrl($productid);
                 $urllogin = Mage::getUrl('customer/account/login', array('referer' => Mage::helper('core')->urlEncode($currentUrl)));
                 Mage::getSingleton('core/session')->addError("Sorry the product : " . $product->getName() . " must <a href='$urllogin'>login</a> to buy.");
                 Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
                 Mage::app()->getResponse()->sendResponse();
                 exit;
+
+
             }
+
         }
     }
-
 
 
 //---------------------OBSERVER CHO CUSTOMER MUA PRODUCT CO TYPE DC
     public function sendCodeAfterBuy($observer)
     {
-
         $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
         $order = Mage::getSingleton('sales/order');
         $order->load($lastOrderId);
@@ -160,37 +176,93 @@ class SmartLab_Customproduct_Model_Observer
 
                 //tao custom code cho khach hang
                 $code = $productsku;
-                if (strlen($code) < 14) {
-                    $rdcode = $code . Mage:: helper('core')->getRandomString(14 - strlen($code));
-                }
+
+                $rdCode = Mage:: helper('core')->getRandomString(14) . "-" . $code;
+
 
                 //luu code ay vao customer attribute la product code
                 $customer = Mage::getModel('customer/customer')->load($customerId);
                 $customer->getProductcode();
-                $customer->setProductcode($rdcode);
+                $customer->setProductcode($rdCode);
                 $customer->getResource()->saveAttribute($customer, 'productcode');
 
 
-//                $body = "Hi there, here is some plaintext body content";
-//                $mail = Mage::getModel('core/email');
-//                $mail->setToName('customer');
-//                $mail->setToEmail('thanhntgc00493@fpt.edu.vn');
-//                $mail->setBody($body);
-//                $mail->setSubject('The Subject');
-//                $mail->setFromEmail('thanhntgg@gmail.com');
-//                $mail->setFromName("thanh");
-//                $mail->setType('text');// You can use 'html' or 'text'
-//
-//                try {
-//                    $mail->send();
-//                    Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
-//                    echo 'duoc ngon';
-//                } catch (Exception $e) {
-//                    Mage::getSingleton('core/session')->addError('Unable to send.');
-//                    echo "loi roi";
-//
-//                }
+                $mail = Mage::getModel('core/email');
+                $mail->setToName('customer');
+                $mail->setToEmail($customerEmail);
+                $mail->setBody($rdCode);
+                $mail->setSubject('The Subject');
+                $mail->setType('html');// You can use 'html' or 'text'
+
+                try {
+                    $mail->send();
+                    Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
+                } catch (Exception $e) {
+                    Mage::getSingleton('core/session')->addError('Unable to send.');
+                }
             }
         }
     }
+
+    public function addToCart($observer)
+    {
+        $event = $observer->getEvent();
+        $product = $event->getProduct();
+
+
+        $quote_item = $event->getQuoteItem();
+        $skuproduct = $quote_item->getSku();
+
+        $skuLeng = strlen($skuproduct);
+
+        $customer_detail = Mage::getSingleton('customer/session')->getCustomer();
+        $customerEmail = $customer_detail->getEmail();
+        $product_code = $customer_detail->getProductcode();
+        $checkcode = substr($product_code, 15);
+//        var_dump($checkcode);
+//        die;
+        if ($skuproduct == $checkcode) {
+            var_dump();
+            Mage::throwException("May mua cai san pham nay roi con j.");
+
+        }
+
+    }
+
+
+    //---------------------OBSERVER HIEN THI CUSTOMER VIP CODE TRONG GRID MANAGER CUSTOMER
+    public function beforeCollectionLoad(Varien_Event_Observer $observer)
+    {
+        $collection = $observer->getCollection();
+        if (!isset($collection)) {
+            return;
+        }
+
+        /**
+         * Mage_Customer_Model_Resource_Customer_Collection
+         */
+        if ($collection instanceof Mage_Customer_Model_Resource_Customer_Collection) {
+            /* @var $collection Mage_Customer_Model_Resource_Customer_Collection */
+            $collection->addAttributeToSelect('productcode');
+        }
+    }
+
+    public function appendCustomColumn(Varien_Event_Observer $observer)
+    {
+        $block = $observer->getBlock();
+        if (!isset($block)) {
+            return $this;
+        }
+
+        if ($block->getType() == 'adminhtml/customer_grid') {
+            /* @var $block Mage_Adminhtml_Block_Customer_Grid */
+            $block->addColumnAfter('productcode', array(
+                'header' => 'Vip code',
+                'type' => 'text',
+                'index' => 'productcode',
+            ), 'email');
+        }
+    }
+
+
 }
