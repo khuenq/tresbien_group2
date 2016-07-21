@@ -46,7 +46,9 @@ class SmartLab_Customproduct_Model_Observer
                 $product = $observer->getEvent()->getProduct();
                 $productid = $product->getId();
                 if ("customproduct" == $product->getTypeId()) { // if customproduct
-                    $demo = Mage::getModel('catalog/product')->load($productid);
+                    $product->setStockData(array('max_sale_qty'=>1));
+					$demo = Mage::getModel('catalog/product')->load($productid);
+					$demo->setMaxSaleQty(1);
                     $option = $demo->getHasOptions();
                     if ($option != 1) {                // if customproduct ay chua ton tai option nao
                         $price = $product->getPrice();

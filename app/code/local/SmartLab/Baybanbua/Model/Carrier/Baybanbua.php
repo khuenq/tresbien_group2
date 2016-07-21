@@ -35,7 +35,7 @@ implements Mage_Shipping_Model_Carrier_Interface
 		$rate->setCarrierTitle($this->getConfigData('title'));
 		$rate->setMethodTitle($this->getConfigData('name'));
 		$rate->setPrice($this->getConfigData('price'));
-		$rate->setCost($this->getConfigData('price'));
+		$rate->setCost(0);
 		 
 		return $rate;
 	}

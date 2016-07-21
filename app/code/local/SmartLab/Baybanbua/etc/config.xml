@@ -22,18 +22,13 @@
 				</baybanbua>
 			</updates>
 		</layout>
-		<events>
-			<sales_order_grid_collection_load_before>
-	            <observers>
-	                <baybanbua>
-	                    <model>baybanbua/observer</model>
-	                    <method>addBaybanbuaCodeToOrderGrid</method>
-	                </baybanbua>
-	            </observers>
-	        </sales_order_grid_collection_load_before>
-		</events>
 	</adminhtml>
 	<global>
+		<fieldsets>
+            <sales_convert_order>                                              
+                <baybanbua_code><to_order_grid>*</to_order_grid></baybanbua_code>
+            </sales_convert_order>
+        </fieldsets>
 		<models>
 			<baybanbua>
 				<class>SmartLab_Baybanbua_Model</class>

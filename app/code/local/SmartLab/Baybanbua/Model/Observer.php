@@ -29,11 +29,5 @@ class SmartLab_Baybanbua_Model_Observer
 		}
 		return $this;
 	}
-	function addBaybanbuaCodeToOrderGrid($observer)
-	{
-		$collection = $observer->getOrderGridCollection();
-        $select = $collection->getSelect();
-        $select->join('sales_flat_order', 'main_table.entity_id = sales_flat_order.entity_id',array('baybanbua_code'));
-	}
 }
 ?>
