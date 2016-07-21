@@ -1,0 +1,10 @@
+<!-- <?xml version="1.0"?>
+<layout version="0.1.0">
+	<default translate="label" module="page">          
+    </default>
+	<kimochiverify_index_index>
+		<reference name="content">
+			<block type="kimochigate/kimochiverify" name="kimochiverify" template="kimochiverify/kimochiverify.phtml"/>
+		</reference>	
+	</kimochiverify_index_index>
+</layout> -->

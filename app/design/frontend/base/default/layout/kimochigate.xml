@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<default translate="label" module="page">
+           
+    </default>
+
+	<kimochigate_index_index>
+		<block type="kimochigate/kimochigate" name="head" as="head">
+			<action method="addJs">
+			<script>prototype/prototype.js</script>
+			</action>
+			<action method="addJs">
+			<script>varien/form.js</script>
+			</action>
+		</block>
+		<!-- <reference name="root">
+			<action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+		</reference> -->
+		<reference name="content">
+			<!-- <block type="payment/info" name="kimochigate_pager" template="default.phtml"/> -->
+			<!-- <action method="addJs"><script>kimochigate.js</script></action>	 -->
+
+			<block type="kimochigate/kimochigate" name="kimochigate" template="kimochigate/kimochigate.phtml"/>
+					
+			<!-- </block> -->
+		</reference>
+		
+	</kimochigate_index_index>
+</layout>

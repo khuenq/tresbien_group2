@@ -1,19 +1,19 @@
 <?php
-Mage::registry('isSecureArea');
+//Mage::registry('isSecureArea');
 
- $vietCategory= Mage::getModel('catalog/category')
-    ->getCollection()
-    ->addFieldToFilter('name', 'Vietnam')->getFirstItem();
+    $vietCategory= Mage::getModel('catalog/category')
+        ->getCollection()
+        ->addFieldToFilter('name', 'Vietnam')->getFirstItem();
     $vietId= $vietCategory->getId();
 
     $koreaCategory=Mage::getModel('catalog/category')
-    ->getCollection()
-    ->addFieldToFilter('name', 'Korea')->getFirstItem();
+        ->getCollection()
+        ->addFieldToFilter('name', 'Korea')->getFirstItem();
     $koreaId=$koreaCategory->getId();
 
     $chinaCategory=Mage::getModel('catalog/category')
-    ->getCollection()
-    ->addFieldToFilter('name', 'China')->getFirstItem();
+        ->getCollection()
+        ->addFieldToFilter('name', 'China')->getFirstItem();
     $chinaId=$chinaCategory->getId();
 
 //#addWebsite vn.local.tres-bien
@@ -45,22 +45,25 @@ Mage::registry('isSecureArea');
     $vnstoreGroup->setWebsiteId($vnwebsite->getId())
         ->setName('vn_tres_bien')
         ->setRootCategoryId($vietId)
+        //->setRootCategoryId('default')
         ->save();
-    $vnstoreGroup = Mage::getModel('core/store');
-    var_dump($vnstoreGroup->load('en_vn_tres_bien','name')->getData()); die();
+    //$vnstoreGroup = Mage::getModel('core/store');
+    //var_dump($vnstoreGroup->load('en_vn_tres_bien','name')->getData()); die();
 
       /** @var $storeGroup cn Mage_Core_Model_Store_Group */
     $cnstoreGroup = Mage::getModel('core/store_group');
     $cnstoreGroup->setWebsiteId($cnwebsite->getId())
         ->setName('cn_tres_bien')
         ->setRootCategoryId($chinaId)
+        //->setRootCategoryId('default')
         ->save();
 
-      * @var $storeGroup kr Mage_Core_Model_Store_Group 
+      /** @var $storeGroup kr Mage_Core_Model_Store_Group */
     $krstoreGroup = Mage::getModel('core/store_group');
     $krstoreGroup->setWebsiteId($krwebsite->getId())
         ->setName('kr_tres_bien')
         ->setRootCategoryId($koreaId)
+        //->setRootCategoryId('default')
         ->save();
 
 //#addStore
@@ -120,6 +123,7 @@ Mage::registry('isSecureArea');
         ->setWebsiteId($krstoreGroup->getWebsiteId())
         ->setGroupId($krstoreGroup->getId())
         ->setName('Korea')
+        ->setIsActive(1)
         ->save();
 
     $installer=$this;
@@ -128,18 +132,18 @@ Mage::registry('isSecureArea');
     $cnvalue='http://cn.local.tres-bien.com:4040/';
     $krvalue='http://kr.local.tres-bien.com:4040/';
 
-    // VN store group url
-    $vnstoreGroupId = Mage::getModel('core/store_group')->load('vn_tres_bien','name')->getId();
+    // VN website url
+    $vnstoreGroupId = Mage::getModel('core/website')->load('vn_tres_bien','code')->getId();
     $installer->setConfigData('web/unsecure/base_url',$vnvalue,'websites',$vnstoreGroupId);
     $installer->setConfigData('web/secure/base_url',$vnvalue,'websites',$vnstoreGroupId);
      
-    // CN store group url
-    $cnstoreGroupId = Mage::getModel('core/store_group')->load('cn_tres_bien','name')->getId();
+    // CN website url
+    $cnstoreGroupId = Mage::getModel('core/website')->load('cn_tres_bien','code')->getId();
     $installer->setConfigData('web/unsecure/base_url',$cnvalue,'websites',$cnstoreGroupId);
     $installer->setConfigData('web/secure/base_url',$cnvalue,'websites',$cnstoreGroupId);
 
-    // KR store group url
-    $krstoreGroupId = Mage::getModel('core/store_group')->load('kr_tres_bien','name')->getId();
+    // KR website url
+    $krstoreGroupId = Mage::getModel('core/website')->load('kr_tres_bien','code')->getId();
     $installer->setConfigData('web/unsecure/base_url',$krvalue,'websites',$krstoreGroupId);
     $installer->setConfigData('web/secure/base_url',$krvalue,'websites',$krstoreGroupId);
     $installer->endSetup();

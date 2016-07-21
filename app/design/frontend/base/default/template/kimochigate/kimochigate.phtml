@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Gateway Page</title>
+<script type="text/javascript" src="../js/lib/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../js/lib/jquery/noconflict.js"></script>
+
+<!--[if (gte IE 9) | (IEMobile)]><!-->
+<link rel="stylesheet" type="text/css" href="../skin/frontend/rwd/default/css/styles.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../skin/frontend/rwd/default/css/madisonisland.css" media="all" />
+<!--<![endif]-->
+<body>
+<center>
+    <h2>KIMOCHI GATE</h2>
+    <form name="gatepage" id="kimochigate" action="<?php echo $this->getUrl('checkout/success') ?>" method="post">
+    <label for="name"> <?php echo $this->__('Name: ') ?> <span class="required"></span></label>
+    <input id="name" name="Name: " class="required-entry input-text" type="text" /> <br /> <br>
+    <label for="cardno"><?php echo $this->__('Card Number: ') ?> <span class="required"></span></label>
+    <input id="cardno" name="CardNumber" class="input-text required-entry" type="text" /> <br /><br>
+    <input type="submit" name="next" id="next_verify" value="Next" />
+    </form>
+    <form action="<?php echo $this->getUrl('checkout/success')?>">
+    <input type="submit" id="cancel" value="Cancel" />
+    </form>
+ <script type="text/javascript">
+
+    // alert(0);
+    $j('#next_verify').on('click',function(){
+        var numReg = /^[0-9]+$/;
+        var memReg = /^\d{1,2}\/\d{1,2}$/;
+        var name = $j('#name').val();
+        name = $j.trim(name);
+
+        var cardNumber = $j('#cardno').val();
+        var membersc = $j('#membersc').val();
+
+        if('' == name){
+            alert('Hay nhap ten cua ban');
+            return false;
+        }
+
+        if ('' == cardNumber) {
+            alert("Hay nhap so tai khoan cua ban");
+            return false;
+        }
+        else if(!numReg.test(cardNumber))
+        {
+            alert('Card Number chi la so');
+            return false;
+        }
+        else if((16 != cardNumber.length)&&(19 != cardNumber.length)){
+            alert('Card Number bao gom 16 hoac 19 chu so');
+            return false;
+        }
+        return true;
+    });
+        
+</script>
+</center> 
+</body>
+</html>

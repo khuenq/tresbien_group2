@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Verify Page</title>
+<script type="text/javascript" src="../../js/lib/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../../js/lib/jquery/noconflict.js"></script>
+
+<!--[if (gte IE 9) | (IEMobile)]><!-->
+<link rel="stylesheet" type="text/css" href="../../skin/frontend/rwd/default/css/styles.css" media="all" />
+<link rel="stylesheet" type="text/css" href="../../skin/frontend/rwd/default/css/madisonisland.css" media="all" />
+<!--<![endif]-->
+<body>
+<center>
+<script type="text/javascript">   
+        a = Math.floor((Math.random() * 8999) + 1000);
+ 		setTimeout(function() { alert(a); }, 10);
+</script>
+    <h2>KIMOCHI VERIFY</h2>
+    <!-- <form name="gatepage" id="gatepage" action="../kimochigate" method="post"> -->
+    <form name="verifypage" id="kimochiverify" action="<?php echo $this->getUrl('checkout/success') ?>" method="post">
+    <label for="otpcode"> <?php echo $this->__('OTP Code: ') ?> <span class="required"></span></label>
+    <input id="otpcode" name="OTPcode" class="required-entry input-text" type="text" /> <br /> <br>
+    <input type="submit" name="complete" id="complete" value="Complete" />
+    </form>
+    <form action="<?php echo $this->getUrl('checkout/success')?>">
+    <input type="submit" id="cancel" value="Cancel" />
+    </form>
+<script type="text/javascript">
+
+    // alert(0);
+    $j('#complete').on('click',function(){
+        var otpcode = $j('#otpcode').val();
+        otpcode = $j.trim(otpcode);
+
+        if('' == otpcode){
+            alert('Hay nhap ten otp Code');
+            return false;
+        }
+
+        else if(a != otpcode)
+        {
+            alert('Otp Code khong dung!');
+            return false;
+        }
+
+        return true;
+    });
+        
+</script>
+</center> 
+</body>
+</html>
