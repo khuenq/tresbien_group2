@@ -132,6 +132,16 @@
                 </observers>
             </checkout_onepage_controller_success_action>
 
+
+            <sales_quote_add_item>
+                <observers>
+                    <company_product_price_observer>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>addToCart</method>
+                    </company_product_price_observer>
+                </observers>
+            </sales_quote_add_item>
         </events>
     </global>
 

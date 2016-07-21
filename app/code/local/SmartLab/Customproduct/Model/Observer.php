@@ -46,6 +46,8 @@ class SmartLab_Customproduct_Model_Observer
                 $product = $observer->getEvent()->getProduct();
                 $productid = $product->getId();
                 if ("customproduct" == $product->getTypeId()) { // if customproduct
+
+                    $product->setStockData(array('max_sale_qty' => 1));
                     $demo = Mage::getModel('catalog/product')->load($productid);
                     $option = $demo->getHasOptions();
                     if ($option != 1) {                // if customproduct ay chua ton tai option nao
@@ -80,7 +82,7 @@ class SmartLab_Customproduct_Model_Observer
                                 'title' => 'Platinum',
                                 'price' => $price * 1.2,
                                 'sku' => '4',
-                                'sort_order' => '3',
+                                'sort_order' => '4',
                                 'price_type' => 'fixed'
                             )
                         );
@@ -125,22 +127,42 @@ class SmartLab_Customproduct_Model_Observer
         $product = Mage::getModel('catalog/product')->load($productid);
         $categories = $product->getCategoryIds();
         if ("customproduct" == $product->getTypeId()) {
-            if (!Mage::getSingleton('customer/session')->isLoggedIn()) {
+
+            //11h 20/7/16 : them truong hop add product khi da ton tai product type DC
+            if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+                $items = Mage::getSingleton('checkout/session')->getQuote()->getAllItems();
+                foreach ($items as $item) {
+                    $idInCart = $item->getProductId();
+                    $productInCart = Mage::getModel('catalog/product')->load($idInCart);
+                    $typecart = $productInCart->getTypeId();
+                    $cartName = $productInCart->getName();
+                    if ($typecart == "customproduct") {
+                        $currentUrl = Mage::helper('catalog/product')->getProductUrl($productid);
+                        Mage::getSingleton('core/session')->addError("Trong gio hang da ton tai san pham : $cartName la  loai DC! Vui long xoa no de mua tiep");
+                        Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
+                        Mage::app()->getResponse()->sendResponse();
+                        exit;
+                    }
+                }
+            } else {
                 $currentUrl = Mage::helper('catalog/product')->getProductUrl($productid);
                 $urllogin = Mage::getUrl('customer/account/login', array('referer' => Mage::helper('core')->urlEncode($currentUrl)));
                 Mage::getSingleton('core/session')->addError("Sorry the product : " . $product->getName() . " must <a href='$urllogin'>login</a> to buy.");
                 Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
                 Mage::app()->getResponse()->sendResponse();
                 exit;
+
+
             }
+
         }
     }
 
 
 //---------------------OBSERVER CHO CUSTOMER MUA PRODUCT CO TYPE DC
-    public function sendCodeAfterBuy($observer)
+    public
+    function sendCodeAfterBuy($observer)
     {
-
         $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
         $order = Mage::getSingleton('sales/order');
         $order->load($lastOrderId);
@@ -156,14 +178,14 @@ class SmartLab_Customproduct_Model_Observer
 
                 //tao custom code cho khach hang
                 $code = $productsku;
-                if (strlen($code) < 14) {
-                    $rdcode = $code . Mage:: helper('core')->getRandomString(14 - strlen($code));
-                }
+
+                $rdCode = Mage:: helper('core')->getRandomString(14) . "-" . $code;
+
 
                 //luu code ay vao customer attribute la product code
                 $customer = Mage::getModel('customer/customer')->load($customerId);
                 $customer->getProductcode();
-                $customer->setProductcode($rdcode);
+                $customer->setProductcode($rdCode);
                 $customer->getResource()->saveAttribute($customer, 'productcode');
 
 
@@ -189,4 +211,31 @@ class SmartLab_Customproduct_Model_Observer
             }
         }
     }
+
+
+    public function addToCart($observer)
+    {
+        $event = $observer->getEvent();
+        $product = $event->getProduct();
+
+
+        $quote_item = $event->getQuoteItem();
+        $skuproduct = $quote_item->getSku();
+
+        $skuLeng = strlen($skuproduct);
+
+        $customer_detail = Mage::getSingleton('customer/session')->getCustomer();
+        $customerEmail = $customer_detail->getEmail();
+        $product_code = $customer_detail->getProductcode();
+        $checkcode = substr($product_code, 15);
+//        var_dump($checkcode);
+//        die;
+        if ($skuproduct == $checkcode) {
+            var_dump();
+            Mage::throwException("May mua cai san pham nay roi con j.");
+
+        }
+
+    }
+
 }
