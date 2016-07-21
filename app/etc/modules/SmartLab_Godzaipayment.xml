@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<config>
+	<modules>
+		<SmartLab_Godzaipayment>
+			<active>true</active>
+			<codePool>local</codePool>
+			<depends>
+		    	<Mage_Payment />
+		    </depends>
+		</SmartLab_Godzaipayment>
+	</modules>
+</config>

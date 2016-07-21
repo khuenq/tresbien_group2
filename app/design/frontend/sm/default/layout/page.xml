@@ -76,6 +76,9 @@
                 <!-- Add stylesheets with media queries for use by modern browsers -->
                 <action method="addItem"><type>skin_css</type><name>css/styles.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
                 <action method="addItem"><type>skin_css</type><name>css/madisonisland.css</name><params/><if><![CDATA[<!--[if (gte IE 9) | (IEMobile)]><!-->]]></if></action>
+
+                <!-- Add mega menu skin -->
+                <action method="addItem"><type>skin_css</type><name>../../default/default/joomlart/jmmegamenu/css/jmmegamenu.css</name></action>
                 
                 <!-- Sets viewport meta tag using text block -->
                 <block type="core/text" name="head.viewport">
@@ -97,6 +100,7 @@
                     <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml">
                         <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/topmenu/renderer.phtml"/>
                     </block>
+                    <!-- <block type="page/html_topmenu" name="catalog.topnav" template="page/html/topmenu.phtml"/> -->
                 </block>
                 <block type="page/html_wrapper" name="top.container" as="topContainer" translate="label">
                     <label>Page Header</label>
