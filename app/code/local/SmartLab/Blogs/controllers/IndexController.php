@@ -66,63 +66,94 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
 
     public function deleteAction()
     {
-        $id = Mage::app()->getRequest()->getParam('id');
-        $model = Mage::getModel('neotheme_blog/post');
-        try{
-            $model->setId($id)->delete();
-            $this->_redirect('blogs/index/list');
-        }catch(Exception $e){
-            echo $e->getMessage();
+        if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $id = Mage::app()->getRequest()->getParam('id');
+            $model = Mage::getModel('neotheme_blog/post');
+            $tagListById = $model->load($id)->getTagIds();
+//        Kiem tra xem tag duoc dung trong bao nhieu bai blog
+            foreach ($tagListById as $currentTag) {
+                $count = 0;
+                foreach (Mage::getModel('neotheme_blog/post')->getCollection() as $blog) {
+                    if (in_array($currentTag, $blog->getTagIds())) $count++;
+                }
+//                Neu chi dung 1 lan thi xoa trong csdl di
+                if ($count == 1) Mage::getModel('blogs/tag')->load($currentTag)->delete();
+
+            }
+            try {
+                $model->setId($id)->delete();
+                $this->_redirect('blogs/index/list');
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
         }
     }
 
     public function editAction()
     {
-        if(null != Mage::app()->getRequest()->getPost()){
+        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+            if (null != Mage::app()->getRequest()->getPost()) {
 //            Neu co request Post thi vao form edit
-            echo '<pre>';
-            $tagModel = Mage::getModel('blogs/tag');
-            $info = Mage::app()->getRequest()->getPost();
-            $tagName = $info['tag'];
-            $listTagName = explode(',', $tagName);
-            $listTagById = array();
-//            Kiem tra xem co tag nao chi dung 1 lan o trong blog hien tai ko
-            $id = Mage::app()->getRequest()->getParam('id');
-            $currentBlog = Mage::getModel('neotheme_blog/post')->load($id);
-            $listTag = $currentBlog->getTagIds();
-
-            var_dump($currentBlog->getTagIds());
-            var_dump($id);
-            die;
-            //Kiem tra xem tung tag da ton tai trong csdl chua
-            foreach ($listTagName as $tagName){
-//                Neu da ton tai trong csdl roi
-                if($tagModel->getCollection()->addFieldToFilter('name',$tagName)->count() == 1){
-                    $id = $tagModel->getCollection()->addFieldToFilter('name', $tagName)->getAllIds();
-                    array_push($listTagById, $id[0]);
-                }else{
-//                    Neu chua ton tai trong csdl thi them moi tag va lay id
-                    $tagModel->setData('name', $tagName);
-                    $tagModel->setData('index', 0);
-                    $id = $tagModel->save()->getId();
-                    array_push($listTagById, $id);
+                echo '<pre>';
+//            Kiem tra xem co tag cu nao chi dung 1 lan o trong blog hien tai ko thi xoa trong csdl di
+                $id = Mage::app()->getRequest()->getParam('id');
+                $currentBlog = Mage::getModel('neotheme_blog/post')->load($id);
+//            Lay danh sach tag truoc khi edit
+                $listTag = $currentBlog->getTagIds();
+                foreach ($listTag as $currentTag) {
+                    $count = 0;
+                    foreach (Mage::getModel('neotheme_blog/post')->getCollection() as $blog) {
+                        if (in_array($currentTag, $blog->getTagIds())) $count++;
+                    }
+//                Neu chi dung 1 lan thi xoa trong csdl di
+                    if ($count == 1) {
+                        Mage::getModel('blogs/tag')->load($currentTag)->delete();
+                    }
                 }
+
+                $tagModel = Mage::getModel('blogs/tag');
+                $info = Mage::app()->getRequest()->getPost();
+                $tagName = $info['tag'];
+                $listTagInput = explode(',', $tagName);
+                $listTagById = array();
+//            Kiem tra xem trong nhung tag moi them da ton tai trong csdl chua
+                foreach ($listTagInput as $tagInput) {
+//               Neu da ton tai trong csdl roi thi lay id cua tag
+                    if ($tagModel->getCollection()->addFieldToFilter('name', $tagInput)->count() == 1) {
+                        echo 'scdl';
+                        var_dump($tagInput);
+                        $id = $tagModel->getCollection()->addFieldToFilter('name', $tagInput)->getAllIds();
+                        array_push($listTagById, $id[0]);
+                    } else {
+//                    Neu chua ton tai thi them moi vao csdl roi moi lay id tag
+                        echo 'not csdl';
+                        var_dump($tagInput);
+                        $model = Mage::getModel('blogs/tag');
+                        $model->setData('name', $tagInput);
+                        $model->setData('index', 0);
+                        $id = $model->save()->getId();
+                        array_push($listTagById, $id);
+                    }
+                }
+
+                $tagIds = implode(',', $listTagById);
+                $model = Mage::getModel('neotheme_blog/post');
+                $model->setData($info);
+                $model->setData('tag_ids', $tagIds);
+                $model->save();
+                $this->_redirect('blogs/index/list');
+            } else {
+                $this->loadLayout();
+                $this->renderLayout();
             }
-            $listTagById = implode(',', $listTagById);
-            $model = Mage::getModel('neotheme_blog/post');
-            $model->setData($info);
-            $model->setData('tag_ids',$listTagById);
-            $model->save();
-            $this->_redirect('blogs/index/list');
-        }else {
-            $this->loadLayout();
-            $this->renderLayout();
         }
     }
 
     public function detailAction()
     {
-        $this->loadLayout();
-        $this->renderLayout();
+        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $this->loadLayout();
+            $this->renderLayout();
+        }
     }
 }
