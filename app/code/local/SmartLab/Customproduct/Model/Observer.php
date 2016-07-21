@@ -82,7 +82,7 @@ class SmartLab_Customproduct_Model_Observer
                                 'title' => 'Platinum',
                                 'price' => $price * 1.2,
                                 'sku' => '4',
-                                'sort_order' => '3',
+                                'sort_order' => '4',
                                 'price_type' => 'fixed'
                             )
                         );
