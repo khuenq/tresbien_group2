@@ -160,8 +160,7 @@ class SmartLab_Customproduct_Model_Observer
 
 
 //---------------------OBSERVER CHO CUSTOMER MUA PRODUCT CO TYPE DC
-    public
-    function sendCodeAfterBuy($observer)
+    public function sendCodeAfterBuy($observer)
     {
         $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
         $order = Mage::getSingleton('sales/order');
@@ -189,29 +188,22 @@ class SmartLab_Customproduct_Model_Observer
                 $customer->getResource()->saveAttribute($customer, 'productcode');
 
 
-//                $body = "Hi there, here is some plaintext body content";
-//                $mail = Mage::getModel('core/email');
-//                $mail->setToName('customer');
-//                $mail->setToEmail('thanhntgc00493@fpt.edu.vn');
-//                $mail->setBody($body);
-//                $mail->setSubject('The Subject');
-//                $mail->setFromEmail('thanhntgg@gmail.com');
-//                $mail->setFromName("thanh");
-//                $mail->setType('text');// You can use 'html' or 'text'
-//
-//                try {
-//                    $mail->send();
-//                    Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
-//                    echo 'duoc ngon';
-//                } catch (Exception $e) {
-//                    Mage::getSingleton('core/session')->addError('Unable to send.');
-//                    echo "loi roi";
-//
-//                }
+                $mail = Mage::getModel('core/email');
+                $mail->setToName('customer');
+                $mail->setToEmail($customerEmail);
+                $mail->setBody($rdCode);
+                $mail->setSubject('The Subject');
+                $mail->setType('html');// You can use 'html' or 'text'
+
+                try {
+                    $mail->send();
+                    Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
+                } catch (Exception $e) {
+                    Mage::getSingleton('core/session')->addError('Unable to send.');
+                }
             }
         }
     }
-
 
     public function addToCart($observer)
     {
@@ -237,5 +229,41 @@ class SmartLab_Customproduct_Model_Observer
         }
 
     }
+
+
+    //---------------------OBSERVER HIEN THI CUSTOMER VIP CODE TRONG GRID MANAGER CUSTOMER
+    public function beforeCollectionLoad(Varien_Event_Observer $observer)
+    {
+        $collection = $observer->getCollection();
+        if (!isset($collection)) {
+            return;
+        }
+
+        /**
+         * Mage_Customer_Model_Resource_Customer_Collection
+         */
+        if ($collection instanceof Mage_Customer_Model_Resource_Customer_Collection) {
+            /* @var $collection Mage_Customer_Model_Resource_Customer_Collection */
+            $collection->addAttributeToSelect('productcode');
+        }
+    }
+
+    public function appendCustomColumn(Varien_Event_Observer $observer)
+    {
+        $block = $observer->getBlock();
+        if (!isset($block)) {
+            return $this;
+        }
+
+        if ($block->getType() == 'adminhtml/customer_grid') {
+            /* @var $block Mage_Adminhtml_Block_Customer_Grid */
+            $block->addColumnAfter('productcode', array(
+                'header' => 'Vip code',
+                'type' => 'text',
+                'index' => 'productcode',
+            ), 'email');
+        }
+    }
+
 
 }

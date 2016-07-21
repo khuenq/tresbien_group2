@@ -111,13 +111,13 @@
 
             <!--event add -->
             <!--<controller_action_predispatch_adminhtml_catalog_product_new>-->
-                <!--<observers>-->
-                    <!--<test>-->
-                        <!--<type>singleton</type>-->
-                        <!--<class>smartlab_customproduct_model_observer</class>-->
-                        <!--<method>disableCustomOption</method>-->
-                    <!--</test>-->
-                <!--</observers>-->
+            <!--<observers>-->
+            <!--<test>-->
+            <!--<type>singleton</type>-->
+            <!--<class>smartlab_customproduct_model_observer</class>-->
+            <!--<method>disableCustomOption</method>-->
+            <!--</test>-->
+            <!--</observers>-->
             <!--</controller_action_predispatch_adminhtml_catalog_product_new>-->
 
 
@@ -157,6 +157,28 @@
                     </customproduct_observer_catalog_product_new_action>
                 </observers>
             </catalog_product_new_action>
+
+            <!--event bat su kien truoc hien thi grid customer manager-->
+            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <customgrid_column_append>
+                        <type>model</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>appendCustomColumn</method>
+                    </customgrid_column_append>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+
+            <!--event them collection-->
+            <eav_collection_abstract_load_before>
+                <observers>
+                    <customgrid_column_append>
+                        <type>model</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>beforeCollectionLoad</method>
+                    </customgrid_column_append>
+                </observers>
+            </eav_collection_abstract_load_before>
         </events>
     </adminhtml>
 
