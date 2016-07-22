@@ -28,5 +28,4 @@ implements Mage_Widget_Block_Interface
     function _construct(){
         $this->setTemplate('neotheme/blog/post/summary.phtml');
     }
-   
 }

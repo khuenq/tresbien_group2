@@ -47,7 +47,9 @@
         <update handle="neotheme_blog_default"/>
         <reference name="content">
             <block type="smartlab_blogs/tag_listblog" name="list.blog.by.tag"
-                   template="smartlab/blogs/tag/listblog.phtml"/>
+                   template="smartlab/blogs/tag/listblog.phtml">
+                <block type="page/html_pager" name="tagblog.pager"/>
+            </block>
         </reference>
     </blogs_tag_listblog>
 

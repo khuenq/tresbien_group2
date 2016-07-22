@@ -74,5 +74,15 @@
                 <class>SmartLab_Blogs_Helper</class>
             </blogs>
         </helpers>
+        <events>
+        <controller_action_postdispatch_neotheme_blog_post_index>
+            <observers>
+                <blog_observer_post_tag>
+                    <class>SmartLab_Blog_Model_Observer</class>
+                    <method>hookIntoPostTag</method>
+                </blog_observer_post_tag>
+            </observers>
+        </controller_action_postdispatch_neotheme_blog_post_index>
+    </events>
     </global>
 </config>

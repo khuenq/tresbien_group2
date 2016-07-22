@@ -1,7 +1,22 @@
-<?php //$this->viewBlogList()?>
-<!--<div class="page-title">-->
-<!--    <h3>--><?php //echo $this->__($this->getTitle()); ?><!--</h3>-->
-<!--</div>-->
-<?php foreach ($this->viewBlogList() as $blog){?>
-    <?php echo $blog->getTitle() ?>
-<?php } ?>
+<?php //if ($this->getCategoryId()):?>
+<!--    <div class="page-title">-->
+<!--        <h1>--><?php //echo $this->getCategory()->getName();?><!--</h1>-->
+<!--    </div>-->
+<?php //endif; ?>
+<?php //if (!$this->getCollection()->count()):?>
+<!--    <div class="note-msg">--><?php //echo Mage::helper('neotheme_blog')->__('There are no posts in this category'); ?><!--</div>-->
+<?php //else: ?>
+<!--    --><?php //foreach($this->getCollection() as $post):?>
+<!--        <div class="blog blog-summary">-->
+<!--            --><?php ////maybe a better way of doing this maybe a getChildHtml('summary_');
+//
+//            echo $this->getSummaryBlock($post)->toHtml();
+//            ?>
+<!--        </div>-->
+<!--    --><?php //endforeach; ?>
+<!--    <div class="toolbar">--><?php //echo $this->getPagerHtml(); ?><!--</div>-->
+<?php //endif;?>
+
+<?php foreach ($this->getCollection() as $blog){
+    var_dump($blog->getId());
+}?>

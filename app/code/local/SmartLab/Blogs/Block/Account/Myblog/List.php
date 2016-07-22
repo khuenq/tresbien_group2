@@ -34,11 +34,11 @@ extends Mage_Core_Block_Template
         $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         //Lay cac id cua blog theo id customer
         $post = Mage::getModel('blogs/customerpost')->getCollection()->addFieldToFilter('customer_id', $customerId);
-        $blog_id = array();
+        $blogId = array();
         foreach ($post as $item){
-            array_push($blog_id,$item->getPostId());
+            array_push($blogId,$item->getPostId());
         }
-        $collection = Mage::getModel('neotheme_blog/post')->getCollection()->addFieldToFilter('entity_id', $blog_id);
+        $collection = Mage::getModel('neotheme_blog/post')->getCollection()->addFieldToFilter('entity_id', $blogId);
         return $collection;
     }
 
