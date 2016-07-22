@@ -27,6 +27,7 @@
         </models>
 
         <resources>
+            <!--install scrip add new product type-->
             <customproduct_setup>
                 <setup>
                     <module>SmartLab_Customproduct</module>
@@ -36,6 +37,8 @@
                     <use>core_setup</use>
                 </connection>
             </customproduct_setup>
+
+            <!--install scrip add customer attribute-->
             <customerattribute_setup>
                 <setup>
                     <module>SmartLab_Customproduct</module>
@@ -45,6 +48,16 @@
                     <use>core_setup</use>
                 </connection>
             </customerattribute_setup>
+
+            <!--data scrip add email template-->
+            <emailtem_setup>
+                <setup>
+                    <module>SmartLab_Customproduct</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </emailtem_setup>
         </resources>
 
         <catalog>

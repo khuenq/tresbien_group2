@@ -166,19 +166,28 @@ class SmartLab_Customproduct_Model_Observer
         $order = Mage::getSingleton('sales/order');
         $order->load($lastOrderId);
         $allitems = $order->getAllItems();
+
         foreach ($allitems as $item) {
             $product = Mage::getModel('catalog/product')->load($item->getProductId());
             if ("customproduct" == $product->getTypeId()) {
                 $productsku = $item->getSku();
+                $rank = substr($productsku, strlen($productsku) - 1);
+                if ($rank == 1) {
+                    $ranknote = "Bronze";
+                } else if ($rank == 2) {
+                    $ranknote = "Silver";
+                } else if ($rank == 3) {
+                    $ranknote = "Gold";
+                } else {
+                    $ranknote = "Platinum";
+                }
 
                 $customer_detail = Mage::getSingleton('customer/session')->getCustomer();
                 $customerEmail = $customer_detail->getEmail();
                 $customerId = Mage::getSingleton('customer/session')->getCustomerId();
 
                 //tao custom code cho khach hang
-                $code = $productsku;
-
-                $rdCode = Mage:: helper('core')->getRandomString(14) . "-" . $code;
+                $rdCode = Mage:: helper('core')->getRandomString(14) . "-" . $productsku;
 
 
                 //luu code ay vao customer attribute la product code
@@ -187,20 +196,35 @@ class SmartLab_Customproduct_Model_Observer
                 $customer->setProductcode($rdCode);
                 $customer->getResource()->saveAttribute($customer, 'productcode');
 
+                $mailTemplate = Mage::getModel('core/email_template');
+                $mail = $mailTemplate->loadByCode('Send Code');
+                $templateId = $mail->getId();
+                $template_collection = $mailTemplate->load($templateId);
+                $template_data = $template_collection->getData();
 
-                $mail = Mage::getModel('core/email');
-                $mail->setToName('customer');
-                $mail->setToEmail($customerEmail);
-                $mail->setBody($rdCode);
-                $mail->setSubject('The Subject');
-                $mail->setType('html');// You can use 'html' or 'text'
+                $translate = Mage::getSingleton('core/translate');
 
-                try {
-                    $mail->send();
-                    Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
-                } catch (Exception $e) {
-                    Mage::getSingleton('core/session')->addError('Unable to send.');
+                $mailSubject = $template_data['template_subject'];
+                $from_email = Mage::getStoreConfig('trans_email/ident_general/email'); //fetch sender email
+                $from_name = Mage::getStoreConfig('trans_email/ident_general/name'); //fetch sender name
+
+                $sender = array('name' => $from_name,
+                    'email' => $from_email);
+                $vars = array('dc_code' => $product->getName(),
+                    'dc_rank' => $ranknote,
+                    'dc_vipcode' => $rdCode); //for replacing the variables in email with data
+                /*This is optional*/
+                $storeId = Mage::app()->getStore()->getId();
+                $model = $mailTemplate->setReplyTo($sender['email'])->setTemplateSubject($mailSubject);
+                $email = $customer->getEmail();
+                $name = $customer->getName();
+                $model->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
+                if (!$mailTemplate->getSentSuccess()) {
+
+                    throw new Exception();
                 }
+                $translate->setTranslateInline(true);
+
             }
         }
     }
