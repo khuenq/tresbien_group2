@@ -3,8 +3,8 @@
         <h1><?php echo $this->__('Edit Blog'); ?></h1>
     </div>
 <?php endif; ?>
-<?php //echo $this->getPost()->getData('category_ids'); die;?>
-<!--Form information-->
+
+Form information
 <?php $id = $this->getPost()->getId(); ?>
 <form action="<?php echo Mage::getUrl('*/*/edit', array('id'=>$id));?>" method="post" id="person-form-validate">
     <input type="hidden" value="<?php echo $id?>" name="entity_id">
@@ -51,13 +51,13 @@
                     </div>
                 </div>
                 <!--                Input tag cua blog-->
-                <!--                <label for="tag" class="required-entry">-->
-                <!--                    <em>*</em>--><?php //echo $this->__('Tag') ?>
-                <!--                </label>-->
-                <!--                <div class="input-box">-->
-                <!--                    <input type="text" class="input-text required-entry" maxlength="255"-->
-                <!--                           title="Tag" value="" name="tag_ids" id="tag">-->
-                <!--                </div>-->
+                <label for="tag" class="required">
+                    <em>*</em><?php echo $this->__('Tag') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" maxlength="255"
+                           title="Tag" value="<?php echo $this->getListTag();?>" name="tag" id="tag">
+                </div>
 
                 <!--                Input cho category cua blog-->
                 <label for="category" class="required">
@@ -87,9 +87,6 @@
                         <?php }else{?>
                             <option value="2">Draft</option>
                         <?php } ?>
-<!--                        <option value="0">Inactive</option>-->
-<!--                        <option value="1">Active</option>-->
-<!--                        <option value="2">Draft</option>-->
                     </select>
                 </div>
                 <!--                Nut submit-->

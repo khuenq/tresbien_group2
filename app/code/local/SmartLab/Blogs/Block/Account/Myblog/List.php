@@ -37,14 +37,9 @@ extends Mage_Core_Block_Template
         foreach ($post as $item){
             array_push($blog_id,$item->getPostId());
         }
-//        echo '<pre>';
-//        var_dump($blog_id);
-//        die;
+
         $collection = Mage::getModel('neotheme_blog/post')->getCollection()->addFieldToFilter('entity_id', $blog_id);
-//        echo '<pre>';
-//        var_dump($collection->getData('title'));
-//        die;
-        $collection = Mage::getModel('neotheme_blog/post')->getCollection();
+
         return $collection;
     }
 

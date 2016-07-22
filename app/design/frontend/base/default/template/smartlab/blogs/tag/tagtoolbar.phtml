@@ -1,0 +1,5 @@
+<?php foreach ($this->getListTag() as $tag){?>
+    <a href="<?php echo Mage::getUrl('blogs/tag/listblog',array('id'=>$tag->getId()))?>">
+        <?php echo '#'.$tag->getName();?>
+    </a>
+<?php } ?>

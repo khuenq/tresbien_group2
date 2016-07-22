@@ -38,6 +38,9 @@
                     <tagpost>
                         <table>neotheme_tag_post</table>
                     </tagpost>
+                    <tag>
+                        <table>neotheme_blog_tag</table>
+                    </tag>
                 </entities>
             </blogs_resource>
         </models>
@@ -62,16 +65,6 @@
             </blogs_read>
         </resources>
         <blocks>
-            <!-- <neotheme_blog>
-                <rewrite>
-                    <post_list>SmartLab_Blogs_Block_Account_MyBlock_List</post_list>
-                </rewrite>
-            </neotheme_blog> -->
-            <!--<customer>-->
-            <!--<rewrite>-->
-            <!--<account_navigation>SmartLab_Blogs_IndexController</account_navigation>-->
-            <!--</rewrite>-->
-            <!--</customer>-->
             <smartlab_blogs>
                 <class>SmartLab_Blogs_Block</class>
             </smartlab_blogs>
@@ -86,7 +79,6 @@
                 <class>SmartLab_Blogs_Helper</class>
             </blogs>
         </helpers>
-
         <resources>
             <smartlab_blogs_setup>
                 <setup>
@@ -95,12 +87,5 @@
             </smartlab_blogs_setup>
         </resources>
 
-        <resources>
-            <smartlab_blogs_setup>
-                <setup>
-                    <module>SmartLab_Blogs</module>
-                </setup>
-            </smartlab_blogs_setup>
-        </resources>
     </global>
 </config>
