@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<kimochigateadmin_adminhtml_kimochigate_index>
+		<reference name="content">
+			<block type="kimochigate/adminhtml_kimochigate" name="kimochigate" />
+		</reference>
+	</kimochigateadmin_adminhtml_kimochigate_index>
+</layout>
