@@ -37,6 +37,14 @@
             if ('USD' == $orderDetail[2]) {
                 $price *=20000;
             }
+
+            if ('CNY' == $orderDetail[2]) {
+                $price *=3000;
+            }
+
+            if ('KRW' == $orderDetail[2]) {
+                $price *=20;
+            }
         ?>
         <p>Số tiền cần thanh toán là: <?php echo $price.' VNĐ'?></p>
     </div>
