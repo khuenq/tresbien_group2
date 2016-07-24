@@ -42,4 +42,23 @@
                    template="smartlab/blogs/account/myblog/detail.phtml"></block>
         </reference>
     </blogs_index_detail>
+
+    <blogs_tag_listblog translate="label">
+        <update handle="neotheme_blog_default"/>
+        <reference name="content">
+            <block type="smartlab_blogs/tag_listblog" name="list.blog.by.tag"
+                   template="smartlab/blogs/tag/listblog.phtml"/>
+        </reference>
+    </blogs_tag_listblog>
+
+    <neotheme_blog_index_index>
+        <update handle="neotheme_blog_default"/>
+        <reference name="content">
+            <block type="smartlab_blogs/tag_list" name="afnksdnsk" template="smartlab/blogs/tag/tagtoolbar.phtml"/>
+            <!--<action method="setSummaryBlockType"><block>neotheme_blog/post_summary</block></action>-->
+            <!--<action method="setSummaryTemplate"><block>neotheme/blog/post/summary.phtml</block></action>-->
+            <!--<action ifconfig="blog/customer/enabled" method="setUseCustomerPreferences"><use_customer_preferences>true</use_customer_preferences></action>-->
+
+        </reference>
+    </neotheme_blog_index_index>
 </layout>

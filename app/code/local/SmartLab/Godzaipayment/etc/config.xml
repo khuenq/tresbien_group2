@@ -5,6 +5,17 @@
       <version>0.1.0</version>
     </SmartLab_Godzaipayment>
   </modules>
+   <frontend>
+        <routers>
+            <godzaipayment>
+                <use>standard</use>
+                <args>
+                    <module>SmartLab_Godzaipayment</module>
+                    <frontName>godzaipayment</frontName>
+                </args>
+            </godzaipayment>
+        </routers>
+    </frontend>
   <global>
     <helpers>
       <godzaipayment>
@@ -33,7 +44,7 @@
     <payment>
       <godzaipayment>
         <active>1</active>
-        <model>godzaipayment/paymentmethod</model>
+        <model>godzaipayment/godzai</model>
         <order_status>pending</order_status>
         <title>GoDZai Payment</title>
         <allowspecific>0</allowspecific>
