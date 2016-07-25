@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<kimochigate_index_index>
+		<reference name="root">
+			 <remove name="header" />
+			 <remove name="footer" />
+		</reference>
+		<reference name="head">
+			<action method="addJs"><script>smartlab/kimochigate.js</script></action>
+		</reference>
+		<reference name="content">
+			<block type="kimochigate/kimochigate" name="kimochigate" template="kimochigate/kimochigate.phtml"/>
+		</reference>
+	</kimochigate_index_index>
+
+	<kimochigate_index_verify>
+		<reference name="root">
+			 <remove name="header" />
+			 <remove name="footer" />
+		</reference>
+		<reference name="head">
+			<action method="addJs"><script>smartlab/verify.js</script></action>
+		</reference>
+		<reference name="content">
+			<block type="kimochigate/verify" name="verify" template="kimochigate/verify.phtml"/>
+		</reference>
+	</kimochigate_index_verify>
+</layout>
