@@ -18,6 +18,7 @@ class SmartLab_Kimochigate_IndexController extends Mage_Core_Controller_Front_Ac
     {
     	$data = $this->getRequest()->getParams();
     	if (0 == $data['success']) {
+			$orderId = explode('^_^',base64_decode($data['orderDetail']))[0];
     		$this->_redirect('godzaipayment/index/response',array('_secure'=>false,'flag'=>0,'orderId'=>$orderId));
     	}
     	else
