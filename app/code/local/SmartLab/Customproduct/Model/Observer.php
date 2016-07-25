@@ -289,5 +289,4 @@ class SmartLab_Customproduct_Model_Observer
         }
     }
 
-
 }

@@ -3,7 +3,7 @@
 <config>
     <modules>
         <SmartLab_Customproduct>
-            <version>0.1.0</version>
+            <version>0.1.3</version>
         </SmartLab_Customproduct>
     </modules>
 
@@ -25,6 +25,19 @@
                 <class>SmartLab_Customproduct_Model</class>
             </customproduct>
         </models>
+
+        <crontab>
+            <jobs>
+                <customproduct_cron>
+                    <schedule>
+                        <cron_expr>* * * * *</cron_expr>
+                    </schedule>
+                    <run>
+                        <model>customproduct/Cron::cronTest</model>
+                    </run>
+                </customproduct_cron>
+            </jobs>
+        </crontab>
 
         <resources>
             <!--install scrip add new product type-->
@@ -58,6 +71,16 @@
                     <use>core_setup</use>
                 </connection>
             </emailtem_setup>
+
+            <!--install script add rule shopping cart-->
+            <createrule_setup>
+                <setup>
+                    <module>SmartLab_Customproduct</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </createrule_setup>
         </resources>
 
         <catalog>
@@ -118,6 +141,8 @@
                         <type>singleton</type>
                         <class>smartlab_customproduct_model_observer</class>
                         <method>hookToAddToCartBefore</method>
+                        <!--<class>smartlab_customproduct_model_cron</class>-->
+                        <!--<method>cronTest</method>-->
                     </check_login>
                 </observers>
             </add_to_cart_before>
