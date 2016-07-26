@@ -392,7 +392,7 @@ html {
 }
 
 body {
-  : #FFFFFF;
+ /* : #FFFFFF;*/
   color: #000000;
   line-height: 1;
 }
@@ -490,7 +490,7 @@ select,
 table,
 textarea {
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
-  color: #c57bce;
+  color: #464646;
   font-size: 13px;
   line-height: 18px;
   font-weight: 500;
@@ -537,14 +537,14 @@ h1, .h1 {
 h2, .h2 {
   margin: 0;
   margin-bottom: 0.5em;
-  color: #636363;
+  color: #29B91B;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   font-style: normal;
   line-height: 1.2;
   text-rendering: optimizeLegibility;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 h3, .h3 {
@@ -609,7 +609,7 @@ h6, .h6 {
 .availability {
   margin-bottom: 0;
   font-size: 13px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .availability .label {
@@ -640,11 +640,11 @@ h6, .h6 {
   text-transform: uppercase;
   font-size: 24px;
   font-weight: 500;
-  color: #e40048;
+  color: #7d7175;
   /*border-bottom: 1px solid #ededed;*/
   padding-bottom: 3px;
   margin-bottom: 15px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 /* -------------------------------------------- *
@@ -678,7 +678,7 @@ h6, .h6 {
   line-height: 1.4;
   text-rendering: optimizeSpeed;
   text-transform: capitalize;
-  color: #3399cc;
+  color: #636363;
   margin-bottom: 0;
   text-transform: capitalize;
   font-weight: 600;
@@ -918,12 +918,12 @@ body:not(.customer-account) .block:first-child .block-title {
 .cart-table .product-cart-actions .button,
 #co-shipping-method-form .buttons-set .button,
 .footer .button {
-  background: #add;
+  background: #333333;
   display: inline-block;
- /* padding: 7px 15px;*/
+  /*padding: 7px ;*/
   border: 0;
-  color: #000000;
-  font-size: 13px;
+  color: #fbfbfb;
+  font-size: 14px;
   font-weight: normal;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   line-height: 19px;
@@ -931,6 +931,8 @@ body:not(.customer-account) .block:first-child .block-title {
   /*text-transform: uppercase;*/
   vertical-align: middle;
   white-space: nowrap;
+   /*height: 35px;*/
+
 }
 .button:hover,
 .cart-table .product-cart-actions .button:hover,
@@ -994,9 +996,9 @@ a.button:hover {
   line-height: 30px;
   height: 30px;
   text-decoration: underline;
-  text-transform: uppercase;
+ /* text-transform: uppercase;*/
   display: inline-block;
-  color: #3399cc;
+  color: #21ae22;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .button2 span:hover,
@@ -1143,9 +1145,9 @@ a.button:hover {
 
 .breadcrumbs li {
   float: left;
-  font-size: 12px;
+  font-size: 13px;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .breadcrumbs a {
@@ -1761,7 +1763,7 @@ a.button:hover {
 }
 
 .price-box .price {
-  color: #3399cc;
+  color: red;
   font-size: 16px;
 }
 
@@ -2099,15 +2101,16 @@ span.weee {
 .toolbar,
 .pager {
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  color: #ca02c2;
+  color: #5d5d5d;
   line-height: 30px;
   font-size: 12px;
+  font-weight: 400;
 }
 
 .toolbar label,
 .pager-no-toolbar label {
   font-weight: normal;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .sorter {
@@ -2864,8 +2867,8 @@ p.required,
 form .form-instructions {
   font-style: italic;
   font-family: Georgia, Times, "Times New Roman", serif;
-  font-size: 13px;
-  color: #a0a0a0;
+  font-size: 14px;
+  color: #ff0303;
 }
 
 /* ============================================ *
@@ -3151,7 +3154,7 @@ body {
   min-width: 320px;
   min-height: 100%;
   margin: 0 auto;
-  background: #fdeff3;
+  background: #f8f8f8;
 }
 
 .wrapper:after {
@@ -3850,7 +3853,7 @@ a.skip-link {
 }
 @media only screen and (min-width: 771px) {
   .skip-cart {
-    color: #3399cc;
+    color: #717373;
     text-transform: uppercase;
   }
   .skip-cart:hover {
@@ -3877,7 +3880,7 @@ a.skip-link {
 
   .skip-cart .count,
   .skip-link.skip-active .count {
-    color: #3399cc;
+    color: #0522fb;
   }
 }
 .skip-cart .count.empty {
@@ -4224,7 +4227,7 @@ h3.product-name a:hover,
 h4.product-name a:hover,
 h5.product-name a:hover,
 p.product-name a:hover {
-  color: #3399cc;
+  color: #EE00EE;
   text-decoration: none;
 }
 
@@ -4966,7 +4969,7 @@ p.product-name a:hover {
 }
 .product-view .product-shop .product-name .h1,
 .product-view .product-img-box .product-name h1 {
-  color: #3399cc;
+  color: #6d6d6d;
   margin-bottom: 10px;
   border: 0;
 }
@@ -5020,7 +5023,7 @@ p.product-name a:hover {
 .product-view .product-shop .price-box .regular-price .price,
 .product-view .product-shop .price-box .special-price .price,
 .product-view .product-shop .price-box .full-product-price .price {
-  color: #3399cc;
+  color: red;
   font-size: 24px;
 }
 .product-view .product-shop .price-box .special-price .price-label {
@@ -5108,8 +5111,9 @@ p.product-name a:hover {
 }
 .product-img-box .product-image img {
   max-width: 100%;
-  max-height: 750px;
-  margin: 0px auto;
+ /* max-height: 750px;
+  margin: 0px auto;*/
+  height: 350px;
 }
 
 @media only screen and (max-width: 479px) {
@@ -5398,8 +5402,8 @@ p.product-name a:hover {
     height: 40px;
     line-height: 40px;
     cursor: pointer;
-    text-transform: uppercase;
-    font-size: 12px;
+    text-transform: capitalize;
+    font-size: 13px;
     position: relative;
     bottom: -1px;
   }
@@ -5413,7 +5417,7 @@ p.product-name a:hover {
   }
   .product-collateral .toggle-tabs li.current span,
   .product-collateral .toggle-tabs li:hover span {
-    color: #3399cc;
+    color: #5f5e5e;
   }
   .product-collateral .toggle-tabs li:first-child {
     border-left: none;
@@ -6989,7 +6993,7 @@ p.product-name a:hover {
 
 .opc .section.allow .step-title:hover h2,
 .opc .section.active .step-title h2 {
-  color: #3399cc;
+  color: #0bd45b;
 }
 
 .opc .section .step-title h2 {
@@ -7751,7 +7755,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   font-style: italic;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 13px;
-  color: #a0a0a0;
+  color: #ff5405;
 }
 
 .remember-me-box a.hide {
