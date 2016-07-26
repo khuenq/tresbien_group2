@@ -1352,7 +1352,7 @@ a.button:hover {
 
 .col-main {
   float: left;
-  width: 100%;
+  width: 75%;
 }
 
 .col1-layout .col-main {
@@ -3182,7 +3182,9 @@ body {
  * Language switcher + welcome message
  * ============================================ */
 .header-language-background {
-  background-color: rgb(255, 63, 0);
+  padding: 10px;
+  background-color: #3399cc;
+  text-transform: uppercase;
 }
 .header-language-background .header-language-container {
   max-width: 1200px;
@@ -3196,13 +3198,11 @@ body {
 }
 .header-language-background .form-language,
 .header-language-background .currency-switcher {
-  float: right;
+  float: left;
   margin-right: 10px;
 }
 .header-language-background .welcome-msg {
   float: right;
-  margin-right: 15%;
-  margin-top: 5px;
 }
 
 .page-header-container .store-language-container {
@@ -3227,8 +3227,7 @@ body {
 }
 .header-language-background,
 .header-language-background a {
-  color: #ffffff;
-  font-size: 11px;
+  color: #e6e6e6;
 }
 
 @media only screen and (max-width: 770px) {
@@ -3308,7 +3307,7 @@ a.skip-link {
 }
 
 .skip-link:not(.skip-active):hover {
-  /*opacity: 0.8;*/
+  opacity: 0.8;
 }
 
 @media only screen and (max-width: 770px) {
@@ -3329,7 +3328,7 @@ a.skip-link {
  * Skip Link - Active
  */
 @media only screen and (max-width: 770px) {
- /* .skip-link.skip-active {
+  .skip-link.skip-active {
     background: #EDEDED;
     color: inherit;
   }
@@ -3337,7 +3336,6 @@ a.skip-link {
   .skip-link.skip-active span {
     color: inherit;
   }
-  */
 }
 /* -------------------------------------------- *
  * Skip Link - Icon
@@ -3462,8 +3460,7 @@ a.skip-link {
   #header-nav {
     display: block;
     /* Force visibility */
-	margin-left: 5%;
-	margin-right: 6%;
+    border-bottom: 1px solid #ededed;
   }
 }
 /* ============================================ *
@@ -3472,8 +3469,7 @@ a.skip-link {
 @media only screen and (min-width: 771px) {
   .nav-primary {
     display: block;
-    background-color: rgb(37, 37, 37);
-    height: 44px;
+    margin-top: 15px;
   }
 }
 /* ============================================ *
@@ -3483,9 +3479,8 @@ a.skip-link {
   text-decoration: none;
   position: relative;
   display: block;
-  /*color: #636363;*/
-  color: #ffffff;
-  line-height: 45px;
+  color: #636363;
+  line-height: 30px;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .nav-primary li {
@@ -3500,8 +3495,8 @@ a.skip-link {
   display: block;
 }
 
-.nav-primary li.level0 > a :hover{
-  /*text-transform: uppercase;*/
+.nav-primary li.level0 > a {
+  text-transform: uppercase;
 }
 
 /* ============================================ *
@@ -3580,16 +3575,17 @@ a.skip-link {
   }
   .nav-primary a:hover,
   .nav-primary li:hover > a {
-    color: rgb(255, 63, 0);
+    color: #3399cc;
   }
   .nav-primary .menu-active {
     z-index: 200;
   }
   .nav-primary li.level0 ul {
-    background: #595959;
+    background: #FBFBFB;
+    border: solid 1px #cccccc;
     position: absolute;
     left: 0;
-    top: 44px;
+    top: 30px;
     /* Height of ".nav-primary a.level0" */
     z-index: 10;
     width: 250px;
@@ -3770,16 +3766,10 @@ a.skip-link {
  */
 #header-account {
   padding: 5px 0;
-  text-transform: uppercase;
-}
-
-#header-account li {
-  float: left;
 }
 
 #header-account a {
   position: relative;
-  color: white;
   display: block;
   padding: 5px 10px;
   line-height: 23px;
@@ -3787,7 +3777,7 @@ a.skip-link {
 }
 
 #header-account a:hover {
-  color: #323232;
+  color: #3399cc;
 }
 
 /* ============================================ *
@@ -3859,13 +3849,11 @@ a.skip-link {
 }
 @media only screen and (min-width: 771px) {
   .skip-cart {
-    color: #ffffff;
-    background-color: green;
-    border-radius: 0;
+    color: #3399cc;
+    text-transform: uppercase;
   }
   .skip-cart:hover {
     text-decoration: none;
-    background: green;
   }
   .skip-cart .count {
     -webkit-border-radius: 0px;
@@ -4031,7 +4019,7 @@ a.skip-link {
 }
 .footer .links,
 .footer .block-subscribe {
-  /*text-transform: uppercase;*/
+  text-transform: uppercase;
   font-size: 12px;
 }
 .footer .form-subscribe-header {
@@ -9271,10 +9259,6 @@ div.paypal-logo span > img {
  * ============================================ */
 .header-minicart {
   display: inline-block;
-  position: absolute;
-  top: 160px;
-  right: 0px;
-  z-index: 998;
 }
 @media only screen and (max-width: 770px) {
   .header-minicart {
@@ -10616,16 +10600,4 @@ div.calendar table td.button {
   background: inherit;
   color: inherit;
   text-transform: none;
-}
-
-.nav-primary-fixed-top{
-	z-index: 9999;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 90%;
-}
-
-.header-minicart a:hover{
-	opacity:1;
 }

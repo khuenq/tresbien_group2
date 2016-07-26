@@ -1,4 +1,3 @@
-<?php
 /**
  * Magento
  *
@@ -23,21 +22,23 @@
  * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-?>
-<?php
-/**
- * Top menu for store
- *
- * @see Mage_Page_Block_Html_Topmenu
- */
-?>
-<?php $_menu = $this->getHtml('level-top') ?>
 
-<?php if($_menu): ?>
-    <nav id="nav">
-        <ol class="nav-primary">
-            <?php echo $_menu ?>
-            <li class="level0"><a href="http://vn.local.tres-bien.com/blog/">Kitchen Stories</a></li>
-        </ol>
-    </nav>
-<?php endif ?>
+Catalog.Map.showHelp = Catalog.Map.showHelp.wrap(function (parent, event) {
+    var helpBox = $('map-popup');
+    var bodyNode = $$('body')[0];
+
+    // Resolve calculation bug in parent so we can actually use these classes...
+    if (helpBox && this != Catalog.Map && Catalog.Map.active != this.link) {
+        parent(event);
+
+        helpBox.removeClassName('map-popup-right');
+        helpBox.removeClassName('map-popup-left');
+        if (Element.getWidth(bodyNode) < event.pageX + (Element.getWidth(helpBox) / 2)) {
+            helpBox.addClassName('map-popup-left');
+        } else if (event.pageX - (Element.getWidth(helpBox) / 2) < 0) {
+            helpBox.addClassName('map-popup-right');
+        }
+    } else {
+        parent(event);
+    }
+});

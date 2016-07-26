@@ -1,4 +1,3 @@
-<?php
 /**
  * Magento
  *
@@ -23,21 +22,27 @@
  * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
-?>
-<?php
-/**
- * Top menu for store
- *
- * @see Mage_Page_Block_Html_Topmenu
- */
-?>
-<?php $_menu = $this->getHtml('level-top') ?>
 
-<?php if($_menu): ?>
-    <nav id="nav">
-        <ol class="nav-primary">
-            <?php echo $_menu ?>
-            <li class="level0"><a href="http://vn.local.tres-bien.com/blog/">Kitchen Stories</a></li>
-        </ol>
-    </nav>
-<?php endif ?>
+Checkout.prototype.gotoSection = function (section, reloadProgressBlock) {
+    // Adds class so that the page can be styled to only show the "Checkout Method" step
+    if ((this.currentStep == 'login' || this.currentStep == 'billing') && section == 'billing') {
+        $j('body').addClass('opc-has-progressed-from-login');
+    }
+
+    if (reloadProgressBlock) {
+        this.reloadProgressBlock(this.currentStep);
+    }
+    this.currentStep = section;
+    var sectionElement = $('opc-' + section);
+    sectionElement.addClassName('allow');
+    this.accordion.openSection('opc-' + section);
+
+    // Scroll viewport to top of checkout steps for smaller viewports
+    if (Modernizr.mq('(max-width: ' + bp.xsmall + 'px)')) {
+        $j('html,body').animate({scrollTop: $j('#checkoutSteps').offset().top}, 800);
+    }
+
+    if (!reloadProgressBlock) {
+        this.resetPreviousSteps();
+    }
+}

@@ -652,6 +652,7 @@ h6, .h6 {
 .block,
 .col-left-first {
   margin-bottom: 20px;
+  display: none;
 }
 
 .col-left-first .block:last-of-type {
@@ -662,25 +663,20 @@ h6, .h6 {
   position: relative;
   padding: 10px 0 0;
   margin-bottom: 5px;
-  border-top: 1px solid #cccccc;
+  /*border-top: 1px solid #cccccc;*/
 }
 .block-title h2,
 .block-title h3,
 .block-title strong {
   margin: 0;
-  margin-bottom: 10px;
-  color: #636363;
+  color: #000000;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   font-size: 14px;
-  font-weight: bold;
   font-style: normal;
   line-height: 1.4;
   text-rendering: optimizeSpeed;
-  text-transform: uppercase;
-  color: #3399cc;
   margin-bottom: 0;
   text-transform: uppercase;
-  font-weight: 600;
 }
 .block-title small {
   font-size: 100%;
@@ -3333,7 +3329,6 @@ a.skip-link {
     background: #EDEDED;
     color: inherit;
   }
-
   .skip-link.skip-active span {
     color: inherit;
   }
