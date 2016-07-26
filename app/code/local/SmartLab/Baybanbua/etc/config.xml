@@ -60,6 +60,11 @@
 				<class>SmartLab_Baybanbua_Helper</class>
 			</baybanbua>
 		</helpers>
+		<blocks>
+			<baybanbua>
+				<class>SmartLab_Baybanbua_Block</class>
+			</baybanbua>
+		</blocks>
 		<events>
 			<sales_order_place_after>
 	            <observers>

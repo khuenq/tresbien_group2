@@ -7,6 +7,7 @@ extends Mage_Shipping_Model_Carrier_Abstract
 implements Mage_Shipping_Model_Carrier_Interface
 {
 	protected $_code = 'baybanbua';
+	protected $_formBlockType = '';
 	
 	public function collectRates(Mage_Shipping_Model_Rate_Request $request)
     {
@@ -39,5 +40,9 @@ implements Mage_Shipping_Model_Carrier_Interface
 		 
 		return $rate;
 	}
+
+	public function getFormBlock(){
+        return 'baybanbua/baybanbua';
+    }
 }
 ?>
