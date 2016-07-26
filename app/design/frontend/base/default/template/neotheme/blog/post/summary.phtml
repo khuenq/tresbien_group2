@@ -1,4 +1,3 @@
-
 <?php
 /**
  * NeoTheme Austrlia (Neo Industries Pty Ltd)
@@ -9,11 +8,11 @@
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
  * http://www.neotheme.com.au/legal/licenses/NDSM.html
- * If the license is not included with the package or for any other reason,
- * you did not receive your licence please send an email to
+ * If the license is not included with the package or for any other reason, 
+ * you did not receive your licence please send an email to 
  * license@neotheme.com.au so we can send you a copy immediately.
  *
- * This software comes with no warrenty of any kind. By Using this software, the user agrees to hold
+ * This software comes with no warrenty of any kind. By Using this software, the user agrees to hold 
  * Neo Industries Pty Ltd harmless of any damage it may cause.
  *
  * @category    modules
@@ -26,7 +25,7 @@
  */
  $formatType = Mage::getStoreConfig(NeoTheme_Blog_Helper_Data::XPATH_CONFIG_DATETIME_FORMAT_TYPE);
  $format = ($formatType != 'custom')?
-    Mage::app()->getLocale()->getDateTimeFormat($formatType):
+    Mage::app()->getLocale()->getDateTimeFormat($formatType): 
     Mage::getStoreConfig(NeoTheme_Blog_Helper_Data::XPATH_CONFIG_DATETIME_CUSTOM_FORMAT);
 ?>
 <article class="post">
@@ -44,9 +43,9 @@
         <div class="post-author"><?php echo $this->__('by'); ?> <?php echo $authorName; ?></div>
         <?php endif;?>
     </div>
-
+    
     <div class="post-summary">
-        <?php echo $this->getPost()->getSummary(); ?>
+		<?php echo $this->getPost()->getSummary(); ?>
         <div class="read-more"><a href="<?php echo $this->getPost()->getReadMoreUrl(); ?>"><?php echo $this->__($this->getPost()->getReadMoreText()); ?></a></div>
     </div>
     
