@@ -66,14 +66,14 @@
 			</baybanbua>
 		</blocks>
 		<events>
-			<sales_order_place_after>
-	            <observers>
-	                <baybanbua>
-	                    <model>baybanbua/observer</model>
-	                    <method>setBaybanbuaCode</method>
-	                </baybanbua>
-	            </observers>
-	        </sales_order_place_after>
+	        <checkout_onepage_controller_success_action>
+	        	<observers>
+		        	<baybanbua>
+		        		<model>baybanbua/observer</model>
+		                <method>setBaybanbuaCode</method>
+		        	</baybanbua>
+	        	</observers>
+	        </checkout_onepage_controller_success_action>
 		</events>
 	</global>
 	<default>

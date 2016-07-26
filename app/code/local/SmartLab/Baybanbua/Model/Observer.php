@@ -6,9 +6,14 @@ class SmartLab_Baybanbua_Model_Observer
 {
 	function setBaybanbuaCode($observer)
 	{
-		$order = $observer->getEvent()->getOrder();
+		$orderId = $observer->getEvent()->getOrderIds();
+		$order = Mage::getModel('sales/order')->load($orderId);
+		
 		// Set baybanbua code for new order
-		if ($order->getState() == Mage_Sales_Model_Order::STATE_NEW) {
+		if (Mage_Sales_Model_Order::STATE_NEW == $order->getState() || 
+			Mage_Sales_Model_Order::STATE_PAYMENT_REVIEW == $order->getState() ||
+			Mage_Sales_Model_Order::STATE_PROCESSING == $order->getState()
+		) {
 			if('baybanbua_baybanbua' == $order->getShippingMethod())
 			{
 				// Create random code

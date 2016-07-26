@@ -63,7 +63,16 @@
                             (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
                         <?php endif; ?>
                         </label>
-                        <?php echo $this->getChildHtml('checkout.onepage.shipping_method.available.extra'); ?>
+                        <?php
+                            $carrier = Mage::getModel('shipping/config')->getCarrierInstance($code);
+                            if($carrier->getFormBlock()){
+                                $block = $this->getLayout()->createBlock($carrier->getFormBlock());
+                                $block->setMethodCode($code);
+                                $block->setRate($_rate);
+                                $block->setMethodInstance($carrier);
+                                echo $block->_toHtml();
+                            }
+                        ?>
                    <?php endif ?>
                 </li>
             <?php endforeach; ?>

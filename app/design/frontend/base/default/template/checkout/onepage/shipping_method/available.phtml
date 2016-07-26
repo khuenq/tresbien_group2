@@ -63,6 +63,7 @@
                             (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
                         <?php endif; ?>
                         </label>
+                        <?php echo $this->getChildHtml('checkout.onepage.shipping_method.available.extra'); ?>
                    <?php endif ?>
                 </li>
             <?php endforeach; ?>

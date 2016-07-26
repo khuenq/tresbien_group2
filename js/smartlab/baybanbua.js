@@ -1,7 +1,6 @@
 document.observe('dom:loaded', function() {
 	// Remove continue button onclick action and add their id
 	$('shipping-method-buttons-container').down('button').removeAttribute('onclick');
-	//$('shipping-method-buttons-container').down('button').writeAttribute('id','payment_method_continue');
 
 	// Choose payment method processing
 	$('checkout-shipping-method-load').on('change','input:radio',function(element){

@@ -4,6 +4,8 @@
 		<reference name="root">
 			 <remove name="header" />
 			 <remove name="footer" />
+			 <remove name="left" />
+			 <remove name="right" />
 		</reference>
 		<reference name="head">
 			<action method="addJs"><script>smartlab/kimochigate.js</script></action>
@@ -17,6 +19,8 @@
 		<reference name="root">
 			 <remove name="header" />
 			 <remove name="footer" />
+			 <remove name="left" />
+			 <remove name="right" />
 		</reference>
 		<reference name="head">
 			<action method="addJs"><script>smartlab/verify.js</script></action>
