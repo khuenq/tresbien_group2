@@ -27,8 +27,8 @@ class SmartLab_Baybanbua_Model_Observer
 				} 
 				catch(Exception $e)
 				{
-					Mage::log($e->getMessage());
-					Mage::log($e->getTraceAsString());
+					Mage::log($e->getMessage(),null,'baybanbua.log');
+					Mage::log($e->getTraceAsString(),null,'baybanbua.log');
 				}
 			}
 		}
