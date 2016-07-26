@@ -23,10 +23,9 @@ CREATE TABLE {$this->getTable('neotheme_tag_post')} (
 
 ALTER TABLE neotheme_blog_category DROP INDEX IDX_CMS_IDENTIFIER;
 
- ALTER TABLE neotheme_blog_tag
-        ADD `index` int (11) NOT NULL;
-    ");
+ALTER TABLE neotheme_blog_tag
+    ADD `index` int (11) NOT NULL;
 
-
+");
 
 $installer->endSetup();
