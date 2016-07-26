@@ -163,68 +163,72 @@ class SmartLab_Customproduct_Model_Observer
     public function sendCodeAfterBuy($observer)
     {
         $lastOrderId = Mage::getSingleton('checkout/session')->getLastOrderId();
-        $order = Mage::getSingleton('sales/order');
-        $order->load($lastOrderId);
+        $order = Mage::getModel('sales/order')->load($lastOrderId);
         $allitems = $order->getAllItems();
 
-        foreach ($allitems as $item) {
-            $product = Mage::getModel('catalog/product')->load($item->getProductId());
-            if ("customproduct" == $product->getTypeId()) {
-                $productsku = $item->getSku();
-                $rank = substr($productsku, strlen($productsku) - 1);
-                if ($rank == 1) {
-                    $ranknote = "Bronze";
-                } else if ($rank == 2) {
-                    $ranknote = "Silver";
-                } else if ($rank == 3) {
-                    $ranknote = "Gold";
-                } else {
-                    $ranknote = "Platinum";
+//        check loai thanh toan
+        $paymentCode = $order->getPayment()->getMethodInstance()->getCode();
+        if ($paymentCode == "godzaipayment") { //neu thanh toan truc tiep =>> gui email luon
+
+            foreach ($allitems as $item) {
+                $product = Mage::getModel('catalog/product')->load($item->getProductId());
+                if ("customproduct" == $product->getTypeId()) {
+                    $productsku = $item->getSku();
+                    $rank = substr($productsku, strlen($productsku) - 1);
+                    if ($rank == 1) {
+                        $ranknote = "Bronze";
+                    } else if ($rank == 2) {
+                        $ranknote = "Silver";
+                    } else if ($rank == 3) {
+                        $ranknote = "Gold";
+                    } else {
+                        $ranknote = "Platinum";
+                    }
+
+                    $customer_detail = Mage::getSingleton('customer/session')->getCustomer();
+                    $customerEmail = $customer_detail->getEmail();
+                    $customerId = Mage::getSingleton('customer/session')->getCustomerId();
+
+                    //tao custom code cho khach hang
+                    $rdCode = Mage:: helper('core')->getRandomString(14) . "-" . $productsku;
+
+
+                    //luu code ay vao customer attribute la product code
+                    $customer = Mage::getModel('customer/customer')->load($customerId);
+                    $customer->getProductcode();
+                    $customer->setProductcode($rdCode);
+                    $customer->getResource()->saveAttribute($customer, 'productcode');
+
+                    $mailTemplate = Mage::getModel('core/email_template');
+                    $mail = $mailTemplate->loadByCode('Send Code');
+                    $templateId = $mail->getId();
+                    $template_collection = $mailTemplate->load($templateId);
+                    $template_data = $template_collection->getData();
+
+                    $translate = Mage::getSingleton('core/translate');
+
+                    $mailSubject = $template_data['template_subject'];
+                    $from_email = Mage::getStoreConfig('trans_email/ident_general/email'); //fetch sender email
+                    $from_name = Mage::getStoreConfig('trans_email/ident_general/name'); //fetch sender name
+
+                    $sender = array('name' => $from_name,
+                        'email' => $from_email);
+                    $vars = array('dc_code' => $product->getName(),
+                        'dc_rank' => $ranknote,
+                        'dc_vipcode' => $rdCode); //for replacing the variables in email with data
+                    /*This is optional*/
+                    $storeId = Mage::app()->getStore()->getId();
+                    $model = $mailTemplate->setReplyTo($sender['email'])->setTemplateSubject($mailSubject);
+                    $email = $customer->getEmail();
+                    $name = $customer->getName();
+                    $model->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
+                    if (!$mailTemplate->getSentSuccess()) {
+
+                        throw new Exception();
+                    }
+                    $translate->setTranslateInline(true);
+
                 }
-
-                $customer_detail = Mage::getSingleton('customer/session')->getCustomer();
-                $customerEmail = $customer_detail->getEmail();
-                $customerId = Mage::getSingleton('customer/session')->getCustomerId();
-
-                //tao custom code cho khach hang
-                $rdCode = Mage:: helper('core')->getRandomString(14) . "-" . $productsku;
-
-
-                //luu code ay vao customer attribute la product code
-                $customer = Mage::getModel('customer/customer')->load($customerId);
-                $customer->getProductcode();
-                $customer->setProductcode($rdCode);
-                $customer->getResource()->saveAttribute($customer, 'productcode');
-
-                $mailTemplate = Mage::getModel('core/email_template');
-                $mail = $mailTemplate->loadByCode('Send Code');
-                $templateId = $mail->getId();
-                $template_collection = $mailTemplate->load($templateId);
-                $template_data = $template_collection->getData();
-
-                $translate = Mage::getSingleton('core/translate');
-
-                $mailSubject = $template_data['template_subject'];
-                $from_email = Mage::getStoreConfig('trans_email/ident_general/email'); //fetch sender email
-                $from_name = Mage::getStoreConfig('trans_email/ident_general/name'); //fetch sender name
-
-                $sender = array('name' => $from_name,
-                    'email' => $from_email);
-                $vars = array('dc_code' => $product->getName(),
-                    'dc_rank' => $ranknote,
-                    'dc_vipcode' => $rdCode); //for replacing the variables in email with data
-                /*This is optional*/
-                $storeId = Mage::app()->getStore()->getId();
-                $model = $mailTemplate->setReplyTo($sender['email'])->setTemplateSubject($mailSubject);
-                $email = $customer->getEmail();
-                $name = $customer->getName();
-                $model->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
-                if (!$mailTemplate->getSentSuccess()) {
-
-                    throw new Exception();
-                }
-                $translate->setTranslateInline(true);
-
             }
         }
     }
@@ -289,4 +293,76 @@ class SmartLab_Customproduct_Model_Observer
         }
     }
 
+
+//    event send email and update staus for customer when status order updateed
+    public function implementOrderStatus($event)
+    {
+        $order = $event->getOrder();
+        $items = $order->getAllItems();
+        if ($order->getStatus() == "complete") {
+            if ($this->_getPaymentMethod($order) == 'checkmo') {
+                foreach ($items as $item) {
+                    $product = Mage::getModel('catalog/product')->load($item->getProductId());
+                    if ("customproduct" == $product->getTypeId()) {
+//                    if ($order->canInvoice())
+                        $productsku = $item->getSku();
+                        $customerId = $order->getCustomerId();
+                        $rank = substr($productsku, strlen($productsku) - 1);
+                        if ($rank == 1) {
+                            $ranknote = "Bronze";
+                        } else if ($rank == 2) {
+                            $ranknote = "Silver";
+                        } else if ($rank == 3) {
+                            $ranknote = "Gold";
+                        } else {
+                            $ranknote = "Platinum";
+                        }
+                        //tao custom code cho khach hang
+                        $rdCode = Mage:: helper('core')->getRandomString(14) . "-" . $productsku;
+
+
+                        //luu code ay vao customer attribute la product code
+                        $customer = Mage::getModel('customer/customer')->load($customerId);
+                        $customer->getProductcode();
+                        $customer->setProductcode($rdCode);
+                        $customer->getResource()->saveAttribute($customer, 'productcode');
+
+                        $mailTemplate = Mage::getModel('core/email_template');
+                        $mail = $mailTemplate->loadByCode('Send Code');
+                        $templateId = $mail->getId();
+                        $template_collection = $mailTemplate->load($templateId);
+                        $template_data = $template_collection->getData();
+
+                        $mailSubject = $template_data['template_subject'];
+                        $from_email = Mage::getStoreConfig('trans_email/ident_general/email'); //fetch sender email
+                        $from_name = Mage::getStoreConfig('trans_email/ident_general/name'); //fetch sender name
+
+                        $sender = array('name' => $from_name,
+                            'email' => $from_email);
+                        $vars = array('dc_code' => $product->getName(),
+                            'dc_rank' => $ranknote,
+                            'dc_vipcode' => $rdCode); //for replacing the variables in email with data
+                        /*This is optional*/
+                        $storeId = $order->getStoreId();
+                        $model = $mailTemplate->setReplyTo($sender['email'])->setTemplateSubject($mailSubject);
+                        $email = $customer->getEmail();
+                        $name = $customer->getName();
+                        $model->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
+                        if (!$mailTemplate->getSentSuccess()) {
+                            throw new Exception();
+                        }
+                    }
+
+                }
+
+
+            }
+        }
+        return $this;
+    }
+
+    private function _getPaymentMethod($order)
+    {
+        return $order->getPayment()->getMethodInstance()->getCode();
+    }
 }
