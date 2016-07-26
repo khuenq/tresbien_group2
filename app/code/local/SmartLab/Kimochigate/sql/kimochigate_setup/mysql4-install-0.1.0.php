@@ -8,12 +8,8 @@ $installer->run("
 -- DROP TABLE IF EXISTS {$this->getTable('kimochigate')};
 CREATE TABLE {$this->getTable('kimochigate')} (
   `kimochigate_id` int(11) unsigned NOT NULL auto_increment,
-  `title` varchar(255) NOT NULL default '',
-  `filename` varchar(255) NOT NULL default '',
-  `content` text NOT NULL default '',
-  `status` smallint(6) NOT NULL default '0',
-  `created_time` datetime NULL,
-  `update_time` datetime NULL,
+  `name` varchar(255) NOT NULL default '',
+  `cardno` varchar(50) NOT NULL default '',
   PRIMARY KEY (`kimochigate_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
