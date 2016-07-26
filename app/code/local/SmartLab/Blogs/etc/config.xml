@@ -68,6 +68,11 @@
             <smartlab_blogs>
                 <class>SmartLab_Blogs_Block</class>
             </smartlab_blogs>
+            <neotheme_blog>
+                <rewrite>
+                    <post_list>SmartLab_Blogs_Block_Post_List</post_list>
+                </rewrite>
+            </neotheme_blog>
         </blocks>
         <helpers>
             <blogs>
@@ -75,14 +80,14 @@
             </blogs>
         </helpers>
         <events>
-        <controller_action_postdispatch_neotheme_blog_post_index>
-            <observers>
-                <blog_observer_post_tag>
-                    <class>SmartLab_Blog_Model_Observer</class>
-                    <method>hookIntoPostTag</method>
-                </blog_observer_post_tag>
-            </observers>
-        </controller_action_postdispatch_neotheme_blog_post_index>
-    </events>
+            <controller_action_postdispatch_neotheme_blog_post_index>
+                <observers>
+                    <blogs_observer_blog_readmore>
+                        <class>SmartLab_Blogs_Model_Observer</class>
+                        <method>hookIntoReadMore</method>
+                    </blogs_observer_blog_readmore>
+                </observers>
+            </controller_action_postdispatch_neotheme_blog_post_index>
+        </events>
     </global>
 </config>

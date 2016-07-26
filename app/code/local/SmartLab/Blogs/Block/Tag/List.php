@@ -11,8 +11,8 @@ extends Mage_Core_Block_Template
     public function getListTag()
     {
         $tagModel = Mage::getModel('blogs/tag')->getCollection();
-        if($tagModel->count() <=20 ){
-            return $tagModel;
-        }
+        $tagModel->getSelect()->order(array('index DESC'));
+        $tagModel->getSelect()->limit(20);
+        return $tagModel;
     }
 }

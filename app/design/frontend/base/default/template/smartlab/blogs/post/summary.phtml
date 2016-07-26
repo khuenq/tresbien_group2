@@ -1,4 +1,33 @@
+<header>
+    <style type="text/css">
+        .black_overlay{
+            display: none;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=80);
+        }
 
+        .white_content {
+            display: none;
+            position: fixed;
+            top: 5%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+            padding: 16px;
+            background-color: white;
+            z-index:1002;
+            overflow: scroll;
+        }
+    </style>
+</header>
 <?php
 /**
  * NeoTheme Austrlia (Neo Industries Pty Ltd)
@@ -31,14 +60,12 @@
 ?>
 <article class="post">
     <div class="page-title post-title"><h2><a href="<?php echo $this->getPost()->getReadMoreUrl(); ?>"><?php echo $this->getPost()->getTitle(); ?></a></h2></div>
-    
+
     <div class="post-metadata">
-        <div class="post-time">
-            <?php echo $this->__('Posted On: ');?> 
+            <div class="post-time">
+            <?php echo $this->__('Posted On: ');?>
             <?php $date = ($this->getPost()->getPostDate() != NULL)? $this->getPost()->getPostDate()  : $this->getPost()->getCreatedAt() ; ?>
             <?php  echo Mage::app()->getLocale()->date($date)->toString($format); ?>
-            <?php // $timestamp = (int) Mage::app()->getLocale()->date($date)->getTimestamp() ;?>
-            <?php // echo date('d D', $timestamp)?><?php // echo date('M', $timestamp)?>
         </div>
         <?php if ($authorName = $this->getPost()->getAuthor()) :?>
         <div class="post-author"><?php echo $this->__('by'); ?> <?php echo $authorName; ?></div>
@@ -47,14 +74,20 @@
 
     <div class="post-summary">
         <?php echo $this->getPost()->getSummary(); ?>
-        <div class="read-more"><a href="<?php echo $this->getPost()->getReadMoreUrl(); ?>"><?php echo $this->__($this->getPost()->getReadMoreText()); ?></a></div>
+
+        <div class="read-more"><a href = "javascript:void(0)" onclick = "document.getElementById('<?php echo 'light'.$this->getPost()->getId();?>').style.display='block';document.getElementById('fade').style.display='block'">Read more...</a></div>
+        <div id="<?php echo 'light'.$this->getPost()->getId();?>" class="white_content">
+            <a style="float: right; " href = "javascript:void(0)" onclick = "document.getElementById('<?php echo 'light'.$this->getPost()->getId();?>').style.display='none';document.getElementById('fade').style.display='none'">Đóng</a>
+            <h2><a href="<?php echo $this->getPost()->getReadMoreUrl(); ?>" ><?php echo $this->getPost()->getTitle(); ?></a></h2>
+            <?php var_dump($this->getPost()->getContentHtml()); ?>
+        </div>
+        <div id="fade" class="black_overlay"></div>
     </div>
-    
+
     <div class="post-info">
 	<?php if ( (int) $this->getPost()->getStatus() == NeoTheme_Blog_Model_Post::STATUS_DRAFT) : ?>
         	<h3 style="color:red;"><?php echo $this->__('[Draft] (not visible publicly)');?></h3>
         <?php endif; ?>
-        
         <?php if ($this->getPost()->getCategories()->count() > 0):?>
         <ul class="post-categories">
             <?php echo $this->__('Posted In: ');?>
@@ -67,7 +100,7 @@
         </ul>
         <?php endif; ?>
         <?php if ( Mage::helper('neotheme_blog')->isDefaultCommentingEnabled()) : ?>
-        <?php 
+        <?php
          $commentCount = $this->getPost()->getComments()->count();
          $commentText =  ($commentCount == 1) ? $this->__("comment"):$this->__("comments");
         ?>
@@ -76,6 +109,6 @@
         </ul>
         <?php endif; ?>
     </div>
-    
+
     <div class="clr"></div>
 </article>

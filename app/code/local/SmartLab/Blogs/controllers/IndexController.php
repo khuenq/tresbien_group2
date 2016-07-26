@@ -9,16 +9,26 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function listAction()
     {
-        $this->loadLayout();
-        $this->renderLayout();
+        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $this->loadLayout();
+            $this->renderLayout();
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to see your blogs.'));
+        }
     }
 
     public function addAction()
     {
-        $this->loadLayout();
-        echo $this->getLayout()->createBlock('core/text_list')
-            ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
-        $this->renderLayout();
+        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $this->loadLayout();
+            echo $this->getLayout()->createBlock('core/text_list')
+                ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
+            $this->renderLayout();
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to create new blog .'));
+        }
     }
 
     public function createBlogAction()
@@ -61,6 +71,9 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
             $model->setData('post_id',$post_id);
             $model->save();
             $this->_redirect('blogs/index/list');
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to create new blog .'));
         }
     }
 
@@ -82,10 +95,22 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
             }
             try {
                 $model->setId($id)->delete();
+                $cuspost = Mage::getModel('blogs/customerpost')->getCollection()
+                    ->addFieldToFilter('post_id',$id);
+                foreach ($cuspost as $item){
+                    $cuspostid = $item->getId();
+                    $model =  Mage::getModel('blogs/customerpost')->load($item->getId());
+                    $model->setId($cuspostid);
+                    $model->delete();
+                }
                 $this->_redirect('blogs/index/list');
+                Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have deleted successful.'));
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to be deleted blog .'));
         }
     }
 
@@ -146,6 +171,9 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
                 $this->loadLayout();
                 $this->renderLayout();
             }
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to edit blog .'));
         }
     }
 
@@ -154,6 +182,9 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
         if(Mage::getSingleton('customer/session')->isLoggedIn()) {
             $this->loadLayout();
             $this->renderLayout();
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to see detail blog .'));
         }
     }
 }

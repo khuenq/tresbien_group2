@@ -8,6 +8,7 @@ Form information
 <?php $id = $this->getPost()->getId(); ?>
 <form action="<?php echo Mage::getUrl('*/*/edit', array('id'=>$id));?>" method="post" id="person-form-validate">
     <input type="hidden" value="<?php echo $id?>" name="entity_id">
+    
     <div class="fieldset">
         <h2 class="legend"><?php echo $this->__('Edit')?></h2>
         <ul class="form-list">
