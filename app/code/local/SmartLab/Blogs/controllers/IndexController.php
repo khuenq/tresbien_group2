@@ -144,14 +144,10 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
                 foreach ($listTagInput as $tagInput) {
 //               Neu da ton tai trong csdl roi thi lay id cua tag
                     if ($tagModel->getCollection()->addFieldToFilter('name', $tagInput)->count() == 1) {
-                        echo 'scdl';
-                        var_dump($tagInput);
                         $id = $tagModel->getCollection()->addFieldToFilter('name', $tagInput)->getAllIds();
                         array_push($listTagById, $id[0]);
                     } else {
 //                    Neu chua ton tai thi them moi vao csdl roi moi lay id tag
-                        echo 'not csdl';
-                        var_dump($tagInput);
                         $model = Mage::getModel('blogs/tag');
                         $model->setData('name', $tagInput);
                         $model->setData('index', 0);
@@ -159,7 +155,6 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
                         array_push($listTagById, $id);
                     }
                 }
-
                 $tagIds = implode(',', $listTagById);
                 $model = Mage::getModel('neotheme_blog/post');
                 $model->setData($info);

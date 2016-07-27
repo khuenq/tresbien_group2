@@ -15,10 +15,7 @@ class SmartLab_Blogs_Block_Post_List extends Mage_Core_Block_Template implements
     function getUseCustomerPreferences() {
         return filter_var($this->getData('use_customer_preferences'), FILTER_VALIDATE_BOOLEAN);
     }
-    /**
-     * Prepare the post collection for list display
-     * @return type
-     */
+    
     function _prepareCollection() {
         $this->_collection = Mage::getModel('neotheme_blog/post')
             ->getCollection()
