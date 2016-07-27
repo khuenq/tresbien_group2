@@ -394,13 +394,18 @@ class SmartLab_Customproduct_Model_Observer
                                 $ranknote = "Platinum";
                             }
                             $salable->setIsSalable(false);
-                            Mage::getSingleton('core/session')->getMessages(true);
-                            Mage::getSingleton('core/session')->addError("You have already order our digital certification named :" . $item->getName() . " with rank : " . $ranknote . "! Please wait for approved your order");
-                            $currentUrl = Mage::helper('core/url')->getCurrentUrl();
-                            $dataURL = $product->getProductUrl();
-                            if ($currentUrl == $dataURL) {
-                                Mage::getSingleton('core/session')->getMessages(true);
-                            }
+//                            Mage::getSingleton('core/session')->getMessages(true);
+//                            Mage::getSingleton('core/session')->addError("You have already order our digital certification named :" . $item->getName() . " with rank : " . $ranknote . "! Please wait for approved your order");
+//                            $currentUrl = Mage::helper('core/url')->getCurrentUrl();
+//                            $dataURL = $product->getProductUrl();
+//
+//                            if ($currentUrl == $dataURL) {
+//                                Mage::getSingleton('core/session')->getMessages(true);
+//                            }
+////                            $urllll = substr($dataURL, 0, -strlen($product->getName()) - 6) . '.html';
+////                            if ($currentUrl == $urllll || $currentUrl == $dataURL) {
+////                                Mage::getSingleton('core/session')->getMessages(true);
+////                            }
                         }
                     }
                 }

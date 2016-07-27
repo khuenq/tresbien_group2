@@ -119,6 +119,18 @@
                 </observers>
             </catalog_product_is_salable_after>
 
+            <!--<controller_action_predispatch_catalog_product_view>-->
+            <catalog_controller_product_view>
+                <observers>
+                    <value>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_display</class>
+                        <method>productDetail</method>
+                    </value>
+                </observers>
+            </catalog_controller_product_view>
+            <!--</controller_action_predispatch_catalog_product_view>-->
+
 
             <catalog_product_collection_load_after>
                 <observers>
