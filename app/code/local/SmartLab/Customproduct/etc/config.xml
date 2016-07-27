@@ -126,6 +126,8 @@
                         <type>singleton</type>
                         <class>smartlab_customproduct_model_display</class>
                         <method>productDetail</method>
+                        <!--<class>smartlab_customproduct_model_cron</class>-->
+                        <!--<method>cronTest</method>-->
                     </value>
                 </observers>
             </catalog_controller_product_view>

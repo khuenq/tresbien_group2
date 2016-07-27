@@ -249,11 +249,9 @@ class SmartLab_Customproduct_Model_Observer
         $customerEmail = $customer_detail->getEmail();
         $product_code = $customer_detail->getProductcode();
         $checkcode = substr($product_code, 15);
-//        var_dump($checkcode);
-//        die;
         if ($skuproduct == $checkcode) {
             var_dump();
-            Mage::throwException("May mua cai san pham nay roi con j.");
+            Mage::throwException("You have already purchased this product !");
 
         }
 

@@ -271,7 +271,6 @@ class SmartLab_Customproduct_Model_Cron
         $name = $customer_name;
         $model->sendTransactional($templateId, $sender, $email, $name, $vars, $storeId);
         if (!$mailTemplate->getSentSuccess()) {
-
             throw new Exception();
         }
         $translate->setTranslateInline(true);
@@ -292,9 +291,7 @@ class SmartLab_Customproduct_Model_Cron
         if ($todate > $date) {
 
             $collection = mage::getModel('customer/customer')->getCollection()
-                ->addAttributeToSelect('productcode')
-                ->addAttributeToSort('email', 'ASC');
-
+                ->addAttributeToSelect('productcode');
 //            lay danh sach user co rank 1
             foreach ($collection as $user) {
                 $rank = substr($user->getData("productcode"), -1);
@@ -316,8 +313,7 @@ class SmartLab_Customproduct_Model_Cron
                 ->getFirstItem();
 
             $collection = mage::getModel('customer/customer')->getCollection()
-                ->addAttributeToSelect('productcode')
-                ->addAttributeToSort('email', 'ASC');
+                ->addAttributeToSelect('productcode');
 
             foreach ($collection as $user) {
                 $rank = substr($user->getData("productcode"), -1);
