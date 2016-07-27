@@ -1,3 +1,11 @@
+<head>
+    <script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+        });
+    </script>
+</head>
 <?php if($this->getTitle()): ?>
     <div class="page-title">
         <h1><?php echo $this->__($this->getTitle()); ?></h1>
@@ -6,6 +14,14 @@
 
 <!--Form information-->
 <form action="<?php echo $this->getActionOfForm() ?>" method="post" id="person-form-validate">
+    <?php $storeId = Mage::app()->getStore()->getStoreId(); ?>
+    <div class="input-box">
+        <input type="hidden" value="<?php echo $storeId; ?>" name="store_ids" id="store_ids">
+    </div>
+    <div class="input-box">
+        <input type="hidden" min="2000-01-01" title="Post date" value="<?php echo Mage::getModel('core/date')->date('Y-m-d');?>"
+               name="post_date" id="post-date">
+    </div>
     <div class="fieldset">
         <h2 class="legend"><?php echo $this->__('Add new Blog')?></h2>
         <ul class="form-list">
@@ -32,17 +48,10 @@
                 </label>
                 <div class="input-box">
                     <textarea type="text" class="input-text required-entry" maxlength="255"
-                           title="Content" value="" name="content_html" id="content"
+                           title="Content" name="content_html" id="mytextarea"
                             rows="5">
                     </textarea>
                 </div>
-                <div class="field date-create">
-                    <label class="required" for="date-create"><em>*</em><?php echo $this->__('Create Date');?></em></label>
-                    <div class="input-box">
-                        <input type="date" class="input-text required-entry" min="2000-01-01" title="Create date" value="" name="created_at" id="date-create">
-                    </div>
-                </div>
-                
                 <!--                Input tag cua blog-->
                 <label for="tag" class="required">
                     <em>*</em><?php echo $this->__('Tag') ?>
@@ -51,7 +60,6 @@
                     <input type="text" class="input-text required-entry" maxlength="255"
                            title="Tag" value="" name="tag" id="tag">
                 </div>
-
 <!--                Input cho category cua blog-->
                 <label for="category" class="required">
                     <em>*</em><?php echo $this->__('Category') ?>
