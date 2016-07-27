@@ -103,6 +103,18 @@
 
 
         <events>
+            <!--kiem tra hien thi user-->
+            <catalog_product_is_salable_after>
+                <observers>
+                    <check_validate>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>checkBuyDCProduct</method>
+                    </check_validate>
+                </observers>
+            </catalog_product_is_salable_after>
+
+
             <catalog_product_collection_load_after>
                 <observers>
                     <setPrice>
@@ -146,18 +158,6 @@
                     </check_login>
                 </observers>
             </add_to_cart_before>
-
-            <!--event add -->
-            <!--<controller_action_predispatch_adminhtml_catalog_product_new>-->
-            <!--<observers>-->
-            <!--<test>-->
-            <!--<type>singleton</type>-->
-            <!--<class>smartlab_customproduct_model_observer</class>-->
-            <!--<method>disableCustomOption</method>-->
-            <!--</test>-->
-            <!--</observers>-->
-            <!--</controller_action_predispatch_adminhtml_catalog_product_new>-->
-
 
             <!--event create order success-->
             <checkout_onepage_controller_success_action> <!-- identifier of the event we want to catch -->
