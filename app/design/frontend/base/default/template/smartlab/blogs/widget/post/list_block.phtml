@@ -1,0 +1,16 @@
+<?php if ($this->getCollection()->count()): ?>
+    <div class="block block-blog">
+        <div class="block-title">
+            <strong><?php echo $this->__($this->getTitle());?></strong>
+        </div>
+        <div class="block-content">
+            <ul>
+                <?php foreach ($this->getLastestBlog() as $post): ?>
+                    <li>
+                        <a href="<?php echo $post->getReadMoreUrl(); ?>"><?php echo $post->getTitle(); ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>
