@@ -9,27 +9,25 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
 {
     public function listAction()
     {
-        $this->loadLayout();
-        $this->renderLayout();
+        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
+            $this->loadLayout();
+            $this->renderLayout();
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to see your blogs.'));
+        }
     }
 
     public function addAction()
     {
-        $this->loadLayout();
-        echo $this->getLayout()->createBlock('core/text_list')
-            ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
-        $this->renderLayout();
-        if($this->__vipAuthentication())
-        {
+        if(Mage::getSingleton('customer/session')->isLoggedIn()) {
             $this->loadLayout();
             echo $this->getLayout()->createBlock('core/text_list')
                 ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
             $this->renderLayout();
-        }
-        else
-        {
-            // Do some thing
-            $this->_redirect('blog');
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to create new blog .'));
         }
     }
 
@@ -38,9 +36,6 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
         if(Mage::getSingleton('customer/session')->isLoggedIn()) {
             $customer_id = Mage::getSingleton('customer/session')->getCustomerId();
             $data = $this->getRequest()->getPost();
-
-            $blog = Mage::getModel('neotheme_blog/post');
-            $blog->setData($data);
             $tag = $data['tag'];
             $tagIds = array();
             $eachTag = explode(',', $tag);
@@ -49,18 +44,19 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
             foreach ($eachTag as $tagInput){
 //                Neu da ton tai thi chi them id vao truong tag_ids cua bang blog
                 if($model->getCollection()->addFieldToFilter('name', $tagInput)->count() == 1){
+//                    var_dump($tagInput); die;
                     $id = $model->getCollection()->addFieldToFilter('name',$tagInput)->getAllIds();
                     array_push($tagIds, $id[0]);
-                }else{
+                } else{
 //                    Neu chua ton tai thi them tag vao bang tag roi moi them vao truong tag_ids
-                    $model->setData('name',$tagInput);
-                    $model->setData('index',0);
-                    $id = $model->save()->getId();
+                    $id = Mage::getModel('blogs/tag')->setData('name',$tagInput)->save()->getId();
                     array_push($tagIds, $id);
                 }
             }
             $tagIds = implode(',', $tagIds);
             $blog = Mage::getModel('neotheme_blog/post');
+            $store_id = Mage::app()->getStore()->getId();
+            $blog->setData('store_ids', $store_id);
             $blog->setData($data);
             $blog->setData('tag_ids', $tagIds);
             try {
@@ -70,22 +66,14 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
             }
             $item = Mage::getModel('neotheme_blog/post')->load($blog->getId());
             $post_id = $item->getId();
-
             $model = Mage::getModel('blogs/customerpost');
             $model->setData('customer_id',$customer_id);
             $model->setData('post_id',$post_id);
             $model->save();
             $this->_redirect('blogs/index/list');
-
-        }
-        $data = $this->getRequest()->getPost();
-        $blog = Mage::getModel('neotheme_blog/post');
-        $data['post_date']=strtotime($data['created_at']); // Modify by thanhnd1. blog sort theo post_date
-        $blog->setData($data);
-        try {
-            $blog->save();
-        }catch (Exception $e){
-            print_r($e);
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to create new blog .'));
         }
     }
 
@@ -107,10 +95,22 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
             }
             try {
                 $model->setId($id)->delete();
+                $cuspost = Mage::getModel('blogs/customerpost')->getCollection()
+                    ->addFieldToFilter('post_id',$id);
+                foreach ($cuspost as $item){
+                    $cuspostid = $item->getId();
+                    $model =  Mage::getModel('blogs/customerpost')->load($item->getId());
+                    $model->setId($cuspostid);
+                    $model->delete();
+                }
                 $this->_redirect('blogs/index/list');
+                Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have deleted successful.'));
             } catch (Exception $e) {
                 echo $e->getMessage();
             }
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to be deleted blog .'));
         }
     }
 
@@ -119,7 +119,6 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
         if(Mage::getSingleton('customer/session')->isLoggedIn()) {
             if (null != Mage::app()->getRequest()->getPost()) {
 //            Neu co request Post thi vao form edit
-                // echo '<pre>';
 //            Kiem tra xem co tag cu nao chi dung 1 lan o trong blog hien tai ko thi xoa trong csdl di
                 $id = Mage::app()->getRequest()->getParam('id');
                 $currentBlog = Mage::getModel('neotheme_blog/post')->load($id);
@@ -171,6 +170,9 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
                 $this->loadLayout();
                 $this->renderLayout();
             }
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to edit blog .'));
         }
     }
 
@@ -179,23 +181,9 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
         if(Mage::getSingleton('customer/session')->isLoggedIn()) {
             $this->loadLayout();
             $this->renderLayout();
+        }else{
+            $this->_redirect('customer/account/login');
+            Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to see detail blog .'));
         }
-    }
-
-    // Create by thanhnd1
-    private function __vipAuthentication()
-    {
-        // ThanhNT1 sẽ hướng dẫn cách lấy mã DC
-        //$customerDC = Mage::getSingleton('customer/session')->getCustomer()->getDC();
-
-        // chỗ này để test sau khi thanhnt1 tạo mã thành công thì xoá đi
-        //$customerDC = '78lajyjdslnmds';
-        $customerDC = '';
-
-        if(!$customerDC || empty($customerDC))
-        {
-            return false;
-        }
-        return true;
     }
 }
