@@ -33,6 +33,7 @@ extends Mage_Core_Block_Template
         //Lay id cua customer
         $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         //Lay cac id cua blog theo id customer
+//        die($customerId);
         $post = Mage::getModel('blogs/customerpost')->getCollection()->addFieldToFilter('customer_id', $customerId);
         $blogId = array();
         foreach ($post as $item){
