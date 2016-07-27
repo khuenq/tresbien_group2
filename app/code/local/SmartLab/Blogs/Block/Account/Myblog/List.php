@@ -5,8 +5,7 @@
  * Date: 7/11/2016
  * Time: 5:28 PM
  */
-class SmartLab_Blogs_Block_Account_Myblog_List
-extends Mage_Core_Block_Template
+class SmartLab_Blogs_Block_Account_Myblog_List extends Mage_Core_Block_Template
 {
 //    construct function
     public function _construct()
@@ -20,12 +19,15 @@ extends Mage_Core_Block_Template
 //  prepare layout
     public function _prepareLayout()
     {
-        parent::_prepareLayout();
-        $pager = $this->getLayout()->createBlock('page/html_pager','blog.pager')
-            ->setCollection($this->getCollection());
-        $this->setChild('page', $pager);
-        return $this;
+        if($this->getPostCollection() != 0) {
+            parent::_prepareLayout();
+            $pager = $this->getLayout()->createBlock('page/html_pager', 'blog.pager')
+                ->setCollection($this->getCollection());
+            $this->setChild('page', $pager);
+            return $this;
+        }
     }
+
 
     public function getPostCollection() {
         //Hien thi blog theo id
@@ -33,14 +35,17 @@ extends Mage_Core_Block_Template
         $customerId = Mage::getSingleton('customer/session')->getCustomerId();
         //Lay cac id cua blog theo id customer
         $post = Mage::getModel('blogs/customerpost')->getCollection()->addFieldToFilter('customer_id', $customerId);
-        $blog_id = array();
-        foreach ($post as $item){
-            array_push($blog_id,$item->getPostId());
+        if($post->count() == 0){
+            return 0;
+        }else{
+            $blogId = array();
+            foreach ($post as $item){
+                array_push($blogId,$item->getPostId());
+            }
+            $collection = Mage::getModel('neotheme_blog/post')->getCollection()->addFieldToFilter('entity_id', $blogId);
+            return $collection;
         }
-
-        $collection = Mage::getModel('neotheme_blog/post')->getCollection()->addFieldToFilter('entity_id', $blog_id);
-
-        return $collection;
+       
     }
 
     public function getPagerHtml()
@@ -79,5 +84,20 @@ extends Mage_Core_Block_Template
             }
             return $categoryName;
         }
+    }
+
+    public function getStoreLabel($blog)
+    {
+        if($blog->getId()){
+            $store_id = $blog->getData('store_ids');
+            $storeName  = '';
+            $store = Mage::getModel('core/store')->getCollection();
+            foreach ($store as $item) {
+                if($store_id == $item->getData('store_id')){
+                    $storeName = $item->getName();
+                }
+            }
+        }
+        return $storeName;
     }
 }
