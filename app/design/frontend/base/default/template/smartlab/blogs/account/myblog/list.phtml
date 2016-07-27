@@ -3,41 +3,45 @@
     <h1><?php echo $this->__($this->getTitle()); ?></h1>
 </div>
 <?php endif; ?>
-<a href="<?php echo Mage::getUrl('blogs/index/add')?>"><button>Add Blog</button></a>
-<?php echo $this->getPagerHtml() ?> <!--Add Paging-->
-<table id="my-person-table" class="data-table">
-    <colgroup>
-        <col width="1">
-        <col>
-        <col width="1">
-        <col width="1">
-        <col width="1">
-    </colgroup>
-    <thead>
-    <tr class="first last">
-        <th><?php echo $this->__('No.')?></th>
-        <th><?php echo $this->__('Title')?></th>
-        <th><?php echo $this->__('Date Create')?></th>
-        <th><?php echo $this->__('Category')?></th>
-        <th><?php echo $this->__('Status')?></th>
-        <th><?php echo $this->__('Action')?></th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php foreach($this->getCollection() as $blog): ?>
-        <?php $id = $blog->getId(); ?>
-        <tr>
-            <td><?php echo $blog->getId();?></td>
-            <td><a href="<?php echo Mage::getUrl('*/*/detail', array('id'=>$id));?>"><?php echo $blog->getData('title')?></a></td>
-            <td><?php echo Mage::helper('core')->formatDate($blog->getData('created_at'))?></td>
-            <td><?php echo $this->getCategoryLabel($blog)?></td>
-            <td><?php echo $this->getStatusLabel($blog)?></td>
-            <td><a href="<?php echo Mage::getUrl('*/*/edit', array('id'=>$id));?>">Edit</a><br>
-                <a href="<?php echo Mage::getUrl('*/*/delete', array('id'=>$id));?>">Delete</a> </td>
+<?php if ($this->getPostCollection() != 0){?>
+    <a href="<?php echo Mage::getUrl('blogs/index/add')?>"><button><?php echo $this->__('Add Blog')?></button></a>
+    <?php echo $this->getPagerHtml() ?> <!--Add Paging-->
+    <table id="my-person-table" class="data-table">
+        <colgroup>
+            <col width="1">
+            <col>
+            <col width="1">
+            <col width="1">
+            <col width="1">
+        </colgroup>
+        <thead>
+        <tr class="first last">
+            <th><?php echo $this->__('No.')?></th>
+            <th><?php echo $this->__('Title')?></th>
+            <th><?php echo $this->__('Date Create')?></th>
+            <th><?php echo $this->__('Category')?></th>
+            <th><?php echo $this->__('Store')?></th>
+            <th><?php echo $this->__('Status')?></th>
+            <th><?php echo $this->__('Action')?></th>
         </tr>
-    <?php endforeach ?>
-    </tbody>
-</table>
-
-
-
+        </thead>
+        <tbody>
+            <?php foreach($this->getCollection() as $blog): ?>
+                <?php $id = $blog->getId(); ?>
+                <tr>
+                    <td><?php echo $blog->getId();?></td>
+                    <td><a href="<?php echo Mage::getUrl('*/*/detail', array('id'=>$id));?>"><?php echo $blog->getData('title')?></a></td>
+                    <td><?php echo Mage::helper('core')->formatDate($blog->getData('post_date'))?></td>
+                    <td><?php echo $this->getCategoryLabel($blog)?></td>
+                    <td><?php echo $this->getStoreLabel($blog)?></td>
+                    <td><?php echo $this->getStatusLabel($blog)?></td>
+                    <td><a href="<?php echo Mage::getUrl('*/*/edit', array('id'=>$id));?>">Edit</a><br>
+                        <a href="<?php echo Mage::getUrl('*/*/delete', array('id'=>$id));?>">Delete</a> </td>
+                </tr>
+            <?php endforeach ?>
+            </tbody>
+    </table>
+<?php }else {
+    echo $this->__('There is no post.');?>
+    <a href="<?php echo Mage::getUrl('blogs/index/add')?>"><button><?php echo $this->__('Add Blog')?></button></a>
+<?php }?>
