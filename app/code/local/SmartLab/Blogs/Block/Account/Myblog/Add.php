@@ -23,7 +23,8 @@ extends Mage_Core_Block_Template
 
     public function getCategoryCollection()
     {
-        $collection = Mage::getModel('neotheme_blog/category')->getCollection();
+        $store_id = Mage::app()->getStore()->getId();
+        $collection = Mage::getModel('neotheme_blog/category')->getCollection()->addFieldToFilter('store_ids',$store_id);
         return $collection;
     }
 }
