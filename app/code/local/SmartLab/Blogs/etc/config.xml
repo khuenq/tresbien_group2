@@ -2,7 +2,7 @@
 <config>
     <modules>
         <SmartLab_Blogs>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </SmartLab_Blogs>
     </modules>
     <frontend>
@@ -71,6 +71,7 @@
             <neotheme_blog>
                 <rewrite>
                     <post_list>SmartLab_Blogs_Block_Post_List</post_list>
+                    <widget_post_list>SmartLab_Blogs_Block_Widget_Post_List</widget_post_list>
                 </rewrite>
             </neotheme_blog>
         </blocks>
@@ -79,13 +80,15 @@
                 <class>SmartLab_Blogs_Helper</class>
             </blogs>
         </helpers>
-        <resources>
-            <smartlab_blogs_setup>
-                <setup>
-                    <module>SmartLab_Blogs</module>
-                </setup>
-            </smartlab_blogs_setup>
-        </resources>
-
+        <events>
+            <controller_action_postdispatch_neotheme_blog_post_index>
+                <observers>
+                    <blogs_observer_blog_readmore>
+                        <class>SmartLab_Blogs_Model_Observer</class>
+                        <method>hookIntoReadMore</method>
+                    </blogs_observer_blog_readmore>
+                </observers>
+            </controller_action_postdispatch_neotheme_blog_post_index>
+        </events>
     </global>
 </config>
