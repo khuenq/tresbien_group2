@@ -46,7 +46,9 @@ class SmartLab_Customproduct_Model_Observer
                 $product = $observer->getEvent()->getProduct();
                 $productid = $product->getId();
                 if ("customproduct" == $product->getTypeId()) { // if customproduct
-                    $product->setStockData(array('max_sale_qty' => 1));
+                    $stockData = $product->getStockData();
+                    $stockData['max_sale_qty'] = 1;
+                    $product->setStockData($stockData);
                     $demo = Mage::getModel('catalog/product')->load($productid);
                     $option = $demo->getHasOptions();
                     if ($option != 1) {                // if customproduct ay chua ton tai option nao
@@ -366,7 +368,6 @@ class SmartLab_Customproduct_Model_Observer
     {
         $product = $observer->getProduct();
         $salable = $observer->getSalable();
-
         if ($product->getTypeId() == "customproduct") {
             $customer_detail = Mage::getSingleton('customer/session')->getCustomer();
             $customerID = $customer_detail->getId();
@@ -407,4 +408,5 @@ class SmartLab_Customproduct_Model_Observer
             return $this;
         }
     }
+
 }

@@ -8,13 +8,7 @@
     </modules>
 
     <global>
-        <!--<blocks>-->
-        <!--<adminhtml>-->
-        <!--<catalog_product_edit_tab_option>-->
-        <!--SmartLab_Customproduct_Block_Catalog_Product_Edit_Tab_Options-->
-        <!--</catalog_product_edit_tab_option>-->
-        <!--</adminhtml>-->
-        <!--</blocks>-->
+
         <helpers>
             <customproduct>
                 <class>SmartLab_Customproduct_Helper</class>
@@ -103,6 +97,17 @@
 
 
         <events>
+
+            <core_block_abstract_prepare_layout_after>
+                <observers>
+                    <hide_custom_option>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_display</class>
+                        <method>hideTabs</method>
+                    </hide_custom_option>
+                </observers>
+            </core_block_abstract_prepare_layout_after>
+
             <!--kiem tra hien thi user-->
             <catalog_product_is_salable_after>
                 <observers>

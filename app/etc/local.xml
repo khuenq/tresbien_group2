@@ -27,11 +27,11 @@
 -->
 <config>
     <global>
-         <install>
-            <date><![CDATA[Wed, 20 Jul 2016 15:40:06 +0000]]></date>
+        <install>
+            <date><![CDATA[Mon, 25 Jul 2016 09:37:42 +0000]]></date>
         </install>
         <crypt>
-            <key><![CDATA[bba79b35893732b7f42c60a9be9ea99f]]></key>
+            <key><![CDATA[f4b8cecbf284b797a8c144495aab0735]]></key>
         </crypt>
         <disable_local_modules>false</disable_local_modules>
         <resources>
@@ -43,7 +43,7 @@
                     <host><![CDATA[localhost]]></host>
                     <username><![CDATA[root]]></username>
                     <password><![CDATA[]]></password>
-                    <dbname><![CDATA[developer]]></dbname>
+                    <dbname><![CDATA[25_7]]></dbname>
                     <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
                     <model><![CDATA[mysql4]]></model>
                     <type><![CDATA[pdo_mysql]]></type>
