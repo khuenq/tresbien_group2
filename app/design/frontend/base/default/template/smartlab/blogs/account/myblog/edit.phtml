@@ -1,13 +1,21 @@
+<head>
+    <script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+        });
+    </script>
+</head>
 <?php if($this->getTitle()): ?>
     <div class="page-title">
         <h1><?php echo $this->__('Edit Blog'); ?></h1>
     </div>
 <?php endif; ?>
 
-Form information
 <?php $id = $this->getPost()->getId(); ?>
 <form action="<?php echo Mage::getUrl('*/*/edit', array('id'=>$id));?>" method="post" id="person-form-validate">
     <input type="hidden" value="<?php echo $id?>" name="entity_id">
+    
     <div class="fieldset">
         <h2 class="legend"><?php echo $this->__('Edit')?></h2>
         <ul class="form-list">
@@ -36,19 +44,9 @@ Form information
                 </label>
                 <div class="input-box">
                     <textarea type="text" class="input-text required-entry" maxlength="255"
-                              title="Content" value="" name="content_html" id="content"
+                              title="Content" value="" name="content_html" id="mytextarea"
                               rows="5"><?php echo $this->getPost()->getContenthtml();?>
                     </textarea>
-                </div>
-
-
-                <div class="field post-date">
-                    <label class="required" for="created_at"><em>*</em><?php echo $this->__('Post date');?></em></label>
-                    <div class="input-box">
-                        <input type="date" class="input-text required-entry" min="2000-01-01" title="Create at"
-                               value="<?php echo date('Y-m-d',strtotime($this->getPost()->getCreatedAt())); ?>"
-                               name="created_at" id="created_at" />
-                    </div>
                 </div>
                 <!--                Input tag cua blog-->
                 <label for="tag" class="required">
