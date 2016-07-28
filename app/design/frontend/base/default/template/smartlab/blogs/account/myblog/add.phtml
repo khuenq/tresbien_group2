@@ -1,0 +1,105 @@
+<head>
+    <script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+        });
+    </script>
+</head>
+<?php if($this->getTitle()): ?>
+    <div class="page-title">
+        <h1><?php echo $this->__($this->getTitle()); ?></h1>
+    </div>
+<?php endif; ?>
+
+<!--Form information-->
+<form action="<?php echo $this->getActionOfForm() ?>" method="post" id="person-form-validate">
+    <?php $storeId = Mage::app()->getStore()->getStoreId(); ?>
+    <div class="input-box">
+        <input type="hidden" value="<?php echo $storeId; ?>" name="store_ids" id="store_ids">
+    </div>
+    <div class="input-box">
+        <input type="hidden" min="2000-01-01" title="Post date" value="<?php echo Mage::getModel('core/date')->date('Y-m-d');?>"
+               name="post_date" id="post-date">
+    </div>
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Add new Blog')?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <!--                Input dien ten blog-->
+                <label for="title" class="required">
+                    <em>*</em><?php echo $this->__('Title') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" maxlength="255"
+                    title="Name" value="" name="title" id="name">
+                </div>
+                <!--                Input tom tat cua blog-->
+                <label for="summary" class="required">
+                    <em>*</em><?php echo $this->__('Summary') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" maxlength="255"
+                           title="Summary" value="" name="summary" id="summary">
+                </div>
+                <!--                Input noi dung blog-->
+                <label for="content" class="required">
+                    <em>*</em><?php echo $this->__('Content') ?>
+                </label>
+                <div class="input-box">
+                    <textarea type="text" class="input-text required-entry" maxlength="255"
+                           title="Content" name="content_html" id="mytextarea"
+                            rows="5">
+                    </textarea>
+                </div>
+                <!--                Input tag cua blog-->
+                <label for="tag" class="required">
+                    <em>*</em><?php echo $this->__('Tag') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" maxlength="255"
+                           title="Tag" value="" name="tag" id="tag">
+                </div>
+<!--                Input cho category cua blog-->
+                <label for="category" class="required">
+                    <em>*</em><?php echo $this->__('Category') ?>
+                </label>
+                <div class="input-box">
+                    <select id="category" class="validate-select" name="category_ids[]">
+                        <?php foreach($this->getCollection()  as $category){?>
+                            <option value="<?php echo $category->getId() ;?>"><?php echo $category->getName() ;?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+<!--                Input cho status cua blog-->
+                <label for="status" class="required">
+                    <em>*</em><?php echo $this->__('Status') ?>
+                </label>
+                <div class="input-box">
+                    <select id="status" class="validate-select" name="status[]">
+                        <option value="0">Inactive</option>
+                        <option value="1">Active</option>
+                        <option value="2">Draft</option>
+                    </select>
+                </div>
+<!--                Nut submit-->
+                <div class="buttons-set" style="float: left">
+                    <button type="submit" title="<?php echo $this->__('Save Blog') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <?php if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+        $name = $customer->getName();
+    }
+    ?>
+    <input type="hidden" name="author" value="<?php echo $name ?>">
+</form>
+
+<!--Script validate cac truong-->
+<script type="text/javascript">
+    //<![CDATA[
+    var dataForm = new VarienForm('person-form-validate', true);
+    //]]>
+</script>

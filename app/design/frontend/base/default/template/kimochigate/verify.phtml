@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Gateway Page</title>
+    <?php echo $this->getChildHtml('head') ?>
+<body>
+<center>
+<!-- <script type="text/javascript">   
+        a = Math.floor((Math.random() * 8999) + 1000);
+ 		setTimeout(function() { alert(a); }, 10);
+</script> -->
+    <h2>KIMOCHI VERIFY</h2>
+    <!-- <form name="gatepage" id="gatepage" action="../kimochigate" method="post"> -->
+    <?php 
+        $orderDetail = Mage::app()->getRequest()->getParam('orderDetail');
+        $successUrl = $this->getUrl('kimochigate/index/success',array('orderDetail'=>$orderDetail,'success'=>1));
+        $cancelUrl = $this->getUrl('kimochigate/index/success',array('orderDetail'=>$orderDetail,'success'=>0));
+    ?>
+    <form class="form-horizontal" action="<?php echo $successUrl ?>" method="post">
+        <div class="form-group">
+            <label class="control-label col-sm-3" for="name">OTP Code<span class="required"></span></label>
+            <div class="col-sm-9">
+                <input style="margin-bottom: 10px" id="otpcode" class="required-entry form-control" type="text" />
+            </div>
+        </div>
+        <div class="form-group"> 
+            <input type="submit" name="complete" id="complete" class="btn btn-success" value="Xác nhận" />
+            <a href="<?php echo $cancelUrl ?>" class="btn btn-danger">Cancel</a>
+        </div>
+    </form>
+</center> 
+</body>
+</html>

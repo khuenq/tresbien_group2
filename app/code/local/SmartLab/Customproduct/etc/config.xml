@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <SmartLab_Customproduct>
+            <version>0.1.3</version>
+        </SmartLab_Customproduct>
+    </modules>
+
+    <global>
+
+        <helpers>
+            <customproduct>
+                <class>SmartLab_Customproduct_Helper</class>
+            </customproduct>
+        </helpers>
+        <models>
+            <customproduct>
+                <class>SmartLab_Customproduct_Model</class>
+            </customproduct>
+        </models>
+
+        <crontab>
+            <jobs>
+                <customproduct_cron>
+                    <schedule>
+                        <cron_expr>* * * * *</cron_expr>
+                    </schedule>
+                    <run>
+                        <model>customproduct/cron::cronTest</model>
+                    </run>
+                </customproduct_cron>
+            </jobs>
+        </crontab>
+
+        <resources>
+            <!--install scrip add new product type-->
+            <customproduct_setup>
+                <setup>
+                    <module>SmartLab_Customproduct</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customproduct_setup>
+
+            <!--install scrip add customer attribute-->
+            <customerattribute_setup>
+                <setup>
+                    <module>SmartLab_Customproduct</module>
+                    <class>Mage_Customer_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </customerattribute_setup>
+
+            <!--data scrip add email template-->
+            <emailtem_setup>
+                <setup>
+                    <module>SmartLab_Customproduct</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </emailtem_setup>
+
+            <!--install script add rule shopping cart-->
+            <createrule_setup>
+                <setup>
+                    <module>SmartLab_Customproduct</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </createrule_setup>
+        </resources>
+
+        <catalog>
+            <product>
+                <type>
+                    <customproduct translate="label" module="catalog">
+                        <label>Digital Certification</label>
+                        <model>customproduct/product_type_cp</model>
+                        <!--o model tab tuy chinh chuc nang khi truy cap vao viewpage-->
+                        <is_qty>1</is_qty>
+                        <index_data_retreiver>customproduct/catalogIndex_data_cp</index_data_retreiver>
+                        <price_model>customproduct/product_price</price_model>
+                        <!--xac dinh phuong phap tinh gia -->
+                        <composite>0</composite>
+                        <!--kieu san pham la hon hop hay khong-->
+                    </customproduct>
+                </type>
+            </product>
+        </catalog>
+
+
+        <events>
+
+            <core_block_abstract_prepare_layout_after>
+                <observers>
+                    <hide_custom_option>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_display</class>
+                        <method>hideTabs</method>
+                    </hide_custom_option>
+                </observers>
+            </core_block_abstract_prepare_layout_after>
+
+            <!--kiem tra hien thi user-->
+            <catalog_product_is_salable_after>
+                <observers>
+                    <check_validate>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>checkBuyDCProduct</method>
+                    </check_validate>
+                </observers>
+            </catalog_product_is_salable_after>
+
+            <!--<controller_action_predispatch_catalog_product_view>-->
+            <catalog_controller_product_view>
+                <observers>
+                    <value>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_display</class>
+                        <method>productDetail</method>
+                        <!--<class>smartlab_customproduct_model_cron</class>-->
+                        <!--<method>cronTest</method>-->
+                    </value>
+                </observers>
+            </catalog_controller_product_view>
+            <!--</controller_action_predispatch_catalog_product_view>-->
+
+
+            <catalog_product_collection_load_after>
+                <observers>
+                    <setPrice>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>getproducttype</method>
+                    </setPrice>
+                </observers>
+            </catalog_product_collection_load_after>
+
+            <!--event them 1 product option vao customproduct-->
+            <catalog_product_save_before>
+                <observers>
+                    <save_after>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>catalogProductSaveAfter</method>
+                    </save_after>
+                </observers>
+            </catalog_product_save_before>
+
+
+            <!--event dispatch event add to cart before-->
+            <controller_action_predispatch>
+                <observers>
+                    <controller_action_before>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>hookToControllerActionPreDispatch</method>
+                    </controller_action_before>
+                </observers>
+            </controller_action_predispatch>
+            <!--event kiem tra login khi mua custom product-->
+            <add_to_cart_before>
+                <observers>
+                    <check_login>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>hookToAddToCartBefore</method>
+                        <!--<class>smartlab_customproduct_model_cron</class>-->
+                        <!--<method>cronTest</method>-->
+                    </check_login>
+                </observers>
+            </add_to_cart_before>
+
+            <!--event create order success-->
+            <checkout_onepage_controller_success_action> <!-- identifier of the event we want to catch -->
+                <observers>
+                    <checkout_onepage_controller_success_action_handler> <!-- identifier of the event handler -->
+                        <type>model</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>sendCodeAfterBuy</method>
+                    </checkout_onepage_controller_success_action_handler>
+                </observers>
+            </checkout_onepage_controller_success_action>
+
+
+            <sales_quote_add_item>
+                <observers>
+                    <company_product_price_observer>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>addToCart</method>
+                    </company_product_price_observer>
+                </observers>
+            </sales_quote_add_item>
+        </events>
+    </global>
+
+
+    <adminhtml>
+        <events>
+            <catalog_product_new_action>
+                <observers>
+                    <customproduct_observer_catalog_product_new_action>
+                        <type>singleton</type>
+                        <class>customproduct/observer</class>
+                        <method>hookIntoCatalogProductNewAction</method>
+                    </customproduct_observer_catalog_product_new_action>
+                </observers>
+            </catalog_product_new_action>
+
+            <!--event bat su kien truoc hien thi grid customer manager-->
+            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <customgrid_column_append>
+                        <type>model</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>appendCustomColumn</method>
+                    </customgrid_column_append>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+
+            <!--event them collection-->
+            <eav_collection_abstract_load_before>
+                <observers>
+                    <customgrid_column_append>
+                        <type>model</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>beforeCollectionLoad</method>
+                    </customgrid_column_append>
+                </observers>
+            </eav_collection_abstract_load_before>
+
+
+            <!--send email when update status order in admin page-->
+            <sales_order_save_after>
+                <observers>
+                    <auto_invoice_order>
+                        <type>singleton</type>
+                        <class>smartlab_customproduct_model_observer</class>
+                        <method>implementOrderStatus</method>
+                    </auto_invoice_order>
+                </observers>
+            </sales_order_save_after>
+        </events>
+    </adminhtml>
+
+    <frontend>
+        <sales_quote_save_before>
+            <observers>
+                <set_quantity>
+                    <type>singleton</type>
+                    <class>customproduct/observer</class>
+                    <method>setquantity</method>
+                </set_quantity>
+            </observers>
+        </sales_quote_save_before>
+
+    </frontend>
+</config>

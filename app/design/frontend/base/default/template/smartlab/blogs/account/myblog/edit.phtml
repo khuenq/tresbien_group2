@@ -1,0 +1,110 @@
+<head>
+    <script src='https://cdn.tinymce.com/4/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+        });
+    </script>
+</head>
+<?php if($this->getTitle()): ?>
+    <div class="page-title">
+        <h1><?php echo $this->__('Edit Blog'); ?></h1>
+    </div>
+<?php endif; ?>
+
+<?php $id = $this->getPost()->getId(); ?>
+<form action="<?php echo Mage::getUrl('*/*/edit', array('id'=>$id));?>" method="post" id="person-form-validate">
+    <input type="hidden" value="<?php echo $id?>" name="entity_id">
+    
+    <div class="fieldset">
+        <h2 class="legend"><?php echo $this->__('Edit')?></h2>
+        <ul class="form-list">
+            <li class="fields">
+                <!--                Input dien ten blog-->
+                <label for="title" class="required">
+                    <em>*</em><?php echo $this->__('Title') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" maxlength="255"
+                           title="Name" value="<?php echo $this->getPost()->getTitle();?>" name="title" id="name">
+                </div>
+
+                <!--                Input tom tat cua blog-->
+                <label for="summary" class="required">
+                    <em>*</em><?php echo $this->__('Summary') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" maxlength="255"
+                           title="Summary" value="<?php echo $this->getPost()->getSummary();?>" name="summary" id="summary">
+                </div>
+
+                <!--                Input noi dung blog-->
+                <label for="content" class="required">
+                    <em>*</em><?php echo $this->__('Content') ?>
+                </label>
+                <div class="input-box">
+                    <textarea type="text" class="input-text required-entry" maxlength="255"
+                              title="Content" value="" name="content_html" id="mytextarea"
+                              rows="5"><?php echo $this->getPost()->getContenthtml();?>
+                    </textarea>
+                </div>
+                <!--                Input tag cua blog-->
+                <label for="tag" class="required">
+                    <em>*</em><?php echo $this->__('Tag') ?>
+                </label>
+                <div class="input-box">
+                    <input type="text" class="input-text required-entry" maxlength="255"
+                           title="Tag" value="<?php echo $this->getListTag();?>" name="tag" id="tag">
+                </div>
+
+                <!--                Input cho category cua blog-->
+                <label for="category" class="required">
+                    <em>*</em><?php echo $this->__('Category') ?>
+                </label>
+                <div class="input-box">
+                    <select id="category" class="validate-select" name="category_ids[]">
+                        <?php foreach($this->getCollection()  as $category){?>
+                            <?php if($this->getPost()->getData('category_ids') == $category->getId()){?>
+                            <option value="<?php echo $category->getId() ;?>" selected="selected"><?php echo $category->getName() ;?></option>
+                            <?php } else {?>
+                                <option value="<?php echo $category->getId() ;?>"><?php echo $category->getName() ;?></option>
+                                <?php } ?>
+                        <?php } ?>
+                    </select>
+                </div>
+                <!--                Input cho status cua blog-->
+                <label for="status" class="required">
+                    <em>*</em><?php echo $this->__('Status') ?>
+                </label>
+                <div class="input-box">
+                    <select id="status" class="validate-select" name="status[]">
+                        <?php if($this->getPost()->status == 0){?>
+                            <option value="0">Inactive</option>
+                        <?php }elseif($this->getPost()->status == 1){?>
+                             <option value="1">Active</option>
+                        <?php }else{?>
+                            <option value="2">Draft</option>
+                        <?php } ?>
+                    </select>
+                </div>
+                <!--                Nut submit-->
+                <div class="buttons-set" style="float: left">
+                    <button type="submit" title="<?php echo $this->__('Save Blog') ?>" class="button"><span><span><?php echo $this->__('Save') ?></span></span></button>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <?php if (Mage::getSingleton('customer/session')->isLoggedIn()) {
+        $customer = Mage::getSingleton('customer/session')->getCustomer();
+        $name = $customer->getName();
+    }
+    ?>
+    <input type="hidden" name="author" value="<?php echo $name ?>">
+</form>
+
+<!--Script validate cac truong-->
+<script type="text/javascript">
+    //<![CDATA[
+    var dataForm = new VarienForm('person-form-validate', true);
+    //]]>
+</script>

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customer_account translate="label">
+        <reference name="customer_account_navigation">
+            <action method="addLink">
+                <name>test checkout</name>
+                <path>blogs/index/list/</path>
+                <label>My Blog</label></action>
+        </reference>
+    </customer_account>
+
+    <blogs_index_list translate="label">
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="smartlab_blogs/account_myblog_list" name="smartlab_blog_myblog_list"
+                   template="smartlab/blogs/account/myblog/list.phtml">
+                <block type="page/html_pager" name="blog.pager"/>
+            </block>
+        </reference>
+    </blogs_index_list>
+
+    <blogs_index_add translate="label">
+        <update handle="customer_account"/>
+            <reference name="my.account.wrapper">
+                <block type="smartlab_blogs/account_myblog_add" name="smartlab_blog_myblog_add"
+                       template="smartlab/blogs/account/myblog/add.phtml"/>
+            </reference>
+    </blogs_index_add>
+
+    <blogs_index_edit translate="label">
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="smartlab_blogs/account_myblog_edit" name="edit.blog"
+                   template="smartlab/blogs/account/myblog/edit.phtml"/>
+        </reference>
+    </blogs_index_edit>
+
+    <blogs_index_detail translate="label">
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="smartlab_blogs/account_myblog_detail" name="blog.detail"
+                   template="smartlab/blogs/account/myblog/detail.phtml"></block>
+        </reference>
+    </blogs_index_detail>
+
+    <blogs_tag_listblog translate="label">
+        <update handle="neotheme_blog_default"/>
+        <reference name="content">
+            <block type="smartlab_blogs/post_list" name="list.blog.by.tag"
+                   template="smartlab/blogs/post/list.phtml"/>
+            <block type="smartlab_blogs/tag_list" name="blogs.index" template="smartlab/blogs/tag/tagtoolbar.phtml"/>
+        </reference>
+    </blogs_tag_listblog>
+
+    <neotheme_blog_index_index>
+        <update handle="neotheme_blog_default"/>
+        <reference name="content">
+            <block type="smartlab_blogs/tag_list" name="blogs.index" template="smartlab/blogs/tag/tagtoolbar.phtml"/>
+        </reference>
+    </neotheme_blog_index_index>
+</layout>

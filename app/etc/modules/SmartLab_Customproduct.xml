@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SmartLab_Customproduct>
+            <active>true</active>
+            <codePool>local</codePool>
+        </SmartLab_Customproduct>
+    </modules>
+</config>
