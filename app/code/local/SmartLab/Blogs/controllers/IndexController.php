@@ -21,10 +21,17 @@ class SmartLab_Blogs_IndexController extends Mage_Core_Controller_Front_Action
     public function addAction()
     {
         if(Mage::getSingleton('customer/session')->isLoggedIn()) {
-            $this->loadLayout();
-            echo $this->getLayout()->createBlock('core/text_list')
-                ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
-            $this->renderLayout();
+            $customerDetail = Mage::getSingleton('customer/session')->getCustomer();
+            $customCode = $customerDetail->getProductcode();
+            if ($customCode != ""){
+                $this->loadLayout();
+                echo $this->getLayout()->createBlock('core/text_list')
+                    ->setTemplate('smartlab/blogs/account/myblog/add.phtml')->toHtml();
+                $this->renderLayout();
+            }else{
+                $this->_redirect('blogs/index/list');
+                Mage::getSingleton('core/session')->addError(Mage::helper('blogs')->__('You have to buy DC product before creating new blog'));
+            }
         }else{
             $this->_redirect('customer/account/login');
             Mage::getSingleton('core/session')->addSuccess(Mage::helper('blogs')->__('You have to log in to create new blog .'));

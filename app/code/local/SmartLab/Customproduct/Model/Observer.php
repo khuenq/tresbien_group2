@@ -152,8 +152,6 @@ class SmartLab_Customproduct_Model_Observer
                 Mage::app()->getFrontController()->getResponse()->setRedirect($currentUrl);
                 Mage::app()->getResponse()->sendResponse();
                 exit;
-
-
             }
 
         }
