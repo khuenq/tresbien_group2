@@ -392,7 +392,7 @@ html {
 }
 
 body {
-  background: #FFFFFF;
+ /* : #FFFFFF;*/
   color: #000000;
   line-height: 1;
 }
@@ -490,13 +490,14 @@ select,
 table,
 textarea {
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
-  color: #636363;
-  font-size: 14px;
-  line-height: 1.5;
+  color: #464646;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 500;
 }
 
 a {
-  color: #3399cc;
+  color: #070708;
   text-decoration: none;
 }
 
@@ -536,14 +537,14 @@ h1, .h1 {
 h2, .h2 {
   margin: 0;
   margin-bottom: 0.5em;
-  color: #636363;
+  color: #29B91B;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   font-style: normal;
   line-height: 1.2;
   text-rendering: optimizeLegibility;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 h3, .h3 {
@@ -608,7 +609,7 @@ h6, .h6 {
 .availability {
   margin-bottom: 0;
   font-size: 13px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .availability .label {
@@ -638,12 +639,12 @@ h6, .h6 {
 .product-name .h1 {
   text-transform: uppercase;
   font-size: 24px;
-  font-weight: 600;
-  color: #636363;
-  border-bottom: 1px solid #ededed;
+  font-weight: 500;
+  color: #7d7175;
+  /*border-bottom: 1px solid #ededed;*/
   padding-bottom: 3px;
   margin-bottom: 15px;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 /* -------------------------------------------- *
@@ -676,10 +677,10 @@ h6, .h6 {
   font-style: normal;
   line-height: 1.4;
   text-rendering: optimizeSpeed;
-  text-transform: uppercase;
-  color: #3399cc;
+  text-transform: capitalize;
+  color: #636363;
   margin-bottom: 0;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: 600;
 }
 .block-title small {
@@ -919,10 +920,10 @@ body:not(.customer-account) .block:first-child .block-title {
 .footer .button {
   background: #3399cc;
   display: inline-block;
-  padding: 7px 15px;
+ /* padding: 7px 15px;*/
   border: 0;
-  color: #FFFFFF;
-  font-size: 13px;
+  color: #fbfbfb;
+  font-size: 14px;
   font-weight: normal;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
   line-height: 19px;
@@ -993,9 +994,9 @@ a.button:hover {
   line-height: 30px;
   height: 30px;
   text-decoration: underline;
-  text-transform: uppercase;
+ /* text-transform: uppercase;*/
   display: inline-block;
-  color: #3399cc;
+  color: #21ae22;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 .button2 span:hover,
@@ -1142,9 +1143,9 @@ a.button:hover {
 
 .breadcrumbs li {
   float: left;
-  font-size: 12px;
+  font-size: 13px;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .breadcrumbs a {
@@ -1352,7 +1353,7 @@ a.button:hover {
 
 .col-main {
   float: left;
-  width: 100%;
+  width: 75%;
 }
 
 .col1-layout .col-main {
@@ -1382,7 +1383,7 @@ a.button:hover {
 }
 .col3-layout .col-wrapper .col-main {
   float: right;
-  width: 73.68421%;
+  width: 93.68421%;
 }
 .col3-layout .col-wrapper .col-left {
   width: 26.31579%;
@@ -1760,7 +1761,7 @@ a.button:hover {
 }
 
 .price-box .price {
-  color: #3399cc;
+  color: red;
   font-size: 16px;
 }
 
@@ -1989,7 +1990,7 @@ span.weee {
 .no-touch .product-img-box .product-image:not(.zoom-available):hover {
   position: relative;
   display: block;
-  border: 1px solid #ededed;
+ /* border: 1px solid #ededed;*/
 }
 
 @media only screen and (max-width: 770px) {
@@ -2076,10 +2077,10 @@ span.weee {
 .toolbar {
   margin-top: 10px;
   margin-bottom: 15px;
-  border-bottom: 1px solid #cccccc;
-  border-top: 1px solid #cccccc;
-  background: #f4f4f4;
-  padding: 5px 10px 0px 10px;
+  /*border-bottom: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;*/
+  /*background: #eaccf9;*/
+  padding: 7px 10px 0px 10px;
 }
 .toolbar:after {
   content: '';
@@ -2098,15 +2099,16 @@ span.weee {
 .toolbar,
 .pager {
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
-  color: #636363;
+  color: #5d5d5d;
   line-height: 30px;
   font-size: 12px;
+  font-weight: 400;
 }
 
 .toolbar label,
 .pager-no-toolbar label {
   font-weight: normal;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .sorter {
@@ -3150,7 +3152,7 @@ body {
   min-width: 320px;
   min-height: 100%;
   margin: 0 auto;
-  background: #FFFFFF;
+  background: #f8f8f8;
 }
 
 .wrapper:after {
@@ -3196,7 +3198,7 @@ body {
 }
 .header-language-background .form-language,
 .header-language-background .currency-switcher {
-  float: right;
+  float: left;
   margin-right: 10px;
 }
 .header-language-background .welcome-msg {
@@ -3297,7 +3299,7 @@ body {
   float: left;
   width: 20%;
   height: 44px;
-  background: #FFFFFF;
+  background: #5CE6D2;
   color: #636363;
   line-height: 42px;
   text-align: center;
@@ -3462,8 +3464,8 @@ a.skip-link {
   #header-nav {
     display: block;
     /* Force visibility */
-	margin-left: 5%;
-	margin-right: 6%;
+  margin-left: 5%;
+  margin-right: 6%;
   }
 }
 /* ============================================ *
@@ -3859,19 +3861,17 @@ a.skip-link {
 }
 @media only screen and (min-width: 771px) {
   .skip-cart {
-    color: #ffffff;
-    background-color: green;
-    border-radius: 0;
+    color: #0000EE;
+    text-transform: uppercase;
   }
   .skip-cart:hover {
     text-decoration: none;
-    background: green;
   }
   .skip-cart .count {
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
-    -o-border-radius: 0px;
+    -o-border-: 0px;
     border-radius: 0px;
     position: static;
     background: none;
@@ -3888,7 +3888,7 @@ a.skip-link {
 
   .skip-cart .count,
   .skip-link.skip-active .count {
-    color: #3399cc;
+    color: #0522fb;
   }
 }
 .skip-cart .count.empty {
@@ -4217,7 +4217,7 @@ p.product-name {
   font-style: normal;
   line-height: 1.2;
   text-rendering: optimizeLegibility;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 13px;
   font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
   font-weight: normal;
@@ -4235,16 +4235,26 @@ h3.product-name a:hover,
 h4.product-name a:hover,
 h5.product-name a:hover,
 p.product-name a:hover {
-  color: #3399cc;
+  color: #EE00EE;
   text-decoration: none;
 }
 
 .products-grid .product-name,
 .products-list .product-name {
-  text-transform: uppercase;
-  margin-bottom: 5px;
-  font-size: 14px;
+  text-transform:  capitalize;
+  margin-bottom: 7px;
+  font-size: 16px;
   font-family: "Raleway", "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.2;
+  text-rendering: optimizeLegibility;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-family: "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.4;
 }
 .products-grid .product-name a,
 .products-list .product-name a {
@@ -4266,7 +4276,7 @@ p.product-name a:hover {
 
 .products-grid > li {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   text-align: center;
 }
 .products-grid > li:after {
@@ -4281,8 +4291,11 @@ p.product-name a:hover {
 }
 
 .products-grid .product-image img {
-  width: 100%;
+ width: 93%;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 7px;
 }
 .products-grid .product-image img:hidden {
   display: none;
@@ -4322,7 +4335,7 @@ p.product-name a:hover {
 }
 
 .products-grid .add-to-links {
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 
 /* Config: Two columns + flexible gutter */
@@ -4341,7 +4354,7 @@ p.product-name a:hover {
 }
 
 .products-grid .product-image {
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 .products-grid .product-image:before, .products-grid .product-image:after {
   content: '';
@@ -4378,6 +4391,9 @@ p.product-name a:hover {
   }
   .products-grid > li:nth-child(odd) {
     clear: none;
+    background: white;
+    margin-right: 30px;
+    border: 1px solid #ededed;
   }
   .products-grid > li:nth-child(even) {
     margin-right: 3.7037%;
@@ -4407,24 +4423,36 @@ p.product-name a:hover {
   .products-grid--max-4-col > li:nth-child(even),
   .products-grid--max-4-col > li:nth-child(3n) {
     margin-right: 2.22222%;
+    background: white;
+    margin-right:30px; 
+     border: 1px solid #ededed;
   }
 
   /* Set column config */
   .products-grid--max-4-col > li {
     margin-right: 2.22222%;
+     background: white;
+    /*//margin-right:30px; */
+     border: 1px solid #ededed;
   }
 
   .products-grid--max-4-col > li {
-    width: 23.33333%;
+    width: 30.33555%;
     margin-right: 2.22222%;
   }
 
-  .products-grid--max-4-col > li:nth-child(4n+1) {
+  .products-grid--max-4-col > li:nth-child(3n+1) {
     clear: left;
+    background: white;
+    margin-right:30px; 
+     border: 1px solid #ededed;
   }
 
-  .products-grid--max-4-col > li:nth-child(4n) {
+  .products-grid--max-4-col > li:nth-child(3n) {
     margin-right: 0;
+    background: white;
+    margin-right:18px; 
+    border: 1px solid #ededed;
   }
 
   /* Config: Columns + flexible gutter */
@@ -4962,7 +4990,7 @@ p.product-name a:hover {
 }
 .product-view .product-shop .product-name .h1,
 .product-view .product-img-box .product-name h1 {
-  color: #3399cc;
+  color: #6d6d6d;
   margin-bottom: 10px;
   border: 0;
 }
@@ -5016,7 +5044,7 @@ p.product-name a:hover {
 .product-view .product-shop .price-box .regular-price .price,
 .product-view .product-shop .price-box .special-price .price,
 .product-view .product-shop .price-box .full-product-price .price {
-  color: #3399cc;
+  color: red;
   font-size: 24px;
 }
 .product-view .product-shop .price-box .special-price .price-label {
@@ -5104,8 +5132,9 @@ p.product-name a:hover {
 }
 .product-img-box .product-image img {
   max-width: 100%;
-  max-height: 750px;
-  margin: 0px auto;
+ /* max-height: 750px;
+  margin: 0px auto;*/
+  height: 350px;
 }
 
 @media only screen and (max-width: 479px) {
@@ -5394,8 +5423,8 @@ p.product-name a:hover {
     height: 40px;
     line-height: 40px;
     cursor: pointer;
-    text-transform: uppercase;
-    font-size: 12px;
+    text-transform: capitalize;
+    font-size: 13px;
     position: relative;
     bottom: -1px;
   }
@@ -5409,7 +5438,7 @@ p.product-name a:hover {
   }
   .product-collateral .toggle-tabs li.current span,
   .product-collateral .toggle-tabs li:hover span {
-    color: #3399cc;
+    color: #5f5e5e;
   }
   .product-collateral .toggle-tabs li:first-child {
     border-left: none;
@@ -6985,7 +7014,7 @@ p.product-name a:hover {
 
 .opc .section.allow .step-title:hover h2,
 .opc .section.active .step-title h2 {
-  color: #3399cc;
+  color: #0bd45b;
 }
 
 .opc .section .step-title h2 {
@@ -7747,7 +7776,7 @@ body:not(.opc-has-progressed-from-login) .opc.opc-firststep-login .section#opc-l
   font-style: italic;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 13px;
-  color: #a0a0a0;
+  color: #ff5405;
 }
 
 .remember-me-box a.hide {
@@ -9272,7 +9301,7 @@ div.paypal-logo span > img {
 .header-minicart {
   display: inline-block;
   position: absolute;
-  top: 160px;
+  top: 5px;
   right: 0px;
   z-index: 998;
 }
@@ -10619,7 +10648,7 @@ div.calendar table td.button {
 }
 
 .nav-primary-fixed-top{
-	z-index: 9999;
+  z-index: 9999;
     position: fixed;
     left: 0;
     top: 0;
@@ -10627,5 +10656,5 @@ div.calendar table td.button {
 }
 
 .header-minicart a:hover{
-	opacity:1;
+  opacity:1;
 }

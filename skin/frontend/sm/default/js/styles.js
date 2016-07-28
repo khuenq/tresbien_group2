@@ -2,14 +2,14 @@
 * @Author: Thanh
 * @Date:   2016-07-23 15:31:38
 * @Last Modified by:   Thanh
-* @Last Modified time: 2016-07-23 16:15:18
+* @Last Modified time: 2016-07-28 02:07:20
 */
 
 $j("document").ready(function(){
     var nav = $j('#header-nav');
 
     $j(window).scroll(function () {
-        if ($j(this).scrollTop() > 270) {
+        if ($j(this).scrollTop() > 250) {
             nav.addClass("nav-primary-fixed-top");
         } else {
             nav.removeClass("nav-primary-fixed-top");
