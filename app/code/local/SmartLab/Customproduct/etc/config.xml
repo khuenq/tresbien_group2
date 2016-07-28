@@ -27,7 +27,7 @@
                         <cron_expr>* * * * *</cron_expr>
                     </schedule>
                     <run>
-                        <model>customproduct/Cron::cronTest</model>
+                        <model>customproduct/cron::cronTest</model>
                     </run>
                 </customproduct_cron>
             </jobs>
