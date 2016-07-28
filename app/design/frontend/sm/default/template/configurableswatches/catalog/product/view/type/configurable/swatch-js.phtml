@@ -20,12 +20,17 @@
  *
  * @category    design
  * @package     rwd_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
 <script type="text/javascript">
-    document.observe('dom:loaded', function() {
-        var swatchesConfig = new Product.ConfigurableSwatches(spConfig);
-    });
+//    document.observe('dom:loaded', function() { change this for  jmquickview work fine
+        (function($){
+            $(document).ready(function(){
+                var swatchesConfig = new Product.ConfigurableSwatches(spConfig);
+                //console.log(swatchesConfig);
+            });
+        })(jQuery);
+//    });
 </script>

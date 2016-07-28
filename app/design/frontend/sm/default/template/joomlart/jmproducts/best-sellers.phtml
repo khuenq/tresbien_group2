@@ -1,0 +1,152 @@
+<?php
+/*!
+ * http://www.ubertheme.com/
+ * Version: 1.0
+ * Description: 
+ * Author: Uber theme team
+ * Author URI: http://www.ubertheme.com/
+ * 
+ * Powered by Magento
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
+?>
+
+<?php
+	$_helper = $this->helper('catalog/output');
+	$thumbWidth = $config['width'];
+	$thumbHeight = $config['height'];
+	$maxChar = $config['max'];
+	
+	// Calculator with
+	if ($config['perrow']){
+		$perrow = $config['perrow'];
+		$width = 100/$config['perrow'];
+	}
+	// Tablet
+	$perrowtablet = $config["perrowtablet"];
+	$widthtablet = 100/$config["perrowtablet"];
+	if (isset($config["perrowtabletportrait"])){
+		$perrowtabletportrait = $config["perrowtabletportrait"];
+		$widthtabletportrait = 100/$config["perrowtabletportrait"];
+	}
+	else {
+		$perrowtabletportrait = $perrowtablet;
+		$widthtabletportrait = $widthtablet;
+	}
+
+	// Mobile
+	$perrowmobile = $config["perrowmobile"];
+	$widthmobile = 100/$config["perrowmobile"];
+	if (isset($config["perrowmobileportrait"])){
+		$perrowmobileportrait = $config["perrowmobileportrait"];
+		$widthmobiletportrait = 100/$config["perrowmobileportrait"];
+	}
+	else {
+		$perrowmobileportrait = $perrowmobile;
+		$widthmobiletportrait = $widthmobile;
+	}
+?>
+
+<?php $listId = uniqid(); ?>
+
+<script type="text/javascript">
+	(function($){
+		$(document).ready(function () {
+			$("#productsgrid_<?php echo $listId; ?>").jmproduct({
+				qtytable:<?php echo $config['qtytable']; ?>,
+				qtytableportrait:<?php echo $config['qtytableportrait']; ?>,
+				istable:<?php echo $config['istable']; ?>,
+				qtymobile:<?php echo $config['qtymobile']; ?>,
+				qtymobileportrait:<?php echo $config['qtymobileportrait']; ?>,
+				ismobile:<?php echo $config['ismobile']; ?>
+			});
+		});
+	})(jQuery);
+</script>
+
+	<?php /*
+	if(($config['title'])):
+		//Register a title for list all view
+		Mage::getSingleton('core/session')->setData('jm_product_title', $config['title']);
+	?>
+		<div class="page-title category-title clearfix">
+			<h2><?php echo Mage::getSingleton('core/session')->getData('jm_product_title'); ?></h2>
+
+			<a title="<?php echo Mage::helper('joomlart_jmproducts')->__('View more'); ?>" class="view-more" href="<?php echo Mage::getModel('core/url')->getUrl('jmproducts/viewall/index');?>" >
+				<?php echo Mage::helper('joomlart_jmproducts')->__('View more'); ?>
+			</a>
+		</div>
+	<?php endif; */?>
+
+<div class="block block-best-seller">
+	<div class="block-title">
+        <strong><span><?php echo $this->__('Best Seller'); ?></span></strong>
+  </div>
+  <div class="block-content">
+		<?php
+		$collection = $this->getCollection();
+		$collectionSize = $collection ? $collection->count() : 0;
+		$i = 0;
+		?>
+		<div class="products-grid">
+			<?php 
+				if ($collectionSize):
+					$j = 0;
+					foreach ($collection->getItems() as $product):
+						$rowCount = ceil($collectionSize / $config['perrow']);
+						if ($i % $config['perrow'] == 0){
+							$j++;
+						}
+						$i++;
+
+						$product = Mage::getModel('catalog/product')->load($product->getId());
+						$attribute = $product->getResource()->getAttribute('label');
+						if (is_object($attribute)) {
+							$options = $attribute->getSource()->getAllOptions(true, true);
+							foreach ($options as $option) {
+								if ($option['value'] == $product->getData("label")) {
+									$class = $option['label'];
+								}
+							}
+							$attDefaultValue = $attribute->getDefaultValue();
+							$attributeValue = Mage::getModel('catalog/product')->load($product->getId())->getlabel();
+							$attributeValueName = Mage::getModel('catalog/product')->load($product->getId())->getAttributeText('label');
+							if (strlen($attributeValue) && ($attDefaultValue !== $attributeValue)) {
+								$labelType = $class;
+								$labelName = $attributeValueName;
+							} else {
+								$labelType = "";
+							}
+						}
+						?>
+						<div class="item">
+							<div class="item-inner">
+								<div class="product-image">
+									<a title="<?php echo $this->htmlEscape($product->getName()) ?>"
+									   href="<?php echo $product->getProductUrl() ?>">
+										<img
+											src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize(90, 60)->setWatermarkSize('30x10'); ?>"
+											alt="<?php echo $this->htmlEscape($product->getName()) ?>"/>
+									</a>
+								</div>
+								<div class="product-details">
+									<a  class="product-name" title="<?php echo $this->htmlEscape($product->getName()) ?>" href="<?php echo $product->getProductUrl() ?>">
+									<?php echo $product->getName(); //substr(strip_tags($product->getName()), 0, 10) ?>
+									</a>
+									<?php echo $this->getPriceHtml($product, true, '_jmproduct') ?>
+									<?php echo $this->getReviewsSummaryHtml($product, true, true); ?>	
+								</div>
+							</div>
+					</div>
+					<?php endforeach; ?>
+					<a title="<?php echo Mage::helper('joomlart_jmproducts')->__('View more'); ?>" class="view-more" href="<?php echo Mage::getModel('core/url')->getUrl('jmproducts/viewall/index');?>" >
+						<?php echo Mage::helper('joomlart_jmproducts')->__('More products'); ?>
+					</a>
+				<script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd', 'even', 'first', 'last'])</script>
+			<?php else: ?>
+				<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+			<?php endif; ?>
+		</div>		
+	</div>		
+</div>		

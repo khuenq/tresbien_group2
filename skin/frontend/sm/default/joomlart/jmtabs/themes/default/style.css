@@ -1,0 +1,62 @@
+.default .jm-tabswrap {
+	border: 1px solid #C9C0B7;
+}
+.default .jm-tabswrap div.jm-tab-content {	
+	width: 95%;
+}
+/* JA Tabs top*/
+.default .jm-tabs-title-top {
+  clear: both;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+  margin: 0 0 56px;
+}
+
+.default .jm-tabs-title-top ul.jm-tabs-title li {
+  background: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 10px;
+  padding: 0;
+  float: none;
+}
+
+.default .jm-tabs-title-top ul.jm-tabs-title li h3 {
+	font-size: 14px;
+	font-weight: bold !important;
+	line-height: 46px;
+	margin: 0;
+	border: 2px solid #333;
+	background: none;
+	font-weight: 700;
+	border-radius: 30px;
+	text-transform: uppercase;
+
+}
+
+.default .jm-tabs-title-top ul.jm-tabs-title li h3 span { 
+	height: 100%;
+	display: block;
+	padding: 0 40px;
+	min-width: 110px;
+}
+
+.default .jm-tabs-title-top ul.jm-tabs-title li.hover,
+.default .jm-tabs-title-top ul.jm-tabs-title li.firsthover,
+.default .jm-tabs-title-top ul.jm-tabs-title li.lasthover {
+}
+
+.default .jm-tabs-title-top ul.jm-tabs-title li.active,
+.default .jm-tabs-title-top ul.jm-tabs-title li.firstactive,
+.default .jm-tabs-title-top ul.jm-tabs-title li.lastactive {
+	
+}
+
+.default .jm-tabs-title-top ul li.active h3 ,
+.default .jm-tabs-title-top ul li.firstactive h3,
+.default .jm-tabs-title-top ul li.lastactive h3 {
+	background: #25b16e;
+	border-color: #25b16e;
+	color: #fff;
+}

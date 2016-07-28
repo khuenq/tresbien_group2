@@ -1,0 +1,86 @@
+h2.jmzin-title, h4.jmzin-title { font-size: 125%; line-height: 1.1; margin: 0; margin-bottom: 5px; padding: 0; text-transform: none; }
+
+/* CONTENT
+--------------------------------------------- */
+#jmzin-wrap { margin-left: 1px; padding: 0; }
+
+#jmzin { padding: 0; }
+
+.jm-cat-left { background: url(dot.gif) repeat-y right; float: left; }
+
+.jm-cat-center { background: url(dot.gif) repeat-y right; float: left; }
+
+.jm-cat-right { float: right; }
+
+.jmzin-box { margin: 0; padding: 15px; }
+
+.jm-cat-right .jmzin-box { margin-left: 0; }
+
+.jm-cat-right .jmzin-box { margin-right: 0; }
+
+div.jmzin-section { display: block; margin-bottom: 5px; }
+
+div.jmzin-section a, div.jmzin-section span { color: #999999; font-weight: bold; padding: 0 2px 2px 0; text-transform: uppercase; }
+
+div.jmzin-section a:hover,
+div.jmzin-section a:active,
+div.jmzin-section a:focus { color: #999999; text-decoration: none; }
+
+.jmzin-more { background: url(dot-h.gif) repeat-x top; clear: both; color: #999999; display: block; margin-top: 10px; padding: 10px 0 2px; text-transform: uppercase; }
+
+ul.jmzin-links { margin: 0; padding: 0; }
+
+ul.jmzin-links li { background-position: 2px 9px; padding-left: 10px; }
+
+ul.jmzin-links li a { color: #666666; }
+
+.jmzin-content img { float: left; padding: 5px 10px 0 0; }
+
+/*Categorie list*/
+.jm-categories-list .controls { height: 58px; display: none; margin: 0 auto; position: absolute; text-align: center; top: 0; width: 100%; z-index: 1; }
+
+.jm-categories-list:hover .controls { display: block; }
+
+.jm-categories-list .controls .prev,
+.jm-categories-list .controls .next { border: 0; color: #eee; cursor: pointer; display: block; height: 58px; text-indent: -10000em; width: 58px; }
+
+.jm-categories-list .controls .disabled { opacity: 0.3; }
+
+.jm-categories-list .controls .prev { background: url(pre-arrow.png) left top no-repeat; background-position: 0 0; float: left; margin-left: 35px; margin-top: 173px; }
+
+.jm-categories-list .controls .next { background: url(next-arrow.png) left top no-repeat; background-position: 0 0; float: right; margin-right: 35px; margin-top: 173px; }
+
+.jm-categories-list .controls .prev:hover { background-position: -58px 0; }
+
+.jm-categories-list .controls .next:hover { background-position: -58px 0; }
+
+/*category list*/
+.jm-categories-list {  clear: both; height: auto; width: 100% !important; }
+
+.jm-categories-list li { float: left; /*height: 400px !important; width: 400px !important; */}
+
+.jm-categories-list li img { height: 100%; width: 100%; }
+
+.jm-categories-list li .categories-items { float: left; position: relative;  /* height: 400px; width: 400px; */ }
+
+.jm-categories-list li .categories-items:before { background: #25b16e; bottom: 0; content: ""; height: 100%; left: 0; opacity: 0; position: absolute; top: 0; width: 100%; z-index: 0; display: none; }
+
+.jm-categories-list li:hover .categories-items:before { opacity: 0.8; display: block;}
+
+.jm-categories-list li .categories-items .categoriesinfo { left: 0;  position: absolute; text-align: center; top: 155px; width: 100%; z-index: 10; display: none;}
+
+.jm-categories-list li .categories-items .category-description { display: block;  color: #fff; margin: 0 auto 10px; max-width: 200px; }
+
+.jm-categories-list li:hover  .categories-items .categoriesinfo { display: block;}
+
+.jm-categories-list li .categories-items .category-name { color: #fff; display: block; font-size: 18px; font-weight: 700; line-height: 100%; margin: 0 0 30px; text-transform: uppercase; width: 100%; }
+
+.jm-categories-list li .categories-items .category-name:active,
+.jm-categories-list li .categories-items .category-name:focus,
+.jm-categories-list li .categories-items .category-name:hover { color: #333; text-decoration: none; }
+
+.jm-categories-list li .categories-items .readmore { background: url('next-arrow.png') top left no-repeat; display: block; font-size: 0; height: 58px; margin: auto; width: 58px; }
+
+.jm-categories-list li .categories-items .readmore:active,
+.jm-categories-list li .categories-items .readmore:focus,
+.jm-categories-list li .categories-items .readmore:hover { background-position: -58px 0; }

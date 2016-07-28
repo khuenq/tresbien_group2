@@ -1,0 +1,95 @@
+<div id="category_list_<?php echo $config['block_id']; ?>" class="jm-categories-list">
+
+	<?php if ($config['title']): ?>
+		<h2 class="title"><?php echo $config['title']; ?> </h2>
+	<?php endif; ?>
+
+	<?php
+	$categories = $this->getCollection();
+	$helper = $this->helper('catalog/output');
+	$thumbWidth = $config['category_thumb_width'];
+	$thumbHeight = $config['category_thumb_height'];
+	?>
+
+	<?php if($categories): ?>
+		<ul>
+			<?php
+				$itemWidth = 100/$config['perrow'];
+				foreach($categories as $category):
+					$imgHtml   = '';
+					if ($imageName = $category->getImage()) {
+						$imgUrl = Mage::helper('joomlart_jmcategorylist/data')->resizeImage($imageName, $thumbWidth, $thumbHeight);
+						$imgHtml = '<p class="category-thumb"><img src="'.$imgUrl.'" alt="'.$this->escapeHtml($category->getName()).'" title="'.$this->escapeHtml($category->getName()).'" /></p>';
+						$imgHtml = $helper->categoryAttribute($category, $imgHtml, 'image');
+					}
+			?>
+					<li>
+						<div class="categories-items" style="background-image: url('<?php if($imgUrl): echo $imgUrl; endif; ?>')">
+				  			<div class="categoriesinfo">
+					  			<?php if($config['showcat']): ?>
+										<?php if($config['link_cat']): ?>
+											<a class="category-name" title="<?php echo $this->escapeHtml($category->getName()); ?>" href="<?php echo $category->getUrl()?>">
+												<?php echo $this->escapeHtml($category->getName()); ?>
+											</a>
+										<?php else: ?>
+											<span class="category-name"><?php echo $this->escapeHtml($category->getName()); ?></span>
+										<?php endif; ?>
+									<?php endif; ?>
+					  			<?php if($config['show_readmore']): ?>
+					  				<a class="readmore" title="<?php echo $this->helper("joomlart_jmcategorylist")->__('Read more...') ?>" href="<?php echo $category->getUrl()?>">
+					  					<?php echo $this->helper("joomlart_jmcategorylist")->__('Read more...') ?>
+					  				</a>
+									<?php endif; ?>
+									<?php if($config['show_desc']): ?>
+										<?php if($description = $category->getDescription()): ?>
+											<div class="category-description">
+												<?php //$description = Mage::helper('joomlart_jmcategorylist/data')->substrwords($description, $config['maxchar']); ?>
+												<?php echo $helper->categoryAttribute($category, $description, 'description') ?>
+											</div>
+										<?php endif; ?>
+									<?php endif; ?>
+				  			</div>
+				  	</div>						
+					</li>
+			<?php endforeach; ?>
+		</ul>
+
+		<script type="text/javascript">
+			(function($){
+				//Change item width
+				$("#category_list_<?php echo $config['block_id']; ?> ul").find('li').each(function(){
+					$(this).css({"width":"<?php echo $itemWidth; ?>%"});
+				});
+			})(jQuery);
+		</script>
+		<?php if($config['enabled_slider']): ?>
+			<div class="clearfix"></div>
+			<div class="controls">
+				<button class="prev"> << </button>
+				<button class="next"> >> </button>
+			</div>
+			
+			<style type="text/css">
+				.jm-categories-list ul li,
+				.jm-categories-list li .categories-items {
+					width: <?php echo $thumbWidth;?>px !important;
+					height: <?php echo $thumbHeight;?>px !important;
+				}
+			</style>
+
+			<!-- script for run slider -->
+			<script type="text/javascript">
+				(function($){
+					$("#category_list_<?php echo $config['block_id']; ?>").jCarouselLite({
+						btnNext: ".next",
+						btnPrev: ".prev",
+						auto: <?php echo $config['slider_delay']; ?>,
+						speed: <?php echo $config['slider_speed']; ?>,
+						circular: <?php echo $config['slider_loop']; ?>,
+						visible: <?php echo $config['perrow']; ?>
+					});
+				})(jQuery);
+			</script>
+		<?php endif; ?>
+	<?php endif; ?>
+</div>

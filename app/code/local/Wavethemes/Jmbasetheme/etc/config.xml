@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Wavethemes_Jmbasetheme>
+            <version>0.1.1</version>
+        </Wavethemes_Jmbasetheme>
+    </modules>
+    <global>
+        <helpers>
+            <jmbasetheme>
+                <class>Wavethemes_Jmbasetheme_Helper</class>
+            </jmbasetheme>
+        </helpers>
+    </global>
+</config> 

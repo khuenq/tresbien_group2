@@ -1,0 +1,184 @@
+/*!
+ * Theme Name: JM Team
+ * Theme URI: http://www.joomlart.com
+ * Version: 1.0
+ * Description: 
+ * Author: JM Team - Joomlart.com
+ * Author URI: http://www.joomlart.com
+ * 
+ * Powered by Magento
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */
+.wrap { clear: both; min-width: 1080px; white-space: normal!important }
+
+.main { max-width: 1220px; margin: 0 auto; text-align: left; }
+
+.main .inner { margin: 0 10px; }
+
+#jm-wrapper {
+  max-width: 1600px;
+  margin: auto; 
+} 
+
+/* CONTAINER
+--------------------------------------------------------- */
+#jm-mainbody { float: left; width: 75%; }
+
+/*main content---*/
+#jm-main {display: block; float: right; width: 66.6%; }
+#jm-current-content { min-height: 200px; }
+.checkout-multishipping-success #jm-current-content,
+.checkout-multishipping-overview #jm-current-content,
+.checkout-multishipping-shipping #jm-current-content,
+.checkout-multishipping-address-newshipping #jm-current-content,
+.checkout-cart-index #jm-current-content,
+.checkout-multishipping-addresses #jm-current-content { background: none; }
+/*columns---*/
+#jm-col1 { float: left; width: 24%; }
+#jm-col2 { float: right; width: 24%; }
+
+/* FOOTER
+--------------------------------------------------------- */
+#jm-footerwrap {}
+#jm-footer { }
+
+/* EXTENSIBLE LAYOUT
+--------------------------------------------------------- */
+/*1 Column---*/
+.jm-lo-1col #jm-current-content { margin: 0; }
+.jm-lo-1col #jm-mainbody,.jm-lo-1col #jm-main { float: none; width: 100%; }
+
+.jm-col-right #jm-main {
+	float: left;
+}
+.jm-col-right .col-right{
+	float: right;
+}
+
+
+/*2 Columns Right---*/
+.jm-lo-2colsr #jm-main { float: none; width: 100%; }
+.jm-lo-2colsr #jm-current-content { margin-left: 0; }
+
+/*2 Columns Left---*/
+.jm-lo-2colsl #jm-mainbody { float: none; width: 100%; }
+.jm-lo-2colsl #jm-main { width: 75%; }
+.jm-lo-2colsl #jm-current-content { margin-right: 0; }
+.jm-lo-2colsl .col-left-inner { padding: 0 10px 0 0; }
+
+/* IN PAGE LAYOUTS
+--------------------------------------------------------- */
+.page {}
+.page-print { padding: 25px 30px; text-align: left; }
+.page-empty { padding: 20px; text-align: left; }
+.page-popup { padding: 25px 30px; text-align: left; }
+
+/* Base Columns */
+.col-left { float: left; width: 195px; padding: 0; }
+.col-main { float: left; width: 685px; padding: 0; }
+.col-right { float: right; width: 195px; padding: 0; }
+
+/* 1 Column Layout */
+.col1-layout .col-main { float: none; width: auto; }
+
+/* 2 Columns Layout */
+.col2-left-layout .col-main { float: right; }
+.col2-right-layout .col-main {}
+
+/* 3 Columns Layout */
+.col3-layout .col-main { width: 475px; margin-left: 17px; }
+.col3-layout .col-wrapper { float: left; width: 687px; }
+.col3-layout .col-wrapper .col-main { float: right; }
+
+/* Content Columns */
+.col2-set .col-1 { float: left; width: 48.5%; }
+.col2-set .col-2 { float: right; width: 48.5%; }
+.col2-set .col-narrow { width: 32%; }
+.col2-set .col-wide { width: 65%; }
+
+.col3-set .col-1 { float: left; width: 32%; }
+.col3-set .col-2 { float: left; width: 32%; margin-left: 2%; }
+.col3-set .col-3 { float: right; width: 32%; }
+
+.col4-set .col-1 { float: left; width: 25%; }
+.col4-set .col-2 { float: left; width: 25%; }
+.col4-set .col-3 { float: left; width: 25%; }
+.col4-set .col-4 { float: left; width: 25%;}
+
+.col5-set .col-1 { float: left; width: 20%; }
+.col5-set .col-2 { float: left; width: 20%; }
+.col5-set .col-3 { float: left; width: 20%; }
+.col5-set .col-4 { float: left; width: 20%; }
+.col5-set .col-5 { float: left; width: 20%; }
+.col5-set .col-wide { width: 40%; }
+
+/*Table Columns---*/
+table .col-1, table .col-2, table .col-3, table .col-4 { float: none !important; margin: 0 !important; }
+.col3-set td.spacer { width: 3%; }
+.col4-set td.spacer { width: 4%; }
+
+/* Clears */
+.clearer:after,
+.header-container:after,
+.header-container .top-container:after,
+.header:after,
+.header .quick-access:after,
+#nav:after,
+.main:after,
+.footer:after,
+.footer-container .bottom-container:after,
+.col-main:after,
+.col2-set:after,
+.col3-set:after,
+.col3-layout .product-options-bottom .price-box:after,
+.col4-set:after,
+.search-autocomplete li:after,
+.block .block-content:after,
+.block .actions:after,
+.block li.item:after,
+.block-poll li:after,
+.block-layered-nav .currently li:after,
+.page-title:after,
+.products-grid:after,
+.products-list li.item:after,
+.box-account .box-head:after,
+.dashboard .box .box-title:after,
+.box-reviews li.item:after,
+.box-tags li.item:after,
+.pager:after,
+.sorter:after,
+.ratings:after,
+.add-to-box:after,
+.add-to-cart:after,
+.product-essential:after,
+.product-collateral:after,
+.product-view .product-img-box .more-views ul:after,
+.product-view .box-tags .form-add:after,
+.product-view .product-shop .short-description:after,
+.product-view .box-description:after,
+.product-options .options-list li:after,
+.product-options-bottom:after,
+.product-review:after,
+.cart:after,
+.cart-collaterals:after,
+.cart .crosssell li.item:after,
+.opc .step-title:after,
+.checkout-progress:after,
+.multiple-checkout .place-order:after,
+.group-select li:after,
+.form-list li:after,
+.form-list .field:after,
+.buttons-set:after,
+.page-print .print-head:after,
+.advanced-search-summary:after,
+.gift-messages-form .item:after,
+.send-friend .form-list li p:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  overflow: hidden
+}

@@ -19,59 +19,65 @@
  *
  * @category    design
  * @package     rwd_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
+var ConfigurableSwatchesList = null;
 
-var ConfigurableSwatchesList = {
-    swatchesByProduct: {},
+(function($j){
 
-    init: function()
-    {
-        var that = this;
-        $j('.configurable-swatch-list li').each(function() {
-            that.initSwatch(this);
-            var $swatch = $j(this);
-            if ($swatch.hasClass('filter-match')) {
-                that.handleSwatchSelect($swatch);
-            }
-        });
-    },
+    ConfigurableSwatchesList = {
+        swatchesByProduct: {},
 
-    initSwatch: function(swatch)
-    {
-        var that = this;
-        var $swatch = $j(swatch);
-        var productId;
-        if (productId = $swatch.data('product-id')) {
-            if (typeof(this.swatchesByProduct[productId]) == 'undefined') {
-                this.swatchesByProduct[productId] = [];
-            }
-            this.swatchesByProduct[productId].push($swatch);
-
-            $swatch.find('a').on('click', function() {
-                that.handleSwatchSelect($swatch);
-                return false;
+        init: function()
+        {
+            var that = this;
+            $j('.configurable-swatch-list li').each(function() {
+                that.initSwatch(this);
+                var $swatch = $j(this);
+                if ($swatch.hasClass('filter-match')) {
+                    that.handleSwatchSelect($swatch);
+                }
             });
+        },
+
+        initSwatch: function(swatch)
+        {
+            var that = this;
+            var $swatch = $j(swatch);
+            var productId;
+            if (productId = $swatch.data('product-id')) {
+                if (typeof(this.swatchesByProduct[productId]) == 'undefined') {
+                    this.swatchesByProduct[productId] = [];
+                }
+                this.swatchesByProduct[productId].push($swatch);
+
+                $swatch.find('a').on('click', function() {
+                    that.handleSwatchSelect($swatch);
+                    return false;
+                });
+            }
+        },
+
+        handleSwatchSelect: function($swatch)
+        {
+            var productId = $swatch.data('product-id');
+            var label;
+            if (label = $swatch.data('option-label')) {
+                ConfigurableMediaImages.swapListImageByOption(productId, label);
+            }
+
+            $j.each(this.swatchesByProduct[productId], function(key, $productSwatch) {
+                $productSwatch.removeClass('selected');
+            });
+
+            $swatch.addClass('selected');
         }
-    },
-
-    handleSwatchSelect: function($swatch)
-    {
-        var productId = $swatch.data('product-id');
-        var label;
-        if (label = $swatch.data('option-label')) {
-            ConfigurableMediaImages.swapListImageByOption(productId, label);
-        }
-
-        $j.each(this.swatchesByProduct[productId], function(key, $productSwatch) {
-            $productSwatch.removeClass('selected');
-        });
-
-        $swatch.addClass('selected');
     }
-}
 
-$j(document).on('configurable-media-images-init', function(){
-    ConfigurableSwatchesList.init();
-});
+    $j(document).on('configurable-media-images-init', function(){
+        ConfigurableSwatchesList.init();
+    });
+
+
+})(jQuery);

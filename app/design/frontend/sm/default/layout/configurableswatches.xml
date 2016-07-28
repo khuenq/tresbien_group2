@@ -21,12 +21,24 @@
  *
  * @category    design
  * @package     rwd_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 -->
 <layout version="0.1.0">
-
+	<default>
+		<reference name="head">
+            <action method="addJs"> <file>jquery/jquery.1.9.1.min.js</file></action>
+            <action method="addJs"> <file>jquery/jquery.noConflict.js</file></action>
+			<action method="addItem"><type>skin_js</type><name>js/configurableswatches/modernizr.custom.min.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/configurableswatches/script.js</name></action>
+			<action method="addItem"><type>skin_js</type><name>js/configurableswatches/imagesloaded.js</name></action>
+			<action method="addCss"><stylesheet>css/configurableswatches.css</stylesheet></action>
+			<action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/configurableswatches/swatches-product.js</name></action>
+		</reference>
+	</default>
+	
     <product_list>
         <reference name="head">
             <action method="addItem"><type>skin_js</type><name>js/configurableswatches/product-media.js</name></action>

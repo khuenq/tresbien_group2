@@ -1,0 +1,61 @@
+<div class="jm-product-list <?php echo $config['mode']; ?> clearfix">
+	<div class="listing-type-grid category-products">
+		<?php
+		$_collectionSize = $listall ? $listall->count() : 0;
+		$i = 0;
+		$width = 100;
+		$thumbnailw = $config['width'];
+		$thumbnailh = $config['height'];
+		$numberchar = $config['max'];
+
+		if ($config['perrow']) $width = 99 / $config['perrow'];
+		$width = "style=\"width:{$width}%;\"";
+		$return = false;
+		?>
+		<?php if ($_collectionSize) : ?>
+			<?php foreach ($listall->getItems() as $_product) :
+				$product = Mage::getModel('catalog/product')->load($_product->getId());
+				$attribute = $product->getResource()->getAttribute('label');
+				if (is_object($attribute)) {
+					$attdefaultvalue = $attribute->getDefaultValue();
+					$attributeValue = Mage::getModel('catalog/product')->load($_product->getId())->getlabel();
+					$attributeValueName = Mage::getModel('catalog/product')->load($_product->getId())->getAttributeText('label');
+				}
+				if (strlen($attributeValue) && ($attdefaultvalue !== $attributeValue)) {
+					$labeltype = $attributeValueName;
+				} else {
+					$labeltype = "";
+				}
+				?>
+
+				<?php if ($i++ % $config['perrow'] == 0): ?>
+				<div class="products-grid">
+			<?php endif; ?>
+				<div class="item">
+					<div class="item-inner">
+						<div class="product-image">
+							<a title="<?php echo $this->htmlEscape($_product->getName()) ?>"
+							   href="<?php echo $_product->getProductUrl() ?>">
+								<img
+									src="<?php echo $this->helper('catalog/image')->init($_product, 'thumbnail')->resize(114, 76)->setWatermarkSize('30x10'); ?>"
+									alt="<?php echo $this->htmlEscape($_product->getName()) ?>"/>
+							</a>
+						</div>
+						<div class="product-details">
+							<a  class="product-name" title="<?php echo $this->htmlEscape($_product->getName()) ?>" href="<?php echo $_product->getProductUrl() ?>">
+							<?php echo $_product->getName(); ?>
+							</a>
+							<?php echo $this->getPriceHtml($_product, true, '_jmproduct') ?>
+							<?php echo $this->getReviewsSummaryHtml($_product, true, true); ?>	
+						</div>
+					</div>
+				</div>
+
+				<?php if ($i % $config['perrow'] == 0 || $i == $_collectionSize): ?>
+				</div>
+			<?php endif; ?>
+
+			<?php endforeach; ?>
+		<?php endif; ?>
+	</div>
+</div>

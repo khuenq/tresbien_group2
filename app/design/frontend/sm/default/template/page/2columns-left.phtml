@@ -1,71 +1,212 @@
 <?php
-/**
- * Magento
- *
- * NOTICE OF LICENSE
- *
- * This source file is subject to the Academic Free License (AFL 3.0)
- * that is bundled with this package in the file LICENSE_AFL.txt.
- * It is also available through the world-wide-web at this URL:
- * http://opensource.org/licenses/afl-3.0.php
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to license@magento.com so we can send you a copy immediately.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade Magento to newer
- * versions in the future. If you wish to customize Magento for your
- * needs please refer to http://www.magento.com for more information.
- *
- * @category    design
- * @package     rwd_default
- * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
- * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
- */
-?>
-<?php
-/**
+/*!
+ * Theme Name: JM Team
+ * Theme URI: http://www.joomlart.com
+ * Version: 1.0
+ * Description: 
+ * Author: JM Team - Joomlart.com
+ * Author URI: http://www.joomlart.com
+ * 
+ * Powered by Magento
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  * Template for Mage_Page_Block_Html
  */
 ?>
-
-<!DOCTYPE html>
-
-<!--[if lt IE 7 ]> <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?php echo $this->getLang(); ?>" id="top" class="no-js"> <!--<![endif]-->
-
+<?php  $baseconfig =  Mage::helper("jmbasetheme")->getactiveprofile();?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<!--[if IE]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie8" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<![endif]-->
+<!--[if IE 9]>
+<html class="ie9" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<![endif]-->
+<!--[if IE 10]>
+<html class="ie10" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<![endif]-->
 <head>
 <?php echo $this->getChildHtml('head') ?>
 </head>
-<body<?php echo $this->getBodyClass()?' class="'.$this->getBodyClass().'"':'' ?>>
+<body id="bd" class="<?php echo 'skin-'.Mage::helper("jmbasetheme")->getprofile(); ?><?php echo $this->getBodyClass();?> locate-<?php echo $this->getLang() ?>">
 <?php echo $this->getChildHtml('after_body_start') ?>
-<div class="wrapper">
-    <?php echo $this->getChildHtml('global_notices') ?>
-    <div class="page">
-        <?php echo $this->getChildHtml('header') ?>
-        <div class="main-container col2-left-layout">
-            <div class="main">
-                <?php echo $this->getChildHtml('breadcrumbs') ?>
-                <?php // This left_first block will display above the main content on smaller viewports ?>
-                <?php if ($_leftContent = $this->getChildHtml('left_first')): ?>
-                <div class="col-left sidebar col-left-first"><?php echo $_leftContent;   ?></div>
-                <?php endif; ?>
-                <div class="col-main">
-                    <?php echo $this->getChildHtml('global_messages') ?>
-                    <?php echo $this->getChildHtml('content') ?>
-                </div>
-                <div class="col-left sidebar"><?php echo $this->getChildHtml('left') ?></div>
-            </div>
-        </div>
-        <?php echo $this->getChildHtml('footer_before') ?>
-        <?php echo $this->getChildHtml('footer') ?>
-        <?php echo $this->getChildHtml('global_cookie_notice') ?>
-        <?php echo $this->getChildHtml('before_body_end') ?>
-    </div>
+<div id="jm-wrapper">
+	<!-- BEGIN: HEADER -->
+	<div id="jm-header" class="wrap <?php if(!$this->getChildHtml('breadcrumbs')) { echo "no-breadcrumbs"; }?> clearfix">
+		<?php echo $this->getChildHtml('header') ?>
+	</div>
+	<!-- END: HEADER -->
+	<?php if($baseconfig["urlfacebook"] || $baseconfig["urltwitter"] || $baseconfig["urlgoogleplus"] || $baseconfig["urlpinterest"] || $baseconfig["urltumblr"] || $baseconfig["urlskype"]): ?>
+	<!-- BEGIN: SOCIAL BUTTON -->
+	<div class="sidebar-socials">
+		<?php if($baseconfig["urlfacebook"]): ?>
+		<a href="<?php echo $baseconfig["urlfacebook"]; ?>" class="icon-facebook facebook"></a>
+		<?php endif; ?>
+		<?php if($baseconfig["urltwitter"]): ?>
+		<a href="<?php echo $baseconfig["urltwitter"]; ?>" class="icon-twitter twitter"></a>
+		<?php endif; ?>
+		<?php if($baseconfig["urlgoogleplus"]): ?>
+		<a href="<?php echo $baseconfig["urlgoogleplus"]; ?>" class="icon-google-plus google-plus"></a>
+		<?php endif; ?>
+		<?php if($baseconfig["urlpinterest"]): ?>
+		<a href="<?php echo $baseconfig["urlpinterest"]; ?>" class="icon-pinterest pinterest"></a>
+		<?php endif; ?>
+		<?php if($baseconfig["urltumblr"]): ?>
+		<a href="<?php echo $baseconfig["urltumblr"]; ?>" class="icon-tumblr tumblr"></a>
+		<?php endif; ?>
+		<?php if($baseconfig["urlskype"]): ?>
+		<a href="skype:<?php echo $baseconfig["urlskype"]; ?>?call" class="icon-skype skype"></a>
+		<?php endif; ?>
+	</div>
+	<!-- END: SOCIAL BUTTON -->
+	<?php endif; ?>
+	<?php if ($this->getChildHtml('tops1')) : ?>
+	<!-- TOP SPOTLIGHT -->
+	<div id="jm-tops1" class="wrap clearfix">
+		<?php echo $this->getChildHtml('tops1') ?>
+	</div>
+	<!-- //TOP SPOTLIGHT -->
+	<?php endif; ?>
+	<?php if ($this->getChildHtml('tops2')) : ?>
+	<!-- //TOP SPOTLIGHT 2 -->
+	<div id="jm-tops2" class="wrap clearfix">
+		<div class="main col1-set">
+			<div class="inner">
+				<?php echo $this->getChildHtml('tops2') ?>
+			</div>
+		</div>
+	</div>
+	<!-- //TOP SPOTLIGHT 2 -->	
+	<?php endif; ?>
+	<!-- //TOP SPOTLIGHT 3 -->
+	<?php if ($this->getChildHtml('tops3')) : ?>
+	<div id="jm-tops3" class="wrap clearfix">
+		<?php echo $this->getChildHtml('tops3') ?>
+	</div>
+	<?php endif; ?>
+	<!-- //TOP SPOTLIGHT 3 -->
+	<?php if ($this->getChildHtml('mass-top')) : ?>
+	<!-- //MASS TOP -->
+	<div id="jm-mass-top" class="jm-mass-top wrap clearfix">
+		<div class="main col1-set">
+			<div class="inner clearfix">
+				<?php echo $this->getChildHtml('mass-top') ?>
+			</div>
+		</div>
+	</div>
+	<!-- //MASS TOP -->
+	<?php endif; ?>
+	<?php if ($this->getChildHtml('mass-head')) : ?>
+	<!-- MASS Head -->
+	<div id="jm-mass-head" class="jm-mass-head">
+	  	<?php echo $this->getChildHtml('mass-head') ?>
+	</div>
+	<!-- MASS Head -->
+	<?php endif; ?>
+						
+	<?php if ($this->getChildHtml('breadcrumbs')) : ?>
+	<!-- breadcrums -->
+	<?php echo $this->getChildHtml('breadcrumbs') ?>
+	<!-- // breadcrums -->
+	<?php endif; ?>
+	<?php if($this->getChildHtml('global_messages') || $this->getChildHtml('messages')) :?>
+	<div id="jm-messages" class="wrap clearfix">
+		<div class="main clearfix">
+			<div class="inner clearfix">
+				<?php echo $this->getChildHtml('global_messages') ?>
+				<?php echo $this->getChildHtml('messages') ?>
+			</div>
+		</div>
+	</div>
+	<?php endif; ?>
+	<!-- BEGIN: MAIN CONTAINER -->
+	<div id="jm-container" class="jm-lo-2colsl jm-col-left wrap  <?php if(!$this->getChildHtml('breadcrumbs')) { echo "not-breadcrumbs"; }?> clearfix">
+		<div class="main clearfix">
+			<div id="jm-mainbody" class="clearfix">
+				<!-- BEGIN: COLUMN 1 -->
+				<div id="jm-col1" class="col-left side-col">
+					<div class="inner clearfix">
+						<?php echo $this->getChildHtml('left') ?>
+					</div>
+				</div>
+				<!-- END: COLUMN 1 -->
+				<!-- BEGIN: CONTENT -->
+				<div id="jm-main">
+					<div class="inner clearfix">
+						<div id="jm-current-content" class="clearfix">
+							<!-- primary content -->
+							<?php echo $this->getChildHtml('content') ?>
+							<!-- // primary content -->
+						</div>
+					</div>
+				</div>
+				<!-- END: CONTENT -->
+			</div>
+		</div>
+	</div>
+	<!-- END: MAIN CONTAINER -->
+	<?php if ($this->getChildHtml('mass-bottom')) : ?>
+	<!-- //BOTTOM SPOTLIGHT -->
+	<div id="jm-mass-bottom" class="jm-mass-bottom wrap clearfix">
+		<?php echo $this->getChildHtml('mass-bottom') ?>
+	</div>
+	<!-- //BOTTOM SPOTLIGHT -->
+	<?php endif; ?>
+	<?php if ($this->getChildHtml('bots1')) : ?>
+	<!-- BOTTOM SPOTLIGHT -->
+	<div id="jm-bots1" class="jm-spotlight wrap clearfix">
+		<div class="main col1-set clearfix">
+			<div class="inner clearfix">
+				<?php echo $this->getChildHtml('bots1') ?>
+			</div>
+	  </div>
+	</div>
+	<!-- //BOTTOM SPOTLIGHT -->
+	<?php endif; ?>
+	<?php if ($this->getChildHtml('bots2')) : ?>
+	<!-- BOTTOM SPOTLIGHT -->
+	<div id="jm-bots2" class="jm-spotlight wrap clearfix">
+		<div class="main col1-set clearfix">
+		<?php echo $this->getChildHtml('bots2') ?>
+	  </div>
+	</div>
+	<!-- //BOTTOM SPOTLIGHT -->
+	<?php endif; ?>
+	<?php if ($this->getChildHtml('bots3')) : ?>
+	<!-- BOTTOM SPOTLIGHT -->
+	<div id="jm-bots3" class="jm-spotlight wrap clearfix">
+		<div class="main col1-set clearfix">
+			<div class="inner clearfix">
+				<?php echo $this->getChildHtml('bots3') ?>
+			</div>
+	  </div>
+	</div>
+	<!-- //BOTTOM SPOTLIGHT -->
+	<?php endif; ?>
+	<?php if ($this->getChildHtml('bots4')) : ?>
+	<!-- BOTTOM SPOTLIGHT -->
+	<div id="jm-bots4" class="jm-spotlight wrap clearfix">
+		<div class="main col5-set clearfix">
+			<div class="inner clearfix">
+				<?php echo $this->getChildHtml('bots4') ?>
+			</div>
+	  </div>
+	</div>
+	<!-- //BOTTOM SPOTLIGHT -->
+	<?php endif; ?>
+	<!-- BEGIN: FOOTER -->
+	<div id="jm-footer" class="wrap clearfix">
+		<div class="main">
+			<div class="inner clearfix">
+			  <?php echo $this->getChildHtml('footer') ?>
+			</div>
+		</div>
+	</div>
+	<!-- END: FOOTER -->
+<?php echo $this->getChildHtml('before_body_end') ?>
 </div>
 <?php echo $this->getAbsoluteFooter() ?>
 </body>

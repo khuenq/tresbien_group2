@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<SmartLab_Fseinstaller>
-			<version>0.3.0</version>
+			<version>0.3.4</version>
 		</SmartLab_Fseinstaller>
 	</modules>
 	<global>

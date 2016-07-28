@@ -1,0 +1,81 @@
+.home-our-special .products-grid .overimage,
+.home-our-special .products-grid li:focus .overimage,
+.home-our-special .products-grid li:hover .overimage{
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+	transition: all 0.3s linear;
+}
+
+
+/*
+.jm-slide-buttons span.jm-slide-prev,
+.jm-slide-buttons span.jm-slide-next,
+.jm-slide-buttons span.jm-slide-prev:hover,
+.jm-slide-buttons span.jm-slide-next:hover { 
+-webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+*/
+#jm-bots3  .social-list li,
+button.button,
+.ja-tab-navigator li a {
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+}
+
+.product-options dd select.multiselect,
+.quantity .qty,
+.block-subscribe .input-box,
+.products-list li.item .btn-cart {
+	border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	-webkit-border-radius: 0 !important;
+}
+
+
+#jm-mycart .btn-toggle a {
+	border-radius: 13px;
+	-moz-border-radius: 13px;
+	-webkit-border-radius: 13px;	
+}
+
+.view-cart,
+#jm-bots1 .btn-book,
+.outer-addcart button.button,
+.block-cart .actions button.button,
+.block-subscribe .input-box .input-text {
+	border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+}
+
+.cart .discount input.input-text,
+.cart .shipping-form input.input-text,
+.cart .shipping-form .form-list select {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.product-view .box-reviews .form-add .form-list input.input-text,
+.product-view .box-reviews .form-add .form-list textarea {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+#jm-search .inner-toggle,
+#jm-setting .inner-toggle,
+#jm-mycart .inner-toggle,
+#jm-quickaccess .inner-toggle,
+.jm-megamenu .childcontent-inner {
+	box-shadow: 0 3px 3px #ccc;
+	-moz-box-shadow: 0 3px 3px #ccc;
+	-webkit-box-shadow: 0 3px 3px #ccc;
+}
